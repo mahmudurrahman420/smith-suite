@@ -1,0 +1,63 @@
+Pixelsmith's Korean, German, Spanish, Brazilian Portuguese, Italian, Ukrainian, Dutch, Czech,
+Turkish, Hungarian, Serbian, Russian, Swedish, Finnish, Danish, Norwegian Bokmål and Bosnian UI
+translation catalogs are licensed under MIT OR Apache-2.0, at your option.
+The full license texts are in ../../../../LICENSE-MIT and ../../../../LICENSE-APACHE.
+
+Korean translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+German translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Spanish translations: contributed by @gorevyoneticisi with OpenAI Codex as an AI contributor.
+The resulting catalog is licensed under MIT OR Apache-2.0 as stated above; the translations are
+original translations of Pixelsmith's English labels, and no proprietary translation resources
+were used.
+
+Brazilian Portuguese translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Italian translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Ukrainian translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Dutch translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Czech translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Turkish translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Hungarian translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Serbian translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Russian translations: Pixelsmith contributors, original translations of
+Pixelsmith's English labels; no proprietary translation resources were used.
+
+Arabic translations: Pixelsmith contributors, combined from the catalogs contributed by @azizr12,
+@hicbest, @hasan-sdaif, @NibrasAz7, @vfggf95565, @syrrevshin4202-prog and @test-bit-sys and
+reviewed with Claude (Anthropic) as an AI contributor; original translations of Pixelsmith's
+English labels, and no proprietary translation resources were used.
+Swedish translations: Pixelsmith contributors, combined from the catalogs contributed by @kler and
+@davvarn and reviewed with Claude (Anthropic) as an AI contributor; original translations of
+Pixelsmith's English labels, and no proprietary translation resources were used.
+Finnish translations: Pixelsmith contributors, combined from the catalogs contributed by @Janiz-zzz
+and @metuuu and reviewed with Claude (Anthropic) as an AI contributor; original translations of
+Pixelsmith's English labels, and no proprietary translation resources were used.
+Danish translations: Pixelsmith contributors, based on the catalog contributed by
+@pechnikov2026-star, completed and reviewed with Claude (Anthropic) as an AI contributor; original
+translations of Pixelsmith's English labels, and no proprietary translation resources were used.
+Norwegian Bokmål translations: Pixelsmith contributors, combined from the catalogs contributed by
+@nikolainyegaard and @Bolla76 and reviewed with Claude (Anthropic) as an AI contributor; original
+translations of Pixelsmith's English labels, and no proprietary translation resources were used.
+
+Bosnian translations: Nine (@nine-codes) with Claude Code (AI-assisted), original translations of
+Pixelsmith's English labels, shared with storytold/craft-i18n (locales/bs/); no proprietary
+translation resources were used. Not yet reviewed by a native speaker.

@@ -1,0 +1,31 @@
+[package]
+name = "mocksmith-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Mocksmith command line: info, export, convert, render, scripted commands, MCP server, perf"
+
+[[bin]]
+name = "mocksmith-cli"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-engine = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-render = { workspace = true }
+mocksmith-text = { workspace = true }
+mocksmith-svg = { workspace = true }
+mocksmith-format = { workspace = true }
+mocksmith-mcp = { workspace = true }
+serde_json = { workspace = true }
+clap = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+# 4.6 breaks Bash subcommand completion for hyphenated binary names (clap-rs/clap#6421).
+clap_complete = "~4.5.67"
+clap_mangen = "0.3"

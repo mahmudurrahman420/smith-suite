@@ -1,0 +1,29 @@
+[package]
+name = "solidsmith-kernel"
+description = "Solidsmith B-rep kernel boundary: solids, extrude/revolve/booleans/fillets, meshes, measures and STEP, behind our own API (implemented with solidcore)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+solidcore-record = { workspace = true }
+solidsmith-geom = { workspace = true }
+solidsmith-smlib = { workspace = true }
+solidsmith-profile = { workspace = true }
+solidsmith-step = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+spade = { workspace = true }
+web-time = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon = { workspace = true }
+
+[dev-dependencies]
+solidsmith-profile = { workspace = true, features = ["enabled"] }
+proptest = { version = "1", default-features = false, features = ["std"] }

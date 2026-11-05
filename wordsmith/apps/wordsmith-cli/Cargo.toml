@@ -1,0 +1,23 @@
+[package]
+name = "wordsmith-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Wordsmith command line: convert, inspect, render, run commands, MCP server"
+
+[[bin]]
+name = "wordsmith-cli"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+wordsmith-doc = { workspace = true }
+wordsmith-engine = { workspace = true }
+wordsmith-render = { workspace = true }
+wordsmith-mcp = { workspace = true }
+wordsmith-zotero = { workspace = true }
+serde_json = { workspace = true }
+sys-locale = "0.3"

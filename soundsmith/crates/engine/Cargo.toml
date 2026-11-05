@@ -1,0 +1,32 @@
+[package]
+name = "soundsmith-engine"
+description = "Soundsmith command engine: commands, undo, editing operations, import/export, bounce, parity catalog"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+soundsmith-time.workspace = true
+soundsmith-audio-io.workspace = true
+soundsmith-midi.workspace = true
+soundsmith-dsp.workspace = true
+soundsmith-clap-host.workspace = true
+soundsmith-vst3-host.workspace = true
+soundsmith-au-host.workspace = true
+soundsmith-model.workspace = true
+soundsmith-mix.workspace = true
+soundsmith-video.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+log.workspace = true
+zip.workspace = true
+craft-docpath.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true

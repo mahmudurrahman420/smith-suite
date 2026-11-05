@@ -1,0 +1,28 @@
+[package]
+name = "motionsmith-cli"
+description = "Motionsmith headless CLI: render frames and sequences, run commands, MCP server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "motionsmith-cli"
+path = "src/main.rs"
+
+[dependencies]
+motionsmith-engine = { workspace = true }
+motionsmith-host = { workspace = true }
+motionsmith-automation = { workspace = true }
+motionsmith-ui-egui = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-gpu = { workspace = true }
+motionsmith-time = { workspace = true }
+motionsmith-track = { workspace = true }
+motionsmith-segment = { workspace = true }
+motionsmith-sam2 = { workspace = true }
+serde_json = { workspace = true }
+image = { workspace = true }
+cpu-time = "1"

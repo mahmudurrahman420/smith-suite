@@ -1,0 +1,13 @@
+[package]
+name = "pathsmith-three-d"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Portable 3D effect geometry (revolve, extrude and bevel, inflate, rotate) and projected vector shading"
+
+[lints]
+workspace = true
+
+[dependencies]
+pathsmith-geom = { workspace = true }
+pathsmith-pathops = { workspace = true }

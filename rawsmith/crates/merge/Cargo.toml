@@ -1,0 +1,21 @@
+[package]
+name = "rawsmith-merge"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Rawsmith Photo Merge: HDR merge (align, deghost) and panorama stitching (L3)"
+
+[lints]
+workspace = true
+
+[dependencies]
+rawsmith-geom = { workspace = true }
+rawsmith-color = { workspace = true }
+rawsmith-raster = { workspace = true }
+rawsmith-raw = { workspace = true }
+rawsmith-codecs = { workspace = true }
+rawsmith-meta = { workspace = true }
+rawsmith-scenes = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+rayon = { workspace = true }

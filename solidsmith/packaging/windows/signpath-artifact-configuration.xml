@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SignPath artifact configuration for the Windows release (project `solidsmith`).
+
+  This file is the source of truth: paste it into SignPath (Projects > solidsmith > Artifact
+  Configurations > the default configuration > Edit) whenever it changes, so the two stay in sync.
+
+  .github/workflows/release.yml submits two signing requests per architecture. GitHub stores every
+  workflow artifact as a zip, so the root element is a zip-file and the files sit at its top level:
+
+    1. the binaries, before they are packed:  solidsmith.exe, solidsmith-cli.exe, solvecraft-cli.exe
+    2. the installer built from those signed binaries:  solidsmith-<version>-windows-<arch>.msi
+
+  Each set is optional (min-matches="0") because each request carries only one of the two shapes.
+  The workflow checks afterwards that every file it sent came back with an Authenticode signature,
+  so a request that matched nothing fails the build instead of shipping unsigned files.
+-->
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <pe-file-set>
+      <include path="solidsmith.exe" min-matches="0" />
+      <include path="solidsmith-cli.exe" min-matches="0" />
+      <include path="solvecraft-cli.exe" min-matches="0" />
+      <for-each>
+        <authenticode-sign />
+      </for-each>
+    </pe-file-set>
+    <msi-file-set>
+      <include path="solidsmith-*-windows-*.msi" min-matches="0" />
+      <for-each>
+        <authenticode-sign />
+      </for-each>
+    </msi-file-set>
+  </zip-file>
+</artifact-configuration>

@@ -1,0 +1,62 @@
+{
+  "id": "layoutsmith",
+  "name": "Layoutsmith",
+  "upgradeCode": "49E87D30-BB68-4896-AA1D-F45C833CFC3C",
+  "sources": [
+    "layoutsmith.wxs",
+    "installer-ui.wxs"
+  ],
+  "icon": "assets/app-icon/layoutsmith.ico",
+  "localization": [],
+  "extensions": [],
+  "payloads": [
+    "NOTICE",
+    "layoutsmith-cli.exe",
+    "layoutsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Classes\\Layoutsmith.Idml\\shell\\open\\command",
+      "",
+      "\"[#LayoutsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.idml\\OpenWithProgids",
+      "Layoutsmith.Idml",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\layoutsmith.exe",
+      "FriendlyAppName",
+      "Layoutsmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\layoutsmith.exe\\shell\\open\\command",
+      "",
+      "\"[#LayoutsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\layoutsmith.exe\\SupportedTypes",
+      ".layoutsmith",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\layoutsmith.exe\\SupportedTypes",
+      ".idml",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\layoutsmith.exe",
+      "",
+      "[#LayoutsmithExe]"
+    ]
+  ],
+  "mode": "dualScope"
+}

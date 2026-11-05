@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Slidesmith
+GenericName=Presentation
+Comment=Create and present slide decks
+Exec=slidesmith %F
+TryExec=slidesmith
+Icon=io.github.mahmudurrahman420.slidesmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.github.mahmudurrahman420.slidesmith
+Categories=Office;Presentation;
+MimeType=application/x-slidesmith;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
+Keywords=presentation;slides;slide show;deck;pptx;keynote;powerpoint;

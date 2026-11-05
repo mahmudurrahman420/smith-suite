@@ -1,0 +1,26 @@
+[package]
+name = "mocksmith-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith renderer: the scene graph to pixels on tiny-skia (fills, gradients, images, aligned strokes, shadows, blurs, masks, blend modes, text)"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-color = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-format = { workspace = true }
+mocksmith-text = { workspace = true }
+mocksmith-pathops = { workspace = true }
+tiny-skia = { workspace = true }
+image = { workspace = true }
+moxcms = { workspace = true }
+png = { workspace = true }
+crc32fast = { workspace = true }
+log = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon = "1"

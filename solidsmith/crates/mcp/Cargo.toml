@@ -1,0 +1,19 @@
+[package]
+name = "solidsmith-mcp"
+description = "Solidsmith MCP server: JSON-RPC 2.0 over stdio, driving a headless session or the running app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+solidsmith-engine = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+# The renderer `solidsmith-cli mcp` installs, so the tests' screenshots are drawn as the server's.
+solidsmith-gpu = { workspace = true }
+# Synthetic reference pictures for the compare_picture test.
+image = { workspace = true }

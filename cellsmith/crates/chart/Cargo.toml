@@ -1,0 +1,16 @@
+[package]
+name = "cellsmith-chart"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cellsmith charts: data resolution, layout into toolkit-free primitives, sparklines and a small rasteriser"
+
+[lints]
+workspace = true
+
+[dependencies]
+cellsmith-core = { workspace = true }
+cellsmith-model = { workspace = true }
+cellsmith-calc = { workspace = true }
+cellsmith-numfmt = { workspace = true }
+serde = { workspace = true }

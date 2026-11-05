@@ -1,0 +1,15 @@
+Pathsmith portable mode
+
+While this file sits next to pathsmith.exe, Pathsmith keeps its preferences, swatch and
+graphic style libraries, added fonts, crash-recovery files and logs in the PathsmithData folder
+beside it, and writes nothing to %APPDATA%. Copy the whole folder to move Pathsmith with its
+settings. The first time PathsmithData is created, any settings already in
+%APPDATA%\Pathsmith are copied into it; the originals are left where they were.
+
+Keep this folder somewhere only you can write to: whoever can write here decides your settings,
+including the plug-ins and fonts folders Pathsmith loads from, and the Data Recovery copies of
+your unsaved documents are kept here too.
+
+Delete this file to use the normal per-user settings folder (%APPDATA%\Pathsmith) instead.
+If PathsmithData can't be written (for example on a read-only drive), Pathsmith logs a
+warning and uses %APPDATA%\Pathsmith instead.

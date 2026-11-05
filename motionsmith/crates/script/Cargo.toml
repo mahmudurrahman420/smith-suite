@@ -1,0 +1,32 @@
+[package]
+name = "motionsmith-script"
+description = "Motionsmith scripting: JavaScript (boa) with an After Effects-style object model (app, project, CompItem, Layer, Property…) over the engine's undoable commands"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-engine = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+motionsmith-time = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-path = { workspace = true }
+serde_json = { workspace = true }
+boa_engine = { workspace = true }
+web-time = { workspace = true }
+
+# On the web, boa's clock and Math.random need the browser (getrandom `wasm_js`, web-time).
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+boa_engine = { workspace = true, features = ["js"] }
+
+[dev-dependencies]
+motionsmith-expr = { workspace = true }
+motionsmith-psd = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+socket2 = "0.6"

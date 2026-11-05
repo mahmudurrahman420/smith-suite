@@ -1,0 +1,23 @@
+[package]
+name = "pathsmith-metafile"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pathsmith Windows metafiles: hand-written EMF and WMF writers and readers"
+
+[lints]
+workspace = true
+
+[dependencies]
+pathsmith-geom = { workspace = true }
+pathsmith-color = { workspace = true }
+pathsmith-doc = { workspace = true }
+pathsmith-effects = { workspace = true }
+pathsmith-brush = { workspace = true }
+pathsmith-text = { workspace = true }
+kurbo = { workspace = true }
+image = { workspace = true }
+
+[dev-dependencies]
+# The tests lay type out in the bundled fonts (the workspace leaves turning them on to the engine).
+pathsmith-text = { workspace = true, features = ["bundled-fonts"] }

@@ -1,0 +1,21 @@
+Pixelsmith debug symbols
+
+pixelsmith.pdb and pixelsmith_cli.pdb are the debug symbols of pixelsmith.exe and
+pixelsmith-cli.exe from the release with the same version and architecture as this zip. They
+were written by the same build as those exes, so they match only them: a PDB from a local build
+of the same commit doesn't.
+
+They hold Pixelsmith's function names (release builds carry no source line tables), which is
+what a profiler needs to show where the time goes. Pixelsmith doesn't need them to run.
+
+To use them, either copy both files next to pixelsmith.exe (the installer's folder, by default
+C:\Program Files\Pixelsmith), or add this folder to the profiler's symbol path:
+
+  Windows Performance Analyzer: Trace > Configure Symbol Paths, add this folder, then
+                                Trace > Load Symbols.
+  Superluminal:                 Settings > Symbols, add this folder as a symbol location.
+  Visual Studio:                Tools > Options > Debugging > Symbols, add this folder.
+  Any tool reading _NT_SYMBOL_PATH: set _NT_SYMBOL_PATH to this folder.
+
+When you share a profile in a Pixelsmith issue, say which version and architecture you ran
+(Help > System Info).

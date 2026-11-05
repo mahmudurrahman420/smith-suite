@@ -1,0 +1,27 @@
+[package]
+name = "slidesmith-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Slidesmith renderer: slides, layouts and masters to pixels (vello_cpu): fills, outlines, effects, pictures, text, tables, charts"
+
+[lints]
+workspace = true
+
+[dependencies]
+slidesmith-geom = { workspace = true }
+slidesmith-color = { workspace = true }
+slidesmith-metafile = { workspace = true }
+slidesmith-model = { workspace = true }
+slidesmith-anim = { workspace = true }
+slidesmith-fonts = { workspace = true }
+slidesmith-text = { workspace = true }
+vello_cpu = { workspace = true }
+vello_common = { workspace = true }
+image = { workspace = true }
+log = { workspace = true }
+kurbo = { workspace = true }
+skrifa = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+vello_cpu = { workspace = true, features = ["multithreading"] }

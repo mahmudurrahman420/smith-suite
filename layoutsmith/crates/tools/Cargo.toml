@@ -1,0 +1,17 @@
+[package]
+name = "layoutsmith-tools"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Layoutsmith tools: pointer events in, commands and overlays out (Selection, Direct Selection, frames, Type, Hand, Zoom…)"
+
+[lints]
+workspace = true
+
+[dependencies]
+layoutsmith-geom = { workspace = true }
+layoutsmith-color = { workspace = true }
+layoutsmith-doc = { workspace = true }
+layoutsmith-compose = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }

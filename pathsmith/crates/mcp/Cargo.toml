@@ -1,0 +1,33 @@
+[package]
+name = "pathsmith-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pathsmith MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+
+[lints]
+workspace = true
+
+[features]
+default = ["bundled-fonts"]
+# The fonts pathsmith-text bundles for documents, through the engine's `bundled-fonts`, as
+# pathsmith-ui-egui's. Off, for an embedder that supplies every document font at run time.
+bundled-fonts = ["pathsmith-engine/bundled-fonts"]
+
+[dependencies]
+pathsmith-engine = { workspace = true }
+pathsmith-render = { workspace = true }
+pathsmith-svg = { workspace = true }
+pathsmith-format = { workspace = true }
+pathsmith-tools = { workspace = true }
+pathsmith-geom = { workspace = true }
+pathsmith-doc = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+
+image = { workspace = true }
+
+[dev-dependencies]
+pathsmith-testkit = { workspace = true }
+proptest = { workspace = true }
+socket2 = { workspace = true }

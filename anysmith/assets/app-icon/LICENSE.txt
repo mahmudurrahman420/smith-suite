@@ -1,0 +1,11 @@
+Anysmith app icon (anysmith.svg and every file derived from it in this directory:
+anysmith-1024.png, anysmith.icns, anysmith.ico and hicolor/).
+
+Original artwork by Shohan (mahmudurrahman420): an anvil with two sparks on a blue tile.
+It replaces the upstream raven icon, which forks must not use. Licensed like the rest of
+Anysmith, under either of
+
+  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+  * MIT license (https://opensource.org/licenses/MIT)
+
+at your option.

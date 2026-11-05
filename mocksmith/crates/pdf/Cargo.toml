@@ -1,0 +1,24 @@
+[package]
+name = "mocksmith-pdf"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith PDF export (krilla): vector shapes, gradients, embedded images, aligned strokes as outlines, clips, masks, blend modes, real selectable text, effects as rasters, print options (bleed, marks, page boxes, CMYK)"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-color = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-text = { workspace = true }
+mocksmith-render = { workspace = true }
+mocksmith-pathops = { workspace = true }
+krilla = { workspace = true }
+tiny-skia = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+flate2 = "1"

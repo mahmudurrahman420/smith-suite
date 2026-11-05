@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-slidesmith">
+    <comment>Slidesmith presentation</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.slidesmith"/>
+    <icon name="io.github.mahmudurrahman420.slidesmith"/>
+  </mime-type>
+</mime-info>

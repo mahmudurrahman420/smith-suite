@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Solidsmith
+GenericName=3D CAD
+Comment=Parametric 3D CAD: sketch, constrain, extrude, and change a parameter to rebuild
+Exec=solidsmith %f
+TryExec=solidsmith
+Icon=io.tangencylabs.solidsmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.tangencylabs.solidsmith
+Categories=Graphics;3DGraphics;Engineering;
+Keywords=cad;3d;parametric;sketch;step;stl;modelling;modeling;
+MimeType=application/x-solidsmith;model/step;model/iges;model/stl;model/3mf;
+# Desktop ids of earlier releases; launchers keep pinned entries across the renames.
+X-Flatpak-RenamedFrom=io.github.mahmudurrahman420.solidsmith.desktop;io.github.mahmudurrahman420.solvecraft.desktop;

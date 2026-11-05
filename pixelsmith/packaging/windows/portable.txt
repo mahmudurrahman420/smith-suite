@@ -1,0 +1,9 @@
+Pixelsmith portable mode
+
+While this file sits next to pixelsmith.exe, Pixelsmith keeps its preferences, brush presets,
+crash-recovery autosaves and startup state in the PixelsmithData folder beside it, and writes
+nothing to %APPDATA% or %LOCALAPPDATA%. Copy the whole folder to move Pixelsmith with its settings.
+
+Delete this file to use the normal per-user folders instead: %APPDATA%\Pixelsmith for settings
+and %LOCALAPPDATA%\Pixelsmith\Recovery for crash-recovery autosaves. If PixelsmithData can't be
+written (for example on a read-only drive), Pixelsmith says so and uses those folders instead.

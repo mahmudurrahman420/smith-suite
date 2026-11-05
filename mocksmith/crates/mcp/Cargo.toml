@@ -1,0 +1,23 @@
+[package]
+name = "mocksmith-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith MCP server: JSON-RPC 2.0 over stdio, driving a headless engine session or a running Mocksmith app"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-engine = { workspace = true }
+mocksmith-collab-net = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-geom = { workspace = true }
+mocksmith-render = { workspace = true }
+serde_json = { workspace = true }
+base64 = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+image = { workspace = true }

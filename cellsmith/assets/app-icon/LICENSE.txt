@@ -1,0 +1,13 @@
+Cellsmith app icon (cellsmith.svg and every file derived from it in this directory:
+cellsmith-1024.png, cellsmith-macos-512.png, cellsmith.icns, cellsmith.ico, hicolor/).
+
+PLACEHOLDER artwork: original work written for this project by Cellsmith contributors (simple
+hand-written SVG geometry). No third-party material. Licensed like the rest of Cellsmith, under
+either of
+
+  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+  * MIT license (https://opensource.org/licenses/MIT)
+
+at your option.
+
+Regenerate the derived files with packaging/icons.sh.

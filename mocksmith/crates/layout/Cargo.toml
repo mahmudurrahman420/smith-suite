@@ -1,0 +1,13 @@
+[package]
+name = "mocksmith-layout"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith layout: auto layout (horizontal, vertical, wrap, grid; hug/fill/fixed), constraints, layout grid geometry"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-doc = { workspace = true }

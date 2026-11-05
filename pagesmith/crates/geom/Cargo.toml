@@ -1,0 +1,11 @@
+[package]
+name = "pagesmith-geom"
+description = "Geometry primitives for Pagesmith (points, rects, page transforms)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]

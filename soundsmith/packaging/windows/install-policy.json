@@ -1,0 +1,141 @@
+{
+  "id": "soundsmith",
+  "name": "Soundsmith",
+  "upgradeCode": "EE53D3E5-D0AE-40F9-808D-9417FDEBF61A",
+  "sources": [
+    "soundsmith.wxs"
+  ],
+  "icon": "assets/app-icon/soundsmith.ico",
+  "localization": [],
+  "extensions": [
+    "UI"
+  ],
+  "payloads": [
+    "NOTICE",
+    "soundsmith-cli.exe",
+    "soundsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Classes\\Soundsmith.Audio\\shell\\open\\command",
+      "",
+      "\"[#SoundsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Soundsmith.Midi\\shell\\open\\command",
+      "",
+      "\"[#SoundsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.wav\\OpenWithProgids",
+      "Soundsmith.Audio",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.aif\\OpenWithProgids",
+      "Soundsmith.Audio",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.aiff\\OpenWithProgids",
+      "Soundsmith.Audio",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.flac\\OpenWithProgids",
+      "Soundsmith.Audio",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.mp3\\OpenWithProgids",
+      "Soundsmith.Audio",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.mid\\OpenWithProgids",
+      "Soundsmith.Midi",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.midi\\OpenWithProgids",
+      "Soundsmith.Midi",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe",
+      "FriendlyAppName",
+      "Soundsmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\shell\\open\\command",
+      "",
+      "\"[#SoundsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".scraft",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".wav",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".aif",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".aiff",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".flac",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".mp3",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".mid",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\soundsmith.exe\\SupportedTypes",
+      ".midi",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\soundsmith.exe",
+      "",
+      "[#SoundsmithExe]"
+    ]
+  ],
+  "mode": "dualScope"
+}

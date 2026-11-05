@@ -1,0 +1,80 @@
+# Flatpak manifest for Rawsmith, ready for a Flathub submission.
+#
+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+#
+#   ./packaging/linux/flatpak/generate-cargo-sources.py
+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/io.github.mahmudurrahman420.rawsmith.yml
+#   flatpak run io.github.mahmudurrahman420.rawsmith
+#
+# The wrapper downloads the pinned upstream flatpak-cargo-generator, verifies its checksum,
+# applies the two reviewed patches described in packaging/linux/flatpak/README.md, and writes
+# cargo-sources.json atomically. That README also covers dependencies and offline validation.
+#
+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+#
+# io.github.mahmudurrahman420.rawsmith.bundle.yml (same directory) builds the .flatpak attached to every
+# release from the prebuilt binaries. Keep runtime-version and finish-args identical in both
+# (packaging-lint checks this).
+id: io.github.mahmudurrahman420.rawsmith
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: rawsmith
+finish-args:
+  - --filesystem=xdg-data/Smith Suite/versions:ro
+  # Display: Wayland first; X11 only when no Wayland compositor is running.
+  - --socket=wayland
+  - --socket=fallback-x11
+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+  - --share=ipc
+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+  - --device=dri
+  # Screen readers: AccessKit asks the accessibility bus (org.a11y.Bus) whether one is running and
+  # publishes the window there over AT-SPI. Without it the sandbox hides the bus and the app is
+  # invisible to Orca and other assistive technology.
+  - --talk-name=org.a11y.Bus
+  # The library lives in ~/Pictures/Rawsmith Library by default, and imports usually come from
+  # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+  # drag-and-drop through the document portal, so picked folders elsewhere work without broad
+  # filesystem access.
+  - --filesystem=xdg-pictures
+  # Deliberately not granted: home/host filesystem access. Network is needed for update checks
+  # against GitHub and the optional SAM 3 model download (AI Object/Describe masks,
+  # docs/ai-masks.md).
+  - --share=network
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+modules:
+  - name: rawsmith
+    buildsystem: simple
+    build-options:
+      env:
+        CARGO_HOME: /run/build/rawsmith/cargo
+        CARGO_NET_OFFLINE: 'true'
+    build-commands:
+      - cargo --offline build --release --locked -p rawsmith -p rawsmith-cli
+      - install -Dm755 target/release/rawsmith /app/bin/rawsmith
+      - install -Dm755 target/release/rawsmith-cli /app/bin/rawsmith-cli
+      - install -Dm644 packaging/linux/io.github.mahmudurrahman420.rawsmith.desktop /app/share/applications/io.github.mahmudurrahman420.rawsmith.desktop
+      - install -Dm644 packaging/linux/io.github.mahmudurrahman420.rawsmith.mime.xml /app/share/mime/packages/io.github.mahmudurrahman420.rawsmith.xml
+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+      - install -Dm644 NOTICE /app/share/doc/rawsmith/NOTICE
+      - install -Dm644 assets/ATTRIBUTION.md /app/share/doc/rawsmith/ATTRIBUTION.md
+      - install -Dm644 assets/fonts/OFL-Inter.txt /app/share/doc/rawsmith/OFL-Inter.txt
+      - >-
+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+        install -d /app/share/metainfo;
+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+        packaging/linux/io.github.mahmudurrahman420.rawsmith.metainfo.xml.in > /app/share/metainfo/io.github.mahmudurrahman420.rawsmith.metainfo.xml
+    sources:
+      - type: dir
+        path: ../../..
+        skip:
+          - target
+          - dist
+          - corpus
+          - build-flatpak
+          - .flatpak-builder
+      - cargo-sources.json

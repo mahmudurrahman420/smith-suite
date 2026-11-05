@@ -1,0 +1,42 @@
+[package]
+name = "solidsmith-cli"
+description = "Solidsmith headless CLI: run command scripts, measure, export, render snapshots, replay oracle recipes"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+default-run = "solidsmith-cli"
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "solidsmith-cli"
+path = "src/main.rs"
+
+# Compatibility alias for the CLI's former name: forwards to solidsmith-cli with a deprecation
+# note on stderr. Shipped in every package for at least one release.
+[[bin]]
+name = "solvecraft-cli"
+path = "src/alias.rs"
+
+[features]
+default = ["raytrace-cpu", "profile"]
+bundled-render-library = ["solidsmith-engine/bundled-render-library"]
+raytrace-cpu = ["solidsmith-engine/raytrace-cpu"]
+# The profiler, compiled in so any build can say where its time goes (`--profile`,
+# SOLIDSMITH_PROFILE=1); it records nothing until asked.
+profile = ["solidsmith-engine/profile"]
+
+[dependencies]
+solidcore-record = { workspace = true }
+solidsmith-engine = { workspace = true }
+solidsmith-gpu = { workspace = true }
+solidsmith-mcp = { workspace = true }
+log = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+# Snapshot tests decode the pictures to compare them with a tolerance.
+image = { workspace = true }
+# Tests measure meshes at their own tolerances.
+solidsmith-kernel = { workspace = true }

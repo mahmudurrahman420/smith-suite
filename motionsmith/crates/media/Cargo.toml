@@ -1,0 +1,38 @@
+[package]
+name = "motionsmith-media"
+description = "Footage import: probing, stills, image sequences, video and audio via Framesmith's pure-Rust codecs, memory-budgeted frame cache"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-docpath = { workspace = true }
+motionsmith-time = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-raster = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-psd = { workspace = true }
+motionsmith-svg = { workspace = true }
+motionsmith-pdf = { workspace = true }
+motionsmith-model = { workspace = true }
+framesmith-codecs = { workspace = true }
+framesmith-media = { workspace = true }
+framesmith-aac = { workspace = true }
+framesmith-isobmff = { workspace = true }
+framesmith-matroska = { workspace = true }
+framesmith-mpegts = { workspace = true }
+framesmith-frame = { workspace = true }
+framesmith-color = { workspace = true }
+framesmith-time = { workspace = true }
+exr = { workspace = true }
+gif = { workspace = true }
+image = { workspace = true, features = ["gif", "webp", "tiff", "bmp", "exr", "tga", "hdr"] }
+rayon = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }

@@ -1,0 +1,39 @@
+[package]
+name = "motionsmith-export"
+description = "Render Queue jobs and output modules: H.264 MP4 (+AAC), ProRes and uncompressed MOV (+PCM) via Framesmith, HEVC / AV1 MP4 (+AAC) and WebM (VP9 or AV1 + Opus) via Motionsmith encoders, PNG/JPEG/TIFF/EXR/Targa sequences, animated GIF, WAV/AIFF"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-time = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-raster = { workspace = true }
+motionsmith-render = { workspace = true }
+framesmith-h264enc = { workspace = true }
+framesmith-prores = { workspace = true }
+framesmith-aac = { workspace = true }
+framesmith-isobmff = { workspace = true }
+motionsmith-opusenc = { workspace = true }
+motionsmith-vp9enc = { workspace = true }
+motionsmith-hevcenc = { workspace = true }
+motionsmith-av1enc = { workspace = true }
+image = { workspace = true, features = ["png", "jpeg", "tiff", "exr", "tga"] }
+exr = { workspace = true }
+gif = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+motionsmith-media = { workspace = true }
+motionsmith-effects = { workspace = true }
+motionsmith-color = { workspace = true }
+framesmith-opus = { workspace = true }
+framesmith-vp9 = { workspace = true }
+motionsmith-keyframe = { workspace = true }

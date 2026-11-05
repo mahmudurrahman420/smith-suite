@@ -1,0 +1,68 @@
+[package]
+name = "pathsmith-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pathsmith engine: sessions, history, selection, the command registry"
+
+[lints]
+workspace = true
+
+[features]
+default = ["bundled-fonts"]
+# The fonts pathsmith-text bundles (see its `bundled-fonts`). Embedders that supply every font at
+# run time (`pathsmith_text::FontDb::add_font`) build with `default-features = false`.
+bundled-fonts = ["pathsmith-text/bundled-fonts"]
+
+[dependencies]
+# Which paths stored in documents may be opened.
+craft-docpath = { workspace = true }
+pathsmith-geom = { workspace = true }
+pathsmith-color = { workspace = true }
+pathsmith-doc = { workspace = true }
+pathsmith-tools = { workspace = true }
+pathsmith-text = { workspace = true }
+pathsmith-render = { workspace = true }
+pathsmith-pathops = { workspace = true }
+pathsmith-brush = { workspace = true }
+pathsmith-trace = { workspace = true }
+pathsmith-svg = { workspace = true }
+pathsmith-format = { workspace = true }
+pathsmith-pdf = { workspace = true }
+pathsmith-cad = { workspace = true }
+pathsmith-eps = { workspace = true }
+pathsmith-metafile = { workspace = true }
+pathsmith-plugins = { workspace = true }
+pathsmith-affinity = { workspace = true }
+pathsmith-scriptcheck = { workspace = true }
+image = { workspace = true }
+hayro-jpeg2000 = { version = "=0.3.5", default-features = false, features = ["std", "simd"] }
+flate2 = { workspace = true }
+chrono = { workspace = true }
+# The XML parts of Word documents placed as type (place/docx.rs).
+roxmltree = "0.21"
+# The compound file that holds a Word 97-2003 document placed as type (place/doc.rs).
+cfb = "0.15"
+kurbo = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+# Whether a recovery area folder is this account's own (`FolderStore::own_area`). Already in
+# Cargo.lock (tempfile, ui-egui), so this adds no new crate.
+[target.'cfg(unix)'.dependencies]
+rustix = { workspace = true, features = ["std", "process"] }
+
+[dev-dependencies]
+pathsmith-affinity = { workspace = true, features = ["synth"] }
+crc32fast = { workspace = true }
+pathsmith-testkit = { workspace = true }
+proptest = { workspace = true }
+# A variable font built in code (no font file is committed).
+pathsmith-text = { workspace = true, features = ["test-fonts"] }
+# How many times an open reads a PDF.
+pathsmith-pdf = { workspace = true, features = ["read-count"] }
+wat = { workspace = true }
+# Zstandard streams for the Illustrator editing data fuzz tests.
+ruzstd = { workspace = true }

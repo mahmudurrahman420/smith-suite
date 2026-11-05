@@ -1,0 +1,150 @@
+{
+  "id": "cellsmith",
+  "name": "Cellsmith",
+  "upgradeCode": "5511327B-F305-41BE-92D0-EB84944E7C4D",
+  "sources": [
+    "cellsmith.wxs"
+  ],
+  "icon": "assets/app-icon/cellsmith.ico",
+  "localization": [],
+  "extensions": [],
+  "payloads": [
+    "cellsmith-cli.exe",
+    "cellsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\cellsmith.exe",
+      "",
+      "[#CellsmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.Workbook",
+      "",
+      "Cellsmith Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.Workbook\\DefaultIcon",
+      "",
+      "\"[#CellsmithExe]\",0"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.Workbook\\shell\\open\\command",
+      "",
+      "\"[#CellsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.TextData",
+      "",
+      "Cellsmith Text Data"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.TextData\\DefaultIcon",
+      "",
+      "\"[#CellsmithExe]\",0"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Cellsmith.TextData\\shell\\open\\command",
+      "",
+      "\"[#CellsmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.xlsx\\OpenWithProgids",
+      "Cellsmith.Workbook",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.xlsm\\OpenWithProgids",
+      "Cellsmith.Workbook",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.xlsb\\OpenWithProgids",
+      "Cellsmith.Workbook",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.ods\\OpenWithProgids",
+      "Cellsmith.Workbook",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.csv\\OpenWithProgids",
+      "Cellsmith.TextData",
+      "Cellsmith.TextData"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.tsv\\OpenWithProgids",
+      "Cellsmith.TextData",
+      "Cellsmith.TextData"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities",
+      "ApplicationName",
+      "Cellsmith"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities",
+      "ApplicationDescription",
+      "Open-source spreadsheet for .xlsx, CSV and TSV files"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities\\FileAssociations",
+      ".xlsx",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities\\FileAssociations",
+      ".xlsm",
+      "Cellsmith.Workbook"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities\\FileAssociations",
+      ".csv",
+      "Cellsmith.TextData"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Capabilities\\FileAssociations",
+      ".tsv",
+      "Cellsmith.TextData"
+    ],
+    [
+      "-1",
+      "Software\\RegisteredApplications",
+      "Cellsmith",
+      "Software\\Cellsmith\\Capabilities"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Installer",
+      "DesktopShortcut",
+      "[DESKTOPSHORTCUT]"
+    ],
+    [
+      "-1",
+      "Software\\Cellsmith\\Installer",
+      "DesktopShortcutComponent",
+      "#1"
+    ]
+  ],
+  "mode": "dualScope"
+}

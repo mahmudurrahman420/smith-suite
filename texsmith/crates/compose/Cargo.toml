@@ -1,0 +1,16 @@
+[package]
+name = "texsmith-compose"
+description = "Texsmith layer-stack compositor (CPU reference), patterns, UV padding, display conversion"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+texsmith-core = { workspace = true }
+texsmith-texel = { workspace = true }
+texsmith-geom = { workspace = true }
+rayon = { workspace = true }
+half = { workspace = true }

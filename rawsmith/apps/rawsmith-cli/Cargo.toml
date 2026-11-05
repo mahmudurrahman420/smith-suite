@@ -1,0 +1,42 @@
+[package]
+name = "rawsmith-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+description = "Rawsmith command-line tool: headless render, command listing and the MCP server"
+
+[[bin]]
+name = "rawsmith-cli"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+rawsmith-engine = { workspace = true }
+rawsmith-denoise = { workspace = true }
+rawsmith-sysmem = { workspace = true }
+rawsmith-mcp = { workspace = true }
+rawsmith-ui-egui = { workspace = true }
+rawsmith-codecs = { workspace = true }
+rawsmith-raster = { workspace = true }
+rawsmith-merge = { workspace = true }
+serde_json = { workspace = true }
+dhat = { workspace = true, optional = true }
+
+[dev-dependencies]
+rawsmith-testkit = { workspace = true }
+
+[features]
+default = ["denoise"]
+denoise = ["rawsmith-engine/denoise"]
+rawnind-model = ["denoise", "rawsmith-engine/rawnind-model"]
+# Heap profiling: `cargo run --release -p rawsmith-cli --features dhat-heap -- snapshot …` counts
+# every allocation (live/peak bytes in `library.memory` / `ui.inspect`) and writes dhat-heap.json
+# (open it in DHAT's viewer: allocation sites by bytes at the peak). Slows allocation-heavy work.
+dhat-heap = ["dep:dhat"]
+
+# Open HEIC/HEIF photos (the optional rawsmith-heif crate). Not default so distributors choose
+# it (HEVC patents); build with `--features heif` to include it.
+heif = ["rawsmith-codecs/heif"]

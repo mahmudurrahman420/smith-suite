@@ -1,0 +1,8 @@
+asset:        motionsmith-hero.png
+title:        Motionsmith main window
+author:       Motionsmith contributors
+source:       original work (headless render of the Motionsmith UI via crates/ui-egui/examples/snapshot.rs)
+license:      MIT OR Apache-2.0
+license-file:
+added:        2026-10-01 by Claude (agent) for Brandon Thomas
+notes:        Screenshot of Motionsmith only, showing procedurally generated demo content from crates/engine/src/demo.rs and built-in effects. Motionsmith main window: the demo composition "Motionsmith Intro" at 0:00:03:00 with the MOTIONSMITH text layer selected, Properties panel (Layer Transform, Text, Paragraph, Text Animation), Project panel and Timeline.

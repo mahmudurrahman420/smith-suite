@@ -1,0 +1,35 @@
+[package]
+name = "motionsmith-gpu"
+description = "The GPU compositor (wgpu compute): layer transforms, masks/mattes, the 38 blend modes, motion blur, bit-depth quantisation and GPU effects, with the CPU renderer as the reference"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-time = { workspace = true }
+motionsmith-geom = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-raster = { workspace = true }
+motionsmith-effects = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+wgpu = { workspace = true }
+bytemuck = { workspace = true }
+log = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+pollster = { workspace = true }
+
+[dev-dependencies]
+motionsmith-text = { workspace = true }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "=0.2.129"
+js-sys = "0.3"

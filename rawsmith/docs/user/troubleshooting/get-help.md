@@ -1,0 +1,38 @@
+---
+title: Get help with a problem
+description: What to include when you ask for help with a Rawsmith bug, and where to post it.
+order: 30
+verified: 0.7.1
+---
+
+Open an issue in the [issue tracker](https://github.com/storytold/lightcraft/issues), or ask in [Discord](https://github.com/mahmudurrahman420/rawsmith/discussions). Include your version, your system, what you did, and what you expected.
+
+## What to include
+
+1. **Your version.** Choose **Help** > **About Rawsmith** (on macOS, **Rawsmith** > **About Rawsmith**).
+2. **Your system.** For example Windows 11, 64-bit. **Help** > **System Info…** shows details about your computer.
+3. **The steps.** What you clicked, in order, and what happened.
+4. **The camera and file type**, if the problem is with a photo.
+5. **A sample file**, if a raw or other photo renders wrong. Maintainers ask for the original file, not an export. A link to a shared folder works. Uploading raws to [raw.pixls.us](https://raw.pixls.us) also helps, because every file there becomes a permanent test sample for that camera.
+6. **A screenshot** of Rawsmith next to the camera JPEG or the other app, for colour problems.
+7. **The log file.** Choose **Help** > **Open Log Folder** and attach `rawsmith.log`.
+
+## Where the log is
+
+Rawsmith writes its log to `logs/rawsmith.log` in its settings folder. On Windows that is `%APPDATA%\Rawsmith\logs\`. Each start moves the previous log to `rawsmith.1.log`, and that one to `rawsmith.2.log`, so the log of a run that crashed survives the next start.
+
+## A more detailed log
+
+When thumbnails or previews don't appear, appear slowly, or keep the computer busy, a log of every picture Rawsmith draws helps. Start Rawsmith with the environment variable `RUST_LOG` set to `warn,rawsmith*=info,rawsmith_ui_egui::render=debug`. On Windows, in PowerShell:
+
+```powershell
+$env:RUST_LOG = "warn,rawsmith*=info,rawsmith_ui_egui::render=debug"; & "C:\Program Files\Rawsmith\rawsmith.exe"
+```
+
+The log then has a line for each picture Rawsmith asks for, with its file, and usually a line for how it ended: drawn, or dropped and why (for example, scrolled out of view, or replaced by a newer request). A few requests that are dropped while they wait, such as when photos are removed or Rawsmith quits, have no ending line. A file that can't be read is still a warning. So the log shows whether a file was asked for once or many times. `RAWSMITH_LOG=debug` instead turns on the detailed log of all of Rawsmith.
+
+This log names the files Rawsmith draws, with their folders. Look through it before you share it, and remove any names you'd rather keep private.
+
+## Still stuck?
+
+Ask in [Discord](https://github.com/mahmudurrahman420/rawsmith/discussions).

@@ -1,0 +1,8 @@
+asset:        motionsmith.svg
+title:        Motionsmith app icon, master vector
+author:       Motionsmith contributors (drawing by the project owner)
+source:       original work
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Motionsmith contributors (Claude agent, app icon)
+notes:        The owner's Smith Suite drawing of an engraved unicorn bust, vectorised at 2048 px (potrace; three colours). Canonical artwork; the other icon files derive from it.

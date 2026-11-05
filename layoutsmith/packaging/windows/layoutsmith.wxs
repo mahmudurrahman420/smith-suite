@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?ifndef HasCraftFontLicences ?>
+  <?define HasCraftFontLicences=0 ?>
+  <?endif?>
+  <Package Name="Layoutsmith" Manufacturer="Learning Machines LLC" Version="$(var.Version)" UpgradeCode="49E87D30-BB68-4896-AA1D-F45C833CFC3C" Scope="perUserOrMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="Layoutsmith page layout and publishing" Manufacturer="Learning Machines LLC" />
+    <?include $(sys.SOURCEFILEDIR)install-policy.wxi?>
+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Layoutsmith is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="LayoutsmithIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="LayoutsmithIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/mahmudurrahman420/layoutsmith" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/mahmudurrahman420/layoutsmith" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/mahmudurrahman420/layoutsmith/discussions" />
+
+    <!-- Shared native setup UI, including install/uninstall completion. -->
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="CraftSuiteFolder" Name="Smith Suite">
+        <Directory Id="INSTALLFOLDER" Name="Layoutsmith" />
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="Main" Title="Layoutsmith" Level="1">
+      <?if $(var.HasCraftFontLicences) = 1 ?>
+      <ComponentGroupRef Id="CraftFontLicences" />
+      <?endif?>
+      <ComponentGroupRef Id="LayoutsmithFiles" />
+      <ComponentGroupRef Id="CraftInstallerSettings" />
+    </Feature>
+    <!-- Shared full UI; app installation policy remains below. -->
+    <UIRef Id="CraftInstallerUI" />
+  </Package>
+
+  <Fragment>
+    <?if $(var.HasCraftFontLicences) = 1 ?>
+    <ComponentGroup Id="CraftFontLicences" Directory="INSTALLFOLDER">
+      <Files Include="$(var.DocsDir)\**" />
+    </ComponentGroup>
+    <?endif?>
+    <ComponentGroup Id="LayoutsmithFiles" Directory="INSTALLFOLDER">
+      <Component Id="LayoutsmithNotice">
+        <File Id="LayoutsmithNoticeFile" Source="$(var.BinDir)\NOTICE" KeyPath="yes" />
+      </Component>
+      <Component Id="LayoutsmithApp" Guid="DE018EF3-EE87-4E36-9F76-0B7B060A195E">
+        <File Id="LayoutsmithExe" Source="$(var.BinDir)\layoutsmith.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Layoutsmith" Description="Layoutsmith page layout and publishing" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="LayoutsmithIcon.ico" IconIndex="0" />
+        </File>
+
+        <!-- .layoutsmith: Layoutsmith's own format; Layoutsmith is its default app. -->
+        <ProgId Id="Layoutsmith.Document" Description="Layoutsmith Document" Icon="LayoutsmithExe" IconIndex="0">
+          <Extension Id="layoutsmith" ContentType="application/x-layoutsmith">
+            <Verb Id="open" Command="Open" TargetFile="LayoutsmithExe" Argument="&quot;%1&quot;" />
+          </Extension>
+        </ProgId>
+        <!-- IDML: offered under "Open with", never forced as the default. -->
+        <ProgId Id="Layoutsmith.Idml" Description="IDML Document" Icon="LayoutsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Layoutsmith.Idml\shell\open\command" Value="&quot;[#LayoutsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.idml\OpenWithProgids" Name="Layoutsmith.Idml" Value="" Type="string" />
+
+        <!-- "Open with" app list and the Run dialog (Win+R "layoutsmith"). -->
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\layoutsmith.exe" Name="FriendlyAppName" Value="Layoutsmith" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\layoutsmith.exe\shell\open\command" Value="&quot;[#LayoutsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\layoutsmith.exe\SupportedTypes" Name=".layoutsmith" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\layoutsmith.exe\SupportedTypes" Name=".idml" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\layoutsmith.exe" Value="[#LayoutsmithExe]" Type="string" />
+      <RegistryValue Root="HKMU" Key="Software\Layoutsmith" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+      </Component>
+
+      <Component Id="LayoutsmithCli">
+        <File Id="LayoutsmithCliExe" Source="$(var.BinDir)\layoutsmith-cli.exe" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

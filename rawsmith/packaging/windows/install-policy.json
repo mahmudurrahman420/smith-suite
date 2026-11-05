@@ -1,0 +1,35 @@
+{
+  "id": "rawsmith",
+  "name": "Rawsmith",
+  "upgradeCode": "229BB552-5EFD-479A-BA86-8CB6D926390C",
+  "sources": [
+    "rawsmith.wxs"
+  ],
+  "icon": "assets/app-icon/rawsmith.ico",
+  "localization": [],
+  "extensions": [
+    "UI",
+    "Util"
+  ],
+  "payloads": [
+    "FONT-LICENCES.txt",
+    "NOTICE",
+    "rawsmith-cli.exe",
+    "rawsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\rawsmith.exe",
+      "",
+      "[#RawsmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Rawsmith",
+      "InstallFolder",
+      "[INSTALLFOLDER]"
+    ]
+  ],
+  "mode": "dualScope"
+}

@@ -1,0 +1,28 @@
+[package]
+name = "motionsmith-render"
+description = "The CPU compositor: property evaluation, layer sources (solids, footage, text, shapes, precomps), masks, effects, track mattes, 2D/3D transforms, motion blur and blending"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-time = { workspace = true }
+motionsmith-geom = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-raster = { workspace = true }
+motionsmith-path = { workspace = true }
+motionsmith-text = { workspace = true }
+motionsmith-effects = { workspace = true }
+lz4_flex = { version = "0.14", default-features = false, features = ["std", "safe-encode", "safe-decode", "checked-decode"] }
+motionsmith-model = { workspace = true }
+kurbo = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }

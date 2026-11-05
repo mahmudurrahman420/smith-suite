@@ -1,0 +1,20 @@
+[package]
+name = "layoutsmith-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Layoutsmith MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+
+[lints]
+workspace = true
+
+[dependencies]
+layoutsmith-engine = { workspace = true }
+layoutsmith-render = { workspace = true }
+layoutsmith-tools = { workspace = true }
+layoutsmith-geom = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+image = { workspace = true }

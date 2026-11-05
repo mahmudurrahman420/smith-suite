@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package Name="Soundsmith" Manufacturer="Learning Machines LLC" Version="$(var.Version)" UpgradeCode="EE53D3E5-D0AE-40F9-808D-9417FDEBF61A" Scope="perUserOrMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="Soundsmith digital audio workstation" Manufacturer="Learning Machines LLC" />
+    <?include $(sys.SOURCEFILEDIR)install-policy.wxi?>
+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Soundsmith is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="SoundsmithIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="SoundsmithIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/mahmudurrahman420/soundsmith" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/mahmudurrahman420/soundsmith" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/mahmudurrahman420/soundsmith/discussions" />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="CraftSuiteFolder" Name="Smith Suite">
+        <Directory Id="INSTALLFOLDER" Name="Soundsmith" />
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="Main" Title="Soundsmith" Level="1">
+      <ComponentGroupRef Id="SoundsmithFiles" />
+    </Feature>
+  <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <UI>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="NOT Installed" />
+    </UI>
+  </Package>
+
+  <Fragment>
+    <ComponentGroup Id="SoundsmithFiles" Directory="INSTALLFOLDER">
+      <Component Id="SoundsmithNotice">
+        <File Id="SoundsmithNoticeFile" Source="$(var.BinDir)\NOTICE" KeyPath="yes" />
+      </Component>
+      <Component Id="SoundsmithApp" Guid="091136D7-205E-41A8-9D27-5E231F7CBBD4">
+        <File Id="SoundsmithExe" Source="$(var.BinDir)\soundsmith.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Soundsmith" Description="Soundsmith digital audio workstation" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="SoundsmithIcon.ico" IconIndex="0" />
+        </File>
+
+        <!-- .scraft: Soundsmith's own session format; Soundsmith is its default app. -->
+        <ProgId Id="Soundsmith.Session" Description="Soundsmith Session" Icon="SoundsmithExe" IconIndex="0">
+          <Extension Id="scraft" ContentType="application/x-soundsmith-session">
+            <Verb Id="open" Command="Open" TargetFile="SoundsmithExe" Argument="&quot;%1&quot;" />
+          </Extension>
+        </ProgId>
+        <!-- Audio and MIDI files: offered under "Open with" (imported into a session), never forced
+             as the default. -->
+        <ProgId Id="Soundsmith.Audio" Description="Audio File" Icon="SoundsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Soundsmith.Audio\shell\open\command" Value="&quot;[#SoundsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <ProgId Id="Soundsmith.Midi" Description="MIDI File" Icon="SoundsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Soundsmith.Midi\shell\open\command" Value="&quot;[#SoundsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.wav\OpenWithProgids" Name="Soundsmith.Audio" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.aif\OpenWithProgids" Name="Soundsmith.Audio" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.aiff\OpenWithProgids" Name="Soundsmith.Audio" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.flac\OpenWithProgids" Name="Soundsmith.Audio" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.mp3\OpenWithProgids" Name="Soundsmith.Audio" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.mid\OpenWithProgids" Name="Soundsmith.Midi" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.midi\OpenWithProgids" Name="Soundsmith.Midi" Value="" Type="string" />
+
+        <!-- "Open with" app list and the Run dialog (Win+R "soundsmith"). -->
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe" Name="FriendlyAppName" Value="Soundsmith" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\shell\open\command" Value="&quot;[#SoundsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".scraft" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".wav" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".aif" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".aiff" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".flac" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".mp3" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".mid" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\soundsmith.exe\SupportedTypes" Name=".midi" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\soundsmith.exe" Value="[#SoundsmithExe]" Type="string" />
+      <RegistryValue Root="HKMU" Key="Software\Soundsmith" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+      </Component>
+
+      <Component Id="SoundsmithCli" Guid="4552049A-C2F0-4AB0-BAE6-A62C3348F4B4">
+        <File Id="SoundsmithCliExe" Source="$(var.BinDir)\soundsmith-cli.exe" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

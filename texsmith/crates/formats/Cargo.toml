@@ -1,0 +1,29 @@
+[package]
+name = "texsmith-formats"
+description = "Texsmith file formats: mesh import (glTF, FBX, COLLADA, USD, OBJ, PLY, STL), glTF/USD/OBJ mesh export, texture export presets, the .tcraft project file"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+texsmith-core = { workspace = true }
+texsmith-texel = { workspace = true }
+texsmith-geom = { workspace = true }
+texsmith-compose = { workspace = true }
+image = { workspace = true }
+gltf = { workspace = true }
+tobj = { workspace = true }
+flate2 = { workspace = true }
+lz4_flex = { workspace = true }
+half = { workspace = true }
+quick-xml = { workspace = true }
+zip = { workspace = true }
+exr = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+rayon = { workspace = true }
+base64 = { workspace = true }

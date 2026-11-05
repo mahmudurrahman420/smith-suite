@@ -1,0 +1,26 @@
+[package]
+name = "layoutsmith-pptx"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Layoutsmith PowerPoint (PPTX) export: pages as slides of editable shapes, pictures and text"
+
+[lints]
+workspace = true
+
+[dependencies]
+layoutsmith-geom = { workspace = true }
+layoutsmith-color = { workspace = true }
+layoutsmith-doc = { workspace = true }
+layoutsmith-fonts = { workspace = true }
+layoutsmith-compose = { workspace = true }
+layoutsmith-images = { workspace = true }
+skrifa = { workspace = true }
+image = { workspace = true }
+thiserror = { workspace = true }
+zip = { workspace = true }
+chrono = { workspace = true }
+
+[dev-dependencies]
+layoutsmith-fonts = { workspace = true, features = ["testing"] }
+quick-xml = { workspace = true }

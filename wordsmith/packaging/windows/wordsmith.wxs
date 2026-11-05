@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?ifndef HasCraftFontLicences ?>
+  <?define HasCraftFontLicences=0 ?>
+  <?endif?>
+  <Package Name="Wordsmith" Manufacturer="Learning Machines LLC" Version="$(var.Version)" UpgradeCode="075497F9-E861-45D0-9C7F-A74F8C34E6BA" Scope="perUserOrMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="Wordsmith word processor" Manufacturer="Learning Machines LLC" />
+    <?include $(sys.SOURCEFILEDIR)install-policy.wxi?>
+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Wordsmith is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="WordsmithIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="WordsmithIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/mahmudurrahman420/wordsmith" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/mahmudurrahman420/wordsmith" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/mahmudurrahman420/wordsmith/discussions" />
+
+    <!-- Installer UI (#198): WixUI_Minimal is welcome + license, progress, then a finish page so
+         people can see the install worked. Its dialogs and bitmaps are WiX's own
+         (WixToolset.UI.wixext); package.ps1 builds the license RTF from LICENSE-MIT and
+         LICENSE-APACHE. The finish page offers to launch Wordsmith (ticked by default) through
+         WixShellExec (WixToolset.Util.wixext); silent installs (/qn) never show it. -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseRtf)" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Wordsmith" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="WixShellExecTarget" Value="[#WordsmithExe]" />
+    <CustomAction Id="LaunchWordsmith" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+    <UI>
+      <ui:WixUI Id="WixUI_Minimal" />
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchWordsmith" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+    </UI>
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="CraftSuiteFolder" Name="Smith Suite">
+        <Directory Id="INSTALLFOLDER" Name="Wordsmith" />
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="Main" Title="Wordsmith" Level="1">
+      <ComponentGroupRef Id="AppNotices" />
+      <?if $(var.HasCraftFontLicences) = 1 ?>
+      <ComponentGroupRef Id="CraftFontLicences" />
+      <?endif?>
+      <ComponentGroupRef Id="WordsmithFiles" />
+    </Feature>
+  </Package>
+
+  <Fragment>
+    <ComponentGroup Id="AppNotices" Directory="INSTALLFOLDER">
+      <Files Include="$(var.AppNoticesDir)\**" />
+    </ComponentGroup>
+    <?if $(var.HasCraftFontLicences) = 1 ?>
+    <ComponentGroup Id="CraftFontLicences" Directory="INSTALLFOLDER">
+      <Files Include="$(var.DocsDir)\**" />
+    </ComponentGroup>
+    <?endif?>
+    <ComponentGroup Id="WordsmithFiles" Directory="INSTALLFOLDER">
+      <Component Id="WordsmithApp" Guid="855DCEC6-9285-444F-9382-9654B83B34F6">
+        <File Id="WordsmithExe" Source="$(var.BinDir)\wordsmith.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Wordsmith" Description="Wordsmith word processor" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="WordsmithIcon.ico" IconIndex="0" />
+        </File>
+
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\wordsmith.exe" Value="[#WordsmithExe]" Type="string" />
+      <RegistryValue Root="HKMU" Key="Software\Wordsmith" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+      </Component>
+
+      <!-- File associations (#295). Each document type gets a Wordsmith ProgId (name, icon, open
+           command) and is listed under the extension's OpenWithProgids, so Wordsmith shows in
+           Explorer's "Open with". The Word, RTF and ODT types are also Wordsmith's Capabilities
+           (RegisteredApplications), so it appears in Settings › Default apps, where the user
+           makes it the default (File › Options › General opens that page). Nothing here sets an
+           extension's default: the installer never takes over .docx from another app. Markdown and
+           plain text are only "Open with" candidates. Removed again on uninstall. -->
+      <Component Id="WordsmithFileTypes" Guid="EFF89E6A-F9B8-49F9-B3AE-E243347484B4">
+        <RegistryValue Root="HKMU" Key="Software\RegisteredApplications" Name="Wordsmith" Value="Software\Wordsmith\Capabilities" Type="string" KeyPath="yes" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities" Name="ApplicationName" Value="Wordsmith" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities" Name="ApplicationDescription" Value="Write and design documents; open and save Word files." Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities" Name="ApplicationIcon" Value="&quot;[#WordsmithExe]&quot;,0" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe" Name="FriendlyAppName" Value="Wordsmith" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+
+        <ProgId Id="Wordsmith.Document" Description="Word Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.Document\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.docx\OpenWithProgids" Name="Wordsmith.Document" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".docx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".docx" Value="Wordsmith.Document" Type="string" />
+
+        <ProgId Id="Wordsmith.DocumentMacroEnabled" Description="Word Macro-Enabled Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.DocumentMacroEnabled\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.docm\OpenWithProgids" Name="Wordsmith.DocumentMacroEnabled" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".docm" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".docm" Value="Wordsmith.DocumentMacroEnabled" Type="string" />
+
+        <ProgId Id="Wordsmith.Template" Description="Word Template" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.Template\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.dotx\OpenWithProgids" Name="Wordsmith.Template" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".dotx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".dotx" Value="Wordsmith.Template" Type="string" />
+
+        <ProgId Id="Wordsmith.TemplateMacroEnabled" Description="Word Macro-Enabled Template" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.TemplateMacroEnabled\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.dotm\OpenWithProgids" Name="Wordsmith.TemplateMacroEnabled" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".dotm" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".dotm" Value="Wordsmith.TemplateMacroEnabled" Type="string" />
+
+        <ProgId Id="Wordsmith.LegacyDocument" Description="Legacy Word Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.LegacyDocument\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.doc\OpenWithProgids" Name="Wordsmith.LegacyDocument" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".doc" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".doc" Value="Wordsmith.LegacyDocument" Type="string" />
+
+        <ProgId Id="Wordsmith.LegacyTemplate" Description="Legacy Word Template" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.LegacyTemplate\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.dot\OpenWithProgids" Name="Wordsmith.LegacyTemplate" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".dot" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".dot" Value="Wordsmith.LegacyTemplate" Type="string" />
+
+        <ProgId Id="Wordsmith.RichText" Description="Rich Text Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.RichText\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.rtf\OpenWithProgids" Name="Wordsmith.RichText" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".rtf" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".rtf" Value="Wordsmith.RichText" Type="string" />
+
+        <ProgId Id="Wordsmith.OpenDocumentText" Description="OpenDocument Text" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.OpenDocumentText\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.odt\OpenWithProgids" Name="Wordsmith.OpenDocumentText" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".odt" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Wordsmith\Capabilities\FileAssociations" Name=".odt" Value="Wordsmith.OpenDocumentText" Type="string" />
+
+        <ProgId Id="Wordsmith.Markdown" Description="Markdown Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.Markdown\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.md\OpenWithProgids" Name="Wordsmith.Markdown" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".md" Value="" Type="string" />
+
+        <ProgId Id="Wordsmith.PlainText" Description="Text Document" Icon="WordsmithExe" IconIndex="0" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Wordsmith.PlainText\shell\open\command" Value="&quot;[#WordsmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.txt\OpenWithProgids" Name="Wordsmith.PlainText" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\wordsmith.exe\SupportedTypes" Name=".txt" Value="" Type="string" />
+      </Component>
+
+      <Component Id="WordsmithCli">
+        <File Id="WordsmithCliExe" Source="$(var.BinDir)\wordsmith-cli.exe" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

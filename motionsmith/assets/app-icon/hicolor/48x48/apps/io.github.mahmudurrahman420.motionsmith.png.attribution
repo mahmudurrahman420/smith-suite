@@ -1,0 +1,8 @@
+asset:        io.github.mahmudurrahman420.motionsmith.png
+title:        Motionsmith app icon, Linux hicolor 48x48
+author:       Motionsmith contributors (drawing by the project owner in Smith Suite)
+source:       original work
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Motionsmith contributors (Claude agent, app icon)
+notes:        Rendered from motionsmith.svg with resvg by packaging/icons.sh.

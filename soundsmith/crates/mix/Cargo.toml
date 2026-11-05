@@ -1,0 +1,25 @@
+[package]
+name = "soundsmith-mix"
+description = "Soundsmith mix engine: renders a session's tracks, plugins, sends, busses and automation to audio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+soundsmith-time.workspace = true
+soundsmith-audio-io.workspace = true
+soundsmith-midi.workspace = true
+soundsmith-dsp.workspace = true
+soundsmith-clap-host.workspace = true
+soundsmith-vst3-host.workspace = true
+soundsmith-au-host.workspace = true
+soundsmith-model.workspace = true
+log.workspace = true
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon.workspace = true
+
+[lints]
+workspace = true

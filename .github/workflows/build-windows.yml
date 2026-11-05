@@ -1,0 +1,74 @@
+name: Build Windows app
+
+# Run from the Actions tab: pick an app (or "all") and download the .exe from the run's artifacts.
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: "Which app to build"
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - anysmith
+          - cadsmith
+          - cellsmith
+          - layoutsmith
+          - mocksmith
+          - motionsmith
+          - pagesmith
+          - pathsmith
+          - pixelsmith
+          - rawsmith
+          - slidesmith
+          - solidsmith
+          - soundsmith
+          - texsmith
+          - wordsmith
+
+jobs:
+  pick:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.list.outputs.apps }}
+    steps:
+      - id: list
+        shell: bash
+        run: |
+          if [ "${{ inputs.app }}" = "all" ]; then
+            echo 'apps=["anysmith","cadsmith","cellsmith","layoutsmith","mocksmith","motionsmith","pagesmith","pathsmith","pixelsmith","rawsmith","slidesmith","solidsmith","soundsmith","texsmith","wordsmith"]' >> "$GITHUB_OUTPUT"
+          else
+            echo "apps=[\"${{ inputs.app }}\"]" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    needs: pick
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.pick.outputs.apps) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: ${{ matrix.app }}
+      - name: Install Rust
+        shell: bash
+        run: rustup toolchain install stable --profile minimal && rustup default stable
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ${{ matrix.app }}/target
+          key: ${{ matrix.app }}-win-${{ hashFiles(format('{0}/Cargo.lock', matrix.app)) }}
+      - name: Build
+        run: cargo build --release --locked -p ${{ matrix.app }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.app }}-windows
+          path: ${{ matrix.app }}/target/release/${{ matrix.app }}.exe

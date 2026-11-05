@@ -1,0 +1,40 @@
+[package]
+name = "slidesmith-ui-egui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Slidesmith egui frontend (PowerPoint-style UI); swappable — nothing below depends on it"
+
+[lints]
+workspace = true
+
+[dependencies]
+slidesmith-geom = { workspace = true }
+slidesmith-color = { workspace = true }
+slidesmith-model = { workspace = true }
+slidesmith-fonts = { workspace = true }
+slidesmith-text = { workspace = true }
+slidesmith-render = { workspace = true }
+slidesmith-anim = { workspace = true }
+slidesmith-engine = { workspace = true }
+slidesmith-media = { workspace = true }
+egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
+egui_extras = { workspace = true }
+craft-ui = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+web-time = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+craft-update = { workspace = true }
+
+[dev-dependencies]
+skrifa = { workspace = true }
+# kittest's own dev-dependencies do not propagate; tests need both font features explicitly.
+egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
+egui_kittest = { workspace = true, features = ["wgpu", "snapshot"] }
+
+[build-dependencies]
+serde_json = { workspace = true }
+toml = "1"

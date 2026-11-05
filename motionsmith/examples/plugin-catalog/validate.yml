@@ -1,0 +1,47 @@
+# Checks index.json on every pull request and push: schema, unique ids, every release's download
+# (size + SHA-256), then installs every package with the real Motionsmith loader.
+# Lives at .github/workflows/validate.yml in storytold/effectcraft-plugins.
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out Motionsmith
+        uses: actions/checkout@v4
+        with:
+          repository: mahmudurrahman420/motionsmith
+          path: motionsmith
+
+      # The CLI links the UI crate, which needs these to build (same list as Motionsmith's CI).
+      - name: System packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pkg-config libxkbcommon-dev libwayland-dev libx11-dev libxcb1-dev \
+            libxcursor-dev libxrandr-dev libxi-dev libfontconfig1-dev libfreetype-dev libgl1-mesa-dev libasound2-dev
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: motionsmith
+
+      - name: Build motionsmith-cli
+        working-directory: motionsmith
+        run: cargo build -p motionsmith-cli
+
+      - name: Validate the catalog
+        env:
+          MOTIONSMITH_CLI: ${{ github.workspace }}/motionsmith/target/debug/motionsmith-cli
+        run: bash scripts/validate.sh index.json

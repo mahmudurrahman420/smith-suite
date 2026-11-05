@@ -1,0 +1,56 @@
+[package]
+name = "pixelsmith-cli"
+description = "Headless Pixelsmith: convert, inspect, run commands, batch, MCP server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[features]
+default = ["gpu"]
+# Open HEIC/HEIF photos (the optional pixelsmith-heif crate). Not default so distributors choose
+# it; official builds (CI, packaging/, release) build with `--features heif`.
+heif = ["pixelsmith-codecs/heif"]
+# Optional native GPU rendering backend, enabled by default in native CLI builds.
+gpu = ["pixelsmith-automation/gpu"]
+
+[lints]
+workspace = true
+
+[lib]
+name = "pixelsmith_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "pixelsmith-cli"
+path = "src/main.rs"
+
+[[example]]
+name = "gpu_bench"
+required-features = ["gpu"]
+
+[dependencies]
+pixelsmith-automation = { path = "../../crates/automation" }
+pixelsmith-doc = { workspace = true }
+pixelsmith-engine = { workspace = true }
+pixelsmith-io = { workspace = true }
+pixelsmith-raster = { workspace = true }
+pixelsmith-format = { path = "../../crates/format" }
+pixelsmith-codecs = { workspace = true }
+clap = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+
+[dev-dependencies]
+# Synthetic camera raws (#7789).
+pixelsmith-raw = { workspace = true, features = ["testgen"] }
+# Shell completions and man pages (examples/man-and-completions.rs, for the packages); not in
+# the binary.
+clap_complete = { workspace = true }
+clap_mangen = { workspace = true }
+
+[build-dependencies]
+# Icon + VERSIONINFO for pixelsmith-cli.exe; build.rs only uses it when targeting Windows.
+winresource = "0.1"
+

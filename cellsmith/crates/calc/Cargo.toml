@@ -1,0 +1,17 @@
+[package]
+name = "cellsmith-calc"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cellsmith calculation engine: dependency graph, recalculation, evaluator, dynamic arrays"
+
+[lints]
+workspace = true
+
+[dependencies]
+cellsmith-core = { workspace = true }
+cellsmith-formula = { workspace = true }
+cellsmith-functions = { workspace = true }
+cellsmith-numfmt = { workspace = true }
+cellsmith-model = { workspace = true }
+log = { workspace = true }

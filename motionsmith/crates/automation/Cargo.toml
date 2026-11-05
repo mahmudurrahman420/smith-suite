@@ -1,0 +1,21 @@
+[package]
+name = "motionsmith-automation"
+description = "Motionsmith MCP server (JSON-RPC 2.0 over stdio) over a headless session or bridged to the running app's control channel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-engine = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+image = { workspace = true }
+motionsmith-model = { workspace = true }
+
+[dev-dependencies]
+motionsmith-script = { workspace = true }
+motionsmith-host = { workspace = true }

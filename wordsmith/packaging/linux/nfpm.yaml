@@ -1,0 +1,87 @@
+# .deb and .rpm packages (nfpm: https://nfpm.goreleaser.com). Run by package.sh, which stages
+# the file tree, substitutes its path for ${STAGE} (nfpm doesn't expand env vars in `src`) and
+# exports VERSION and NFPM_ARCH.
+#
+#   nfpm package -f packaging/linux/nfpm.yaml -p deb -t dist/release/
+name: wordsmith
+arch: ${NFPM_ARCH}
+platform: linux
+version: ${VERSION}
+# semver: 0.2.0-rc.1 becomes 0.2.0~rc.1 in deb/rpm, so pre-releases sort before the release.
+version_schema: semver
+release: 1
+section: graphics
+priority: optional
+maintainer: ${WORDSMITH_MAINTAINER}
+vendor: Learning Machines LLC
+homepage: https://github.com/mahmudurrahman420/wordsmith
+license: MIT OR Apache-2.0
+description: |-
+  Open-source, native word processor that works the way Word users expect.
+  The ribbon, styles, tables, track changes, references and mail merge; reads
+  and writes .docx, opens .odt, .rtf, .html, .md and .txt, and exports PDF.
+  Includes wordsmith-cli, a headless converter and command runner.
+
+# The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
+# GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
+# rather than ELF NEEDED entries.
+overrides:
+  deb:
+    depends:
+      - libc6 (>= 2.35)
+      - libgcc-s1
+      - libxkbcommon0
+      - libvulkan1 | libegl1
+    recommends:
+      - libwayland-client0
+      - libx11-6
+      - libx11-xcb1
+      - libxcursor1
+      - libxi6
+      - libxrandr2
+      - mesa-vulkan-drivers
+      - xdg-desktop-portal
+  rpm:
+    # Library sonames rather than package names, so the same requirements resolve on Fedora/RHEL
+    # and openSUSE (which has no libxkbcommon, vulkan-loader or libglvnd-egl package).
+    depends:
+      - libc.so.6()(64bit)
+      - libm.so.6(GLIBC_2.35)(64bit)
+      - libgcc_s.so.1()(64bit)
+      - libxkbcommon.so.0()(64bit)
+      - (libvulkan.so.1()(64bit) or libEGL.so.1()(64bit))
+    recommends:
+      - libwayland-client
+      - libX11
+      - libXcursor
+      - libXi
+      - libXrandr
+      - mesa-vulkan-drivers
+      - xdg-desktop-portal
+
+contents:
+  - src: ${STAGE}/usr/bin/wordsmith
+    dst: /usr/bin/wordsmith
+    file_info: { mode: 0755 }
+  - src: ${STAGE}/usr/bin/wordsmith-cli
+    dst: /usr/bin/wordsmith-cli
+    file_info: { mode: 0755 }
+  # Named one by one rather than as a tree of /usr/share: a tree would also own shared directories
+  # such as /usr/share/mime, which openSUSE's filesystem package owns with other modes, and RPM
+  # refuses to install a package that conflicts with it.
+  - src: ${STAGE}/usr/share/applications/io.github.mahmudurrahman420.wordsmith.desktop
+    dst: /usr/share/applications/io.github.mahmudurrahman420.wordsmith.desktop
+  - src: ${STAGE}/usr/share/mime/packages/io.github.mahmudurrahman420.wordsmith.xml
+    dst: /usr/share/mime/packages/io.github.mahmudurrahman420.wordsmith.xml
+  - src: ${STAGE}/usr/share/metainfo/io.github.mahmudurrahman420.wordsmith.metainfo.xml
+    dst: /usr/share/metainfo/io.github.mahmudurrahman420.wordsmith.metainfo.xml
+  - src: ${STAGE}/usr/share/icons/hicolor/
+    dst: /usr/share/icons/hicolor/
+    type: tree
+  - src: ${STAGE}/usr/share/doc/wordsmith/
+    dst: /usr/share/doc/wordsmith/
+    type: tree
+
+scripts:
+  postinstall: packaging/linux/postinst.sh
+  postremove: packaging/linux/postinst.sh

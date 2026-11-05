@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Motionsmith
+GenericName=Motion Graphics Editor
+Comment=Motion graphics and visual effects compositor
+Exec=motionsmith %F
+TryExec=motionsmith
+Icon=io.github.mahmudurrahman420.motionsmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.github.mahmudurrahman420.motionsmith
+Categories=AudioVideo;Video;Graphics;2DGraphics;
+Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;

@@ -1,0 +1,37 @@
+[package]
+name = "slidesmith-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Slidesmith engine: sessions, undo history, selection, the command registry every frontend dispatches through, and pointer tools"
+
+[lints]
+workspace = true
+
+[dependencies]
+slidesmith-geom = { workspace = true }
+slidesmith-color = { workspace = true }
+slidesmith-model = { workspace = true }
+slidesmith-fonts = { workspace = true }
+slidesmith-text = { workspace = true }
+slidesmith-render = { workspace = true }
+slidesmith-pdf = { workspace = true }
+slidesmith-format = { workspace = true }
+slidesmith-pptx = { workspace = true }
+slidesmith-media = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+i_overlay = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+image = { workspace = true }
+chrono = { workspace = true }
+
+[dev-dependencies]
+slidesmith-anim = { workspace = true }
+zip = { workspace = true }
+
+# The browser clock for comment timestamps (wasm has no std::time::SystemTime).
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+js-sys = "0.3"
+

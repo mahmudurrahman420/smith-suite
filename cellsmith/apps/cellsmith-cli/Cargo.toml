@@ -1,0 +1,23 @@
+[package]
+name = "cellsmith-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cellsmith command line: inspect, convert, evaluate, script and serve MCP without a window"
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "cellsmith-cli"
+path = "src/main.rs"
+
+[dependencies]
+cellsmith-engine = { workspace = true }
+cellsmith-mcp = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+# `check`: validating the packages Cellsmith writes (content types, relationships).
+zip = { workspace = true }
+quick-xml = { workspace = true }

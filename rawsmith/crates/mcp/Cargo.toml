@@ -1,0 +1,16 @@
+[package]
+name = "rawsmith-mcp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Rawsmith MCP server (L5): JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+
+[lints]
+workspace = true
+
+[dependencies]
+rawsmith-engine = { workspace = true }
+rawsmith-codecs = { workspace = true }
+rawsmith-raster = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }

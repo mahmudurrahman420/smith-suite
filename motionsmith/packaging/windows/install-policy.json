@@ -1,0 +1,44 @@
+{
+  "id": "motionsmith",
+  "name": "Motionsmith",
+  "upgradeCode": "AACA8593-C6ED-40A8-BA6C-CB325D8529F9",
+  "sources": [
+    "motionsmith.wxs",
+    "installer-ui.wxs"
+  ],
+  "icon": "assets/app-icon/motionsmith.ico",
+  "localization": [],
+  "extensions": [],
+  "payloads": [
+    "NOTICE",
+    "motionsmith-cli.exe",
+    "motionsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\motionsmith.exe",
+      "",
+      "[#MotionsmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\motionsmith.exe",
+      "Path",
+      "[INSTALLFOLDER]"
+    ],
+    [
+      "-1",
+      "Software\\Motionsmith",
+      "DesktopShortcut",
+      "[DESKTOPSHORTCUT]"
+    ],
+    [
+      "-1",
+      "Software\\Motionsmith",
+      "DesktopShortcut",
+      "1"
+    ]
+  ],
+  "mode": "dualScope"
+}

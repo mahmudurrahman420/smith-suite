@@ -1,0 +1,18 @@
+[package]
+name = "cellsmith-model"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cellsmith document model: workbooks, sheets, cells, styles, tables, charts"
+
+[lints]
+workspace = true
+
+[dependencies]
+cellsmith-core = { workspace = true }
+sha2 = { workspace = true }
+cellsmith-formula = { workspace = true }
+cellsmith-math = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

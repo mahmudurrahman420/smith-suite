@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "motionsmith": {
+      "command": "cargo",
+      "args": ["run", "--quiet", "--release", "-p", "motionsmith-cli", "--", "mcp", "--demo"]
+    },
+    "motionsmith-app": {
+      "command": "cargo",
+      "args": ["run", "--quiet", "--release", "-p", "motionsmith-cli", "--", "mcp", "--bridge", "9877"]
+    }
+  }
+}

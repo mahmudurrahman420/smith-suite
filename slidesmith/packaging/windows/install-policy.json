@@ -1,0 +1,81 @@
+{
+  "id": "slidesmith",
+  "name": "Slidesmith",
+  "upgradeCode": "6F9C69E7-7825-40D2-BF26-C274DA676425",
+  "sources": [
+    "slidesmith.wxs"
+  ],
+  "icon": "assets/app-icon/slidesmith.ico",
+  "localization": [],
+  "extensions": [
+    "UI"
+  ],
+  "payloads": [
+    "NOTICE",
+    "slidesmith-cli.exe",
+    "slidesmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe",
+      "FriendlyAppName",
+      "Slidesmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe\\shell\\open\\command",
+      "",
+      "\"[#SlidesmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe\\SupportedTypes",
+      ".slidesmith",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe\\SupportedTypes",
+      ".pptx",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe\\SupportedTypes",
+      ".potx",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\slidesmith.exe\\SupportedTypes",
+      ".ppsx",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.pptx\\OpenWithProgids",
+      "Slidesmith.Presentation",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.potx\\OpenWithProgids",
+      "Slidesmith.Presentation",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.ppsx\\OpenWithProgids",
+      "Slidesmith.Presentation",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\slidesmith.exe",
+      "",
+      "[#SlidesmithExe]"
+    ]
+  ],
+  "mode": "dualScope"
+}

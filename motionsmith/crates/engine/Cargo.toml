@@ -1,0 +1,48 @@
+[package]
+name = "motionsmith-engine"
+description = "The Motionsmith engine: session, undo history, editor state and the command registry every frontend (UI, CLI, control channel, MCP) dispatches through"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-docpath = { workspace = true }
+motionsmith-time = { workspace = true }
+motionsmith-geom = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-raster = { workspace = true }
+motionsmith-path = { workspace = true }
+motionsmith-text = { workspace = true }
+motionsmith-effects = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-segment = { workspace = true }
+motionsmith-track = { workspace = true }
+motionsmith-model = { workspace = true }
+motionsmith-lottie = { workspace = true }
+motionsmith-interchange = { workspace = true }
+motionsmith-psd = { workspace = true }
+motionsmith-aep = { workspace = true }
+kurbo = { workspace = true }
+motionsmith-svg = { workspace = true }
+motionsmith-pdf = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+chrono = { workspace = true }
+rayon = { workspace = true }
+image = { workspace = true }
+web-time = { workspace = true }
+exr = { workspace = true }
+
+# Native file identity and SAM 2 inference; browsers keep the built-in engines.
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+same-file = { workspace = true }
+tempfile = { workspace = true }
+motionsmith-sam2 = { workspace = true }

@@ -1,0 +1,21 @@
+[package]
+name = "mocksmith-svg"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith SVG export (shapes, gradients, images, strokes, effects as filters, text as outlines) and import (via usvg)"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-color = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-render = { workspace = true }
+mocksmith-text = { workspace = true }
+mocksmith-pathops = { workspace = true }
+usvg = { workspace = true }
+base64 = { workspace = true }
+flate2 = { workspace = true }
+thiserror = { workspace = true }

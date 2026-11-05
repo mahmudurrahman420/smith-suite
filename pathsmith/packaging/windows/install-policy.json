@@ -1,0 +1,41 @@
+{
+  "id": "pathsmith",
+  "name": "Pathsmith",
+  "upgradeCode": "601C6437-08AE-4645-ADCC-27F036C2EA2F",
+  "sources": [
+    "pathsmith.wxs"
+  ],
+  "icon": "assets/app-icon/pathsmith.ico",
+  "localization": [
+    "pathsmith.en-us.wxl"
+  ],
+  "extensions": [
+    "UI",
+    "Util"
+  ],
+  "payloads": [
+    "pathsmith-cli.exe",
+    "pathsmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\pathsmith.exe",
+      "",
+      "[#PathsmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Pathsmith",
+      "InstallDir",
+      "[INSTALLFOLDER]"
+    ],
+    [
+      "-1",
+      "Software\\Pathsmith",
+      "DesktopShortcut",
+      "#1"
+    ]
+  ],
+  "mode": "dualScope"
+}

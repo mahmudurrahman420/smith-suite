@@ -1,0 +1,14 @@
+[package]
+name = "slidesmith-anim"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Slidesmith slide show timing: animation sequences, per-shape animation state over time, and transition frame layouts"
+
+[lints]
+workspace = true
+
+[dependencies]
+slidesmith-model = { workspace = true }
+slidesmith-geom = { workspace = true }
+serde = { workspace = true }

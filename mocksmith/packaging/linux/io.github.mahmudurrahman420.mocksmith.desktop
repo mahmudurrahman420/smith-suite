@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Mocksmith
+GenericName=Interface Design Tool
+Comment=Design and prototype user interfaces
+Exec=mocksmith %U
+TryExec=mocksmith
+Icon=io.github.mahmudurrahman420.mocksmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.github.mahmudurrahman420.mocksmith
+Categories=Graphics;2DGraphics;VectorGraphics;X-Design;
+Keywords=design;interface;ui;ux;prototype;wireframe;mockup;vector;layout;components;
+MimeType=application/x-mocksmith;image/svg+xml;image/png;image/jpeg;application/x-sketch;x-scheme-handler/mocksmith;

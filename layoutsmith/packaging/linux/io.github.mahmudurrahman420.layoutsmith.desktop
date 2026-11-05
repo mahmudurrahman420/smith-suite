@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Layoutsmith
+GenericName=Page Layout
+Comment=Lay out magazines, books and print documents
+Exec=layoutsmith %F
+TryExec=layoutsmith
+Icon=io.github.mahmudurrahman420.layoutsmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.github.mahmudurrahman420.layoutsmith
+Categories=Graphics;Publishing;
+MimeType=application/x-layoutsmith;application/vnd.adobe.indesign-idml-package;
+Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;

@@ -1,0 +1,20 @@
+[package]
+name = "motionsmith-project"
+description = "The Motionsmith document: project items, compositions, layers and the After-Effects-style property tree"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+motionsmith-time = { workspace = true }
+motionsmith-geom = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+craft-ecproj-format = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

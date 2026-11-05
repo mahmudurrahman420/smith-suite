@@ -1,0 +1,11 @@
+kind = "app"
+categories = ["Office"]
+icon = "assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.slidesmith.png"
+
+[linux.x86_64]
+asset = "slidesmith-{version}-linux-x86_64.tar.gz"
+exec = "slidesmith-{version}-linux-x86_64/bin/slidesmith"
+
+[linux.aarch64]
+asset = "slidesmith-{version}-linux-aarch64.tar.gz"
+exec = "slidesmith-{version}-linux-aarch64/bin/slidesmith"

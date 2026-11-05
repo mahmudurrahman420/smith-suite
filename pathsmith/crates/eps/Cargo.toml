@@ -1,0 +1,41 @@
+[package]
+name = "pathsmith-eps"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Pathsmith Encapsulated PostScript: a hand-written EPS writer (PostScript Level 2 and 3) with TIFF previews"
+
+[lints]
+workspace = true
+
+[dependencies]
+pathsmith-geom = { workspace = true }
+pathsmith-color = { workspace = true }
+pathsmith-doc = { workspace = true }
+pathsmith-effects = { workspace = true }
+# The editing data for other apps writes clipped art cut to its clipping path.
+pathsmith-pathops = { workspace = true }
+pathsmith-brush = { workspace = true }
+pathsmith-text = { workspace = true }
+# Windows metafile previews, opened when a file's PostScript can't be read.
+pathsmith-metafile = { workspace = true }
+# Non-native art in Illustrator editing data (a placed PDF's content, kept as a PDF).
+pathsmith-pdf = { workspace = true }
+# The TIFF writer (previews) and PackBits, shared with raster export.
+pathsmith-render = { workspace = true }
+kurbo = { workspace = true }
+image = { workspace = true }
+flate2 = { workspace = true }
+ruzstd = { workspace = true }
+# Images read through `CCITTFaxDecode`.
+hayro-ccitt = { workspace = true }
+# Live effects' params, as the art styles that name them give them.
+serde_json = { workspace = true }
+# Substring search for PostScript `search`.
+memchr = { workspace = true }
+
+[dev-dependencies]
+pathsmith-testkit = { workspace = true }
+pathsmith-text = { workspace = true, features = ["test-fonts"] }
+# Tests: a Group 4 encoder and the T.4 run codes, to write CCITT test images.
+fax = "0.2"

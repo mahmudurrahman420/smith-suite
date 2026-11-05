@@ -1,0 +1,21 @@
+[package]
+name = "anysmith-mcp"
+description = "The Anysmith MCP server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+anysmith-evidence = { workspace = true }
+anysmith-engine = { workspace = true }
+anysmith-platform = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

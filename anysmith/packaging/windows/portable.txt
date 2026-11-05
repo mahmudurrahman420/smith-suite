@@ -1,0 +1,7 @@
+Anysmith portable mode
+
+While this file sits next to anysmith.exe, Anysmith keeps its settings, logs, projects
+index and engine store in the AnysmithData folder beside it, and writes nothing to %APPDATA%.
+Copy the whole folder to move Anysmith with its settings.
+
+Delete this file to use the normal per-user settings folder (%APPDATA%\anysmith) instead.

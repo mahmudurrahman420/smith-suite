@@ -1,0 +1,22 @@
+[package]
+name = "wordsmith-render"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Wordsmith rasteriser: pages and thumbnails from the layout display list (vello_cpu), PNG/JPEG export"
+
+[lints]
+workspace = true
+
+[dependencies]
+wordsmith-geom = { workspace = true, features = ["image"] }
+wordsmith-doc = { workspace = true }
+wordsmith-fonts = { workspace = true }
+wordsmith-layout = { workspace = true }
+wordsmith-metafile = { workspace = true }
+vello_cpu = { workspace = true }
+image = { workspace = true }
+log = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+vello_cpu = { workspace = true, features = ["multithreading"] }

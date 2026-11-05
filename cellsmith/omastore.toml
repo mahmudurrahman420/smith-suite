@@ -1,0 +1,11 @@
+kind = "app"
+categories = ["Office"]
+icon = "assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.cellsmith.png"
+
+[linux.x86_64]
+asset = "cellsmith-{version}-linux-x86_64.tar.gz"
+exec = "cellsmith-{version}-linux-x86_64/bin/cellsmith"
+
+[linux.aarch64]
+asset = "cellsmith-{version}-linux-aarch64.tar.gz"
+exec = "cellsmith-{version}-linux-aarch64/bin/cellsmith"

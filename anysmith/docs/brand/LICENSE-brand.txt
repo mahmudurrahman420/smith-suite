@@ -1,0 +1,4 @@
+Smith Suite brand assets
+
+The Smith Suite name, wordmark and anvil mark in this directory are original work by
+Shohan (mahmudurrahman420), licensed under the project licence (MIT OR Apache-2.0).

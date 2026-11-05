@@ -1,0 +1,11 @@
+kind = "app"
+categories = ["Graphics", "Photography"]
+icon = "assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.rawsmith.png"
+
+[linux.x86_64]
+asset = "rawsmith-{version}-linux-x86_64.tar.gz"
+exec = "rawsmith-{version}-linux-x86_64/bin/rawsmith"
+
+[linux.aarch64]
+asset = "rawsmith-{version}-linux-aarch64.tar.gz"
+exec = "rawsmith-{version}-linux-aarch64/bin/rawsmith"

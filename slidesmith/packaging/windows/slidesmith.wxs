@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?ifndef HasCraftFontLicences ?>
+  <?define HasCraftFontLicences=0 ?>
+  <?endif?>
+  <Package Name="Slidesmith" Manufacturer="Learning Machines LLC" Version="$(var.Version)" UpgradeCode="6F9C69E7-7825-40D2-BF26-C274DA676425" Scope="perUserOrMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="Slidesmith presentations and slide shows" Manufacturer="Learning Machines LLC" />
+    <?include $(sys.SOURCEFILEDIR)install-policy.wxi?>
+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Slidesmith is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="SlidesmithIcon.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="SlidesmithIcon.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/mahmudurrahman420/slidesmith" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/mahmudurrahman420/slidesmith" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/mahmudurrahman420/slidesmith/discussions" />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="CraftSuiteFolder" Name="Smith Suite">
+        <Directory Id="INSTALLFOLDER" Name="Slidesmith" />
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+
+    <Feature Id="Main" Title="Slidesmith" Level="1">
+      <?if $(var.HasCraftFontLicences) = 1 ?>
+      <ComponentGroupRef Id="CraftFontLicences" />
+      <?endif?>
+      <ComponentGroupRef Id="SlidesmithFiles" />
+    </Feature>
+  <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <UI>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="NOT Installed" />
+    </UI>
+  </Package>
+
+  <Fragment>
+    <?if $(var.HasCraftFontLicences) = 1 ?>
+    <ComponentGroup Id="CraftFontLicences" Directory="INSTALLFOLDER">
+      <Files Include="$(var.DocsDir)\**" />
+    </ComponentGroup>
+    <?endif?>
+    <ComponentGroup Id="SlidesmithFiles" Directory="INSTALLFOLDER">
+      <Component Id="SlidesmithApp" Guid="D87EA444-41A4-4C19-922E-66D1A29461FF">
+        <File Id="SlidesmithNotice" Source="$(var.BinDir)\NOTICE" KeyPath="no" />
+        <File Id="SlidesmithExe" Source="$(var.BinDir)\slidesmith.exe" KeyPath="yes">
+          <!-- No Icon here, so the shortcut shows the icon embedded in slidesmith.exe (build.rs). An
+               MSI Icon is cached under %APPDATA%\Microsoft\Installer\{ProductCode}\, and every
+               update is a major upgrade with a new ProductCode that deletes the old folder. A
+               taskbar pin is a copy of this shortcut that the update never touches, so it kept
+               pointing at the deleted file and lost its icon (#1114). The exe's path survives
+               updates; the shortcut is not advertised, so it targets that path and its icon is the
+               exe's own. The Icon above stays for ARPPRODUCTICON (Apps and features). -->
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Slidesmith" Description="Slidesmith presentations and slide shows" WorkingDirectory="INSTALLFOLDER" Advertise="no" />
+        </File>
+
+        <!-- .slidesmith: Slidesmith's own format. -->
+        <ProgId Id="Slidesmith.Presentation" Description="Slidesmith Presentation" Icon="SlidesmithExe" IconIndex="0">
+          <Extension Id="slidesmith" ContentType="application/x-slidesmith">
+            <Verb Id="open" Command="Open" TargetFile="SlidesmithExe" Argument="&quot;%1&quot;" />
+          </Extension>
+        </ProgId>
+
+        <!-- "Open with" for PowerPoint formats, without becoming the default. -->
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe" Name="FriendlyAppName" Value="Slidesmith" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe\shell\open\command" Value="&quot;[#SlidesmithExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe\SupportedTypes" Name=".slidesmith" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe\SupportedTypes" Name=".pptx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe\SupportedTypes" Name=".potx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\Applications\slidesmith.exe\SupportedTypes" Name=".ppsx" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.pptx\OpenWithProgids" Name="Slidesmith.Presentation" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.potx\OpenWithProgids" Name="Slidesmith.Presentation" Value="" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Classes\.ppsx\OpenWithProgids" Name="Slidesmith.Presentation" Value="" Type="string" />
+
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\slidesmith.exe" Value="[#SlidesmithExe]" Type="string" />
+      <RegistryValue Root="HKMU" Key="Software\Slidesmith" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+      </Component>
+
+      <Component Id="SlidesmithCli">
+        <File Id="SlidesmithCliExe" Source="$(var.BinDir)\slidesmith-cli.exe" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

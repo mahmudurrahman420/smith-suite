@@ -1,0 +1,28 @@
+[package]
+name = "pixelsmith-compose"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+pixelsmith-geom = { workspace = true }
+pixelsmith-color = { workspace = true }
+pixelsmith-raster = { workspace = true }
+pixelsmith-doc = { workspace = true }
+pixelsmith-vector = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+rayon = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }
+criterion = { workspace = true }
+pixelsmith-paint = { workspace = true }
+pixelsmith-cms = { workspace = true }
+
+[[bench]]
+name = "compose"
+harness = false

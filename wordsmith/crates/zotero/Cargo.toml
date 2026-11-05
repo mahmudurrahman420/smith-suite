@@ -1,0 +1,21 @@
+[package]
+name = "wordsmith-zotero"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Wordsmith Zotero integration: Zotero's word-processor wire protocol, answered against an engine Session"
+
+[lints]
+workspace = true
+
+[dependencies]
+wordsmith-doc = { workspace = true }
+wordsmith-engine = { workspace = true }
+wordsmith-formats = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+wordsmith-docx = { workspace = true }
+proptest = { workspace = true }

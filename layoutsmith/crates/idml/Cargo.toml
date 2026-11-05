@@ -1,0 +1,22 @@
+[package]
+name = "layoutsmith-idml"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Layoutsmith IDML (InDesign Markup Language) import and export"
+
+[lints]
+workspace = true
+
+[dependencies]
+layoutsmith-geom = { workspace = true }
+layoutsmith-color = { workspace = true }
+layoutsmith-doc = { workspace = true }
+layoutsmith-images = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+quick-xml = { workspace = true }
+zip = { workspace = true }
+
+[dev-dependencies]
+layoutsmith-compose = { workspace = true }

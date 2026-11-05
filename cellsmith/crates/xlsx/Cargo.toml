@@ -1,0 +1,30 @@
+[package]
+name = "cellsmith-xlsx"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cellsmith file formats: XLSX (SpreadsheetML) and CSV import/export"
+
+[lints]
+workspace = true
+
+[features]
+# Builds password-encrypted workbooks in code for other crates' tests (a dev-dependency feature;
+# never enabled in a shipped build).
+test-support = []
+
+[dependencies]
+cellsmith-core = { workspace = true }
+cellsmith-formula = { workspace = true }
+cellsmith-math = { workspace = true }
+cellsmith-model = { workspace = true }
+thiserror = { workspace = true }
+quick-xml = { workspace = true }
+zip = { workspace = true }
+aes = { workspace = true }
+sha1 = { workspace = true }
+sha2 = { workspace = true }
+
+[dev-dependencies]
+# Every registered function name, for the formula file-spelling test.
+cellsmith-functions = { workspace = true }

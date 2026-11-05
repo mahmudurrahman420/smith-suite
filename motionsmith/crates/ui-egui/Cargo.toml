@@ -1,0 +1,55 @@
+[package]
+name = "motionsmith-ui-egui"
+description = "The Motionsmith egui frontend (swappable): docking panels, composition viewer, timeline, effect controls, control channel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+craft-ui = { workspace = true }
+craft-quit = { workspace = true, features = ["egui"] }
+motionsmith-time = { workspace = true }
+motionsmith-geom = { workspace = true }
+motionsmith-color = { workspace = true }
+motionsmith-keyframe = { workspace = true }
+motionsmith-project = { workspace = true }
+motionsmith-path = { workspace = true }
+motionsmith-text = { workspace = true }
+motionsmith-render = { workspace = true }
+motionsmith-engine = { workspace = true }
+motionsmith-gpu = { workspace = true }
+egui = { workspace = true }
+egui_extras = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit", "clipboard"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+chrono = { workspace = true }
+rayon = { workspace = true }
+web-time = { workspace = true }
+kurbo = { workspace = true }
+image = { workspace = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+# Floating panels open in OS windows of their own on desktop; the web keeps them in the page.
+craft-ui = { workspace = true, features = ["native-windows"] }
+craft-update = { workspace = true }
+sys-locale = { workspace = true }
+
+[dev-dependencies]
+# Fonts for kittest: the workspace `egui` features are what test roots resolve, but stating them
+# here documents the requirement (kittest's own dev-dependencies do not propagate to consumers).
+egui = { workspace = true, features = ["default_fonts", "monochrome_emoji_fonts"] }
+egui_kittest = { workspace = true, features = ["eframe", "wgpu"] }
+pollster = "1"
+motionsmith-segment = { workspace = true }
+motionsmith-host = { workspace = true }
+exr = { workspace = true }
+
+[build-dependencies]
+serde_json = { workspace = true }
+toml = "1"

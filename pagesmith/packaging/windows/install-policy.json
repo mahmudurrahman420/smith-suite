@@ -1,0 +1,329 @@
+{
+  "id": "pagesmith",
+  "name": "Pagesmith",
+  "upgradeCode": "EA00C367-7270-4C50-9D8B-A7A5C88AD27F",
+  "sources": [
+    "pagesmith.wxs",
+    "installer-ui.wxs"
+  ],
+  "icon": "assets/app-icon/pagesmith.ico",
+  "localization": [],
+  "extensions": [],
+  "payloads": [
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "LICENSE-document.txt",
+    "NOTICE",
+    "pagesmith-cli.exe",
+    "pagesmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\pagesmith.exe",
+      "",
+      "[#PagesmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Pagesmith.Document",
+      "",
+      "PDF Document"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Pagesmith.Document\\DefaultIcon",
+      "",
+      "\"[#PagesmithExe]\",-2"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Pagesmith.Document\\shell\\open\\command",
+      "",
+      "\"[#PagesmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Pagesmith.Document",
+      "TypeOverlay",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.pdf\\OpenWithProgids",
+      "Pagesmith.Document",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\pagesmith.exe",
+      "FriendlyAppName",
+      "Pagesmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\pagesmith.exe\\DefaultIcon",
+      "",
+      "\"[#PagesmithExe]\",-2"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\pagesmith.exe\\SupportedTypes",
+      ".pdf",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\pagesmith.exe\\shell\\open\\command",
+      "",
+      "\"[#PagesmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Capabilities",
+      "ApplicationName",
+      "Pagesmith"
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Capabilities",
+      "ApplicationDescription",
+      "Open-source PDF workbench"
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Capabilities",
+      "ApplicationIcon",
+      "[#PagesmithExe],0"
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Capabilities\\FileAssociations",
+      ".pdf",
+      "Pagesmith.Document"
+    ],
+    [
+      "-1",
+      "Software\\RegisteredApplications",
+      "Pagesmith",
+      "Software\\Pagesmith\\Capabilities"
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Shortcuts",
+      "StartMenu",
+      "#1"
+    ],
+    [
+      "-1",
+      "Software\\Pagesmith\\Shortcuts",
+      "Desktop",
+      "#1"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.pdf\\shell\\Pagesmith.Edit",
+      "",
+      "Edit with Pagesmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.pdf\\shell\\Pagesmith.Edit",
+      "Icon",
+      "\"[#PagesmithExe]\",0"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.pdf\\shell\\Pagesmith.Edit",
+      "MultiSelectModel",
+      "Document"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.pdf\\shell\\Pagesmith.Edit\\command",
+      "",
+      "\"[#PagesmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.png\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.png\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.png\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpg\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpg\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpg\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpeg\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpeg\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpeg\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tif\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tif\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tif\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tiff\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tiff\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.tiff\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.gif\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.gif\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.gif\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.bmp\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.bmp\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.bmp\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jp2\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jp2\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jp2\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.j2k\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.j2k\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.j2k\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpx\\shell\\Pagesmith.CreatePdf",
+      "",
+      "Create PDF with Pagesmith\u2026"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpx\\shell\\Pagesmith.CreatePdf",
+      "MultiSelectModel",
+      "Single"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\SystemFileAssociations\\.jpx\\shell\\Pagesmith.CreatePdf\\command",
+      "",
+      "\"[#PagesmithExe]\" --create-images \"%1\""
+    ]
+  ],
+  "mode": "dualScope"
+}

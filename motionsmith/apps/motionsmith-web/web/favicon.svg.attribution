@@ -1,0 +1,8 @@
+asset:        favicon.svg
+title:        Motionsmith web app icon (favicon)
+author:       Motionsmith contributors (drawing by the project owner in Smith Suite)
+source:       original work
+license:      MIT OR Apache-2.0
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-02 by Motionsmith contributors (Claude agent, app icon)
+notes:        Copy of assets/app-icon/motionsmith-small.svg (the lighter vector trace of the app icon). Replaces the earlier code-drawn split-square mark.

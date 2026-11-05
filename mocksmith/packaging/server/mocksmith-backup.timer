@@ -1,0 +1,14 @@
+# Runs mocksmith-backup.service every night (see that file).
+#   sudo systemctl enable --now mocksmith-backup.timer
+#   systemctl list-timers mocksmith-backup.timer
+
+[Unit]
+Description=Nightly backup of mocksmith-server's data directory
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+RandomizedDelaySec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

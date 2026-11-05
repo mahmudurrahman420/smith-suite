@@ -1,0 +1,14 @@
+[package]
+name = "mocksmith-pathops"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith path operations: booleans (union, subtract, intersect, exclude), outline stroke with inside/center/outside alignment, arrowheads"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-doc = { workspace = true }
+linesweeper = { workspace = true }

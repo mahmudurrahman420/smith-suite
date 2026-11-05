@@ -1,0 +1,26 @@
+[package]
+name = "layoutsmith-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "layoutsmith-cli"
+path = "src/main.rs"
+
+[dependencies]
+layoutsmith-engine = { workspace = true }
+layoutsmith-render = { workspace = true }
+layoutsmith-doc = { workspace = true }
+layoutsmith-geom = { workspace = true }
+layoutsmith-color = { workspace = true }
+layoutsmith-compose = { workspace = true }
+layoutsmith-format = { workspace = true }
+layoutsmith-pdf = { workspace = true }
+layoutsmith-mcp = { workspace = true }
+image = { workspace = true }
+serde_json = { workspace = true }

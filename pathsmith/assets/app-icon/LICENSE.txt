@@ -1,0 +1,12 @@
+Pathsmith app icon (pathsmith.svg, pathsmith-small.svg and every file derived from them in this
+directory: pathsmith-1024.png, pathsmith-macos-512.png, pathsmith.icns, pathsmith.ico, hicolor/).
+
+Original artwork made for this project by the project owner, drawn in ArtCraft and vectorised for
+Pathsmith (no third-party material). Licensed like the rest of Pathsmith, under either of
+
+  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+  * MIT license (https://opensource.org/licenses/MIT)
+
+at your option.
+
+Regenerate the derived files with packaging/icons.sh.

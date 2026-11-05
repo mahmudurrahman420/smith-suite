@@ -1,0 +1,126 @@
+{
+  "id": "mocksmith",
+  "name": "Mocksmith",
+  "upgradeCode": "7F8B9827-D065-41B7-A514-2A454B21F484",
+  "sources": [
+    "mocksmith.wxs"
+  ],
+  "icon": "assets/app-icon/mocksmith.ico",
+  "localization": [
+    "mocksmith.en-us.wxl"
+  ],
+  "extensions": [
+    "UI",
+    "Util"
+  ],
+  "payloads": [
+    "NOTICE",
+    "mocksmith-cli.exe",
+    "mocksmith.exe"
+  ],
+  "registry": [
+    [
+      "-1",
+      "Software\\Classes\\Mocksmith.Image\\shell\\open\\command",
+      "",
+      "\"[#MocksmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.svg\\OpenWithProgids",
+      "Mocksmith.Image",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.png\\OpenWithProgids",
+      "Mocksmith.Image",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.jpg\\OpenWithProgids",
+      "Mocksmith.Image",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.jpeg\\OpenWithProgids",
+      "Mocksmith.Image",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Mocksmith.Sketch\\shell\\open\\command",
+      "",
+      "\"[#MocksmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\.sketch\\OpenWithProgids",
+      "Mocksmith.Sketch",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe",
+      "FriendlyAppName",
+      "Mocksmith"
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\shell\\open\\command",
+      "",
+      "\"[#MocksmithExe]\" \"%1\""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".mocksmith",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".svg",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".png",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".jpg",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".jpeg",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Classes\\Applications\\mocksmith.exe\\SupportedTypes",
+      ".sketch",
+      ""
+    ],
+    [
+      "-1",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\mocksmith.exe",
+      "",
+      "[#MocksmithExe]"
+    ],
+    [
+      "-1",
+      "Software\\Mocksmith",
+      "InstallDir",
+      "[INSTALLFOLDER]"
+    ]
+  ],
+  "mode": "dualScope"
+}

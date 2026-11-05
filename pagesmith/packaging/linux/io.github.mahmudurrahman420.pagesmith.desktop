@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Pagesmith
+GenericName=PDF Editor
+Comment=Read, organize, combine, split and secure PDFs
+Exec=pagesmith %U
+TryExec=pagesmith
+Icon=io.github.mahmudurrahman420.pagesmith
+Terminal=false
+StartupNotify=true
+StartupWMClass=io.github.mahmudurrahman420.pagesmith
+Categories=Office;Viewer;
+Keywords=pdf;viewer;editor;annotate;sign;forms;merge;split;
+MimeType=application/pdf;

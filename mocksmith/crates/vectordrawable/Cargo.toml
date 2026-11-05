@@ -1,0 +1,21 @@
+[package]
+name = "mocksmith-vectordrawable"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mocksmith Android Vector Drawable export (shapes, strokes, gradients, clips and vector masks as a <vector> XML drawable)"
+
+[lints]
+workspace = true
+
+[dependencies]
+mocksmith-geom = { workspace = true }
+mocksmith-color = { workspace = true }
+mocksmith-doc = { workspace = true }
+mocksmith-text = { workspace = true }
+mocksmith-render = { workspace = true }
+mocksmith-pathops = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+roxmltree = "0.21"

@@ -1,0 +1,58 @@
+# Attribution
+
+Every asset bundled with or committed to Soundsmith is listed here with its author, source and
+license. `cargo xtask assets` fails CI when a tracked asset file has no row.
+
+**Rule:** no Avid, Pro Tools, Adobe or other proprietary icons, images, sounds or presets — ever.
+Assets must be original, public domain (CC0) or permissively licensed. See `AGENTS.md`.
+
+## Icons
+
+All UI icons (tools, transport, track buttons) are drawn procedurally in
+`crates/ui-egui/src/icons.rs` by the Soundsmith contributors (MIT OR Apache-2.0). No UI icon image
+files are used. The app icon (`assets/app-icon/`, a singing nightingale drawn as original SVG by
+the Soundsmith contributors) is listed under Files below.
+
+## Audio
+
+The demo session's audio (drums, bass, pad) and its MIDI parts are synthesised in code in
+`crates/engine/src/demo.rs` by the Soundsmith contributors (MIT OR Apache-2.0). No sample files
+are bundled.
+
+## Fonts
+
+Soundsmith bundles no font files. It uses the default fonts shipped inside the `egui` crate
+(Ubuntu-Light: Ubuntu Font Licence 1.0; Hack: MIT; Noto Emoji: OFL-1.1; emoji-icon-font: MIT)
+and, at runtime, the operating system's own UI fonts when available (never redistributed).
+
+## Bundled egui font icons
+
+These dependency fonts are embedded by the pinned egui font definitions; no font file is added
+here. The subset uses default_fonts; the parent face uses monochrome_emoji_fonts.
+
+| Asset | Author | Source | Licence |
+|---|---|---|---|
+| `epaint_default_fonts/fonts/egui-icons.ttf` | John Slegers (emoji-icon-font) | https://github.com/storytold/egui/blob/6d518fc799681571963842f95b55a6b68431b15a/crates/epaint_default_fonts/fonts/egui-icons.txt; original https://github.com/jslegers/emoji-icon-font | MIT (complete copyright and permission text in NOTICE) |
+| `epaint_default_fonts/fonts/emoji-icon-font.ttf` | John Slegers | https://github.com/storytold/egui/blob/6d518fc799681571963842f95b55a6b68431b15a/crates/epaint_default_fonts/fonts/emoji-icon-font-mit-license.txt; original https://github.com/jslegers/emoji-icon-font | MIT (complete copyright and permission text in NOTICE) |
+
+## Files
+
+| Path | Author | Source | License |
+|---|---|---|---|
+| `docs/brand/smithsuite-logo.svg` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-logo.png` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-logo-white.svg` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-logo-white.png` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-mark.svg` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-mark.png` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-mark-black.svg` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `docs/brand/smithsuite-mark-black.png` | Shohan (mahmudurrahman420) | Smith Suite brand assets | MIT OR Apache-2.0 |
+| `assets/app-icon/icon.svg` | Soundsmith contributors | original (hand-placed SVG paths; placeholder app icon) | MIT OR Apache-2.0 |
+| `packaging/macos/dmg/` (all files) | @XusBadia | original (macOS DMG window background and layout, from the app icon; see `packaging/macos/dmg/README.md`) | MIT OR Apache-2.0 |
+| `assets/app-icon/soundsmith-1024.png` | Soundsmith contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
+| `assets/app-icon/soundsmith-macos-512.png` | Soundsmith contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
+| `assets/app-icon/soundsmith.icns` | Soundsmith contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
+| `assets/app-icon/soundsmith.ico` | Soundsmith contributors | original, rendered from `icon.svg` | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/` | Soundsmith contributors | original, rendered from `icon.svg` (16–512 px PNGs and the scalable SVG) | MIT OR Apache-2.0 |
+| `docs/images/` | Soundsmith contributors | screenshots of Soundsmith rendered from the synthesised demo session | MIT OR Apache-2.0 |
+| `crates/audio-io/tests/fixtures/` | Soundsmith contributors | original test tones and silence generated with ffmpeg (sine) or by hand; commands in `crates/audio-io/tests/fixtures/README.md` | MIT OR Apache-2.0 |

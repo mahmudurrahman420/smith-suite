@@ -1,0 +1,20 @@
+[package]
+name = "pagesmith-measure"
+description = "Calibrated 2D PDF measurements, viewports and snapping"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+pagesmith-cos = { workspace = true }
+pagesmith-model = { workspace = true }
+pagesmith-content = { workspace = true }
+pagesmith-annot = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+pagesmith-testkit = { workspace = true }
