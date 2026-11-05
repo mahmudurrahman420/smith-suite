@@ -15,7 +15,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.pagesmith.png")),
     accent: Some([0xb7, 0x02, 0x28]),
-    ..craft_update::suite::PAGESMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("pagesmith", "Pagesmith", "Reading, organizing and protecting PDFs", "mahmudurrahman420/smith-suite")
 };
 
 use crate::control::Host as _;

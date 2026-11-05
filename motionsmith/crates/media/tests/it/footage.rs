@@ -870,11 +870,11 @@ fn perf_sequential_1080p_h264() {
     let n = 60;
     // Framesmith alone (decode only, YUV frames)
     let bytes: Arc<[u8]> = std::fs::read(&p).expect("read").into();
-    let src = framesmith_codecs::open_bytes("a.mp4", bytes).expect("open");
+    let src = filmcraft_codecs::open_bytes("a.mp4", bytes).expect("open");
     let t0 = Instant::now();
     for i in 0..n {
-        let t = framesmith_time::Tick(f.frame_rate.tick_of(i).0 + f.frame_rate.frame_duration().0 / 2);
-        src.video_frame(framesmith_media::FrameRequest::full(t)).expect("frame");
+        let t = filmcraft_time::Tick(f.frame_rate.tick_of(i).0 + f.frame_rate.frame_duration().0 / 2);
+        src.video_frame(filmcraft_media::FrameRequest::full(t)).expect("frame");
     }
     let raw = n as f64 / t0.elapsed().as_secs_f64();
     // Through the pool (decode + conversion to f32 RGBA), cold cache, without and with read-ahead

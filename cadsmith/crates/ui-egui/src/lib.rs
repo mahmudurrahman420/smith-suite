@@ -14,7 +14,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.cadsmith.png")),
     accent: Some([0x3e, 0xa6, 0xe8]),
-    ..craft_update::suite::CADSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("cadsmith", "CADsmith", "Computer-aided design", "mahmudurrahman420/smith-suite")
 };
 
 pub mod aliasdlg;

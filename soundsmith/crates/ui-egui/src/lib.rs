@@ -10,7 +10,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.soundsmith.png")),
     accent: Some([0x1f, 0xa5, 0xc9]),
-    ..craft_update::suite::SOUNDSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("soundsmith", "Soundsmith", "Audio recording and editing", "mahmudurrahman420/smith-suite")
 };
 
 pub mod appearance;

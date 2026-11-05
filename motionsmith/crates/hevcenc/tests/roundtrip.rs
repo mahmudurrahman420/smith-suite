@@ -1,4 +1,4 @@
-//! Round trips through the framesmith-hevc decoder and (when installed) ffmpeg: decoded pictures must
+//! Round trips through the filmcraft-hevc decoder and (when installed) ffmpeg: decoded pictures must
 //! equal the encoder's own reconstruction bit-exactly.
 
 use motionsmith_hevcenc::{Encoder, EncoderConfig, Frame, Profile, RateControl};
@@ -84,9 +84,9 @@ fn encode(cfg: EncoderConfig, pics: &[Pic]) -> Run {
     run
 }
 
-/// Decode with framesmith-hevc and compare with the reconstructions.
+/// Decode with filmcraft-hevc and compare with the reconstructions.
 fn check_framesmith(run: &Run, w: usize, h: usize) {
-    let mut dec = framesmith_hevc::Decoder::from_hvcc(&run.hvcc).unwrap();
+    let mut dec = filmcraft_hevc::Decoder::from_hvcc(&run.hvcc).unwrap();
     let mut pics = Vec::new();
     for (i, p) in run.packets.iter().enumerate() {
         pics.extend(dec.decode(p, i as i64).unwrap());

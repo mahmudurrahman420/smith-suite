@@ -1,6 +1,6 @@
 [package]
 name = "motionsmith-interchange"
-description = "Premiere Pro interop through timeline interchange: Final Cut Pro 7 XML (xmeml), FCPXML, OpenTimelineIO and CMX 3600 EDL sequences to and from compositions (via framesmith-interchange)"
+description = "Premiere Pro interop through timeline interchange: Final Cut Pro 7 XML (xmeml), FCPXML, OpenTimelineIO and CMX 3600 EDL sequences to and from compositions (via filmcraft-interchange)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -14,12 +14,12 @@ motionsmith-time = { workspace = true }
 motionsmith-color = { workspace = true }
 motionsmith-keyframe = { workspace = true }
 motionsmith-project = { workspace = true }
-framesmith-interchange = { workspace = true }
-framesmith-project = { workspace = true }
-framesmith-media = { workspace = true }
-framesmith-time = { workspace = true }
-framesmith-geom = { workspace = true }
-framesmith-color = { workspace = true }
+filmcraft-interchange = { workspace = true }
+filmcraft-project = { workspace = true }
+filmcraft-media = { workspace = true }
+filmcraft-time = { workspace = true }
+filmcraft-geom = { workspace = true }
+filmcraft-color = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }

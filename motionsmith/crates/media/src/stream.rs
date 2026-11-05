@@ -9,7 +9,7 @@
 
 use std::path::Path;
 
-use framesmith_media::SharedSource;
+use filmcraft_media::SharedSource;
 
 use crate::Result;
 
@@ -34,7 +34,7 @@ impl FileReader {
 }
 
 #[cfg(any(unix, windows))]
-impl framesmith_media::ByteReader for FileReader {
+impl filmcraft_media::ByteReader for FileReader {
     fn len(&self) -> u64 {
         self.len
     }
@@ -75,8 +75,8 @@ fn name_of(path: &Path) -> String {
 #[cfg(any(unix, windows))]
 pub(crate) fn open_source(path: &Path) -> Option<Result<SharedSource>> {
     let reader = FileReader::open(path).ok()?;
-    let reader: framesmith_media::SharedReader = std::sync::Arc::new(reader);
-    let opened = framesmith_media::reader::open_reader(&name_of(path), reader, &framesmith_codecs::reader_openers(), &framesmith_codecs::openers());
+    let reader: filmcraft_media::SharedReader = std::sync::Arc::new(reader);
+    let opened = filmcraft_media::reader::open_reader(&name_of(path), reader, &filmcraft_codecs::reader_openers(), &filmcraft_codecs::openers());
     Some(opened.map_err(Into::into))
 }
 
@@ -87,12 +87,12 @@ pub(crate) fn open_source(_path: &Path) -> Option<Result<SharedSource>> {
 
 /// `path` read in place (`None` when it can't be opened, or without a native file system).
 #[cfg(any(unix, windows))]
-pub(crate) fn file_reader(path: &Path) -> Option<Box<dyn framesmith_media::ByteReader>> {
+pub(crate) fn file_reader(path: &Path) -> Option<Box<dyn filmcraft_media::ByteReader>> {
     Some(Box::new(FileReader::open(path).ok()?))
 }
 
 #[cfg(not(any(unix, windows)))]
-pub(crate) fn file_reader(_path: &Path) -> Option<Box<dyn framesmith_media::ByteReader>> {
+pub(crate) fn file_reader(_path: &Path) -> Option<Box<dyn filmcraft_media::ByteReader>> {
     None
 }
 
@@ -157,14 +157,14 @@ pub(crate) fn probe_source(path: &Path) -> Option<Result<SharedSource>> {
         return None;
     }
     let reader = FileReader::open(path).ok()?;
-    let reader: framesmith_media::SharedReader = std::sync::Arc::new(reader);
-    let head = framesmith_media::reader::read_range(&*reader, 0, framesmith_media::reader::HEAD_LEN).ok()?;
+    let reader: filmcraft_media::SharedReader = std::sync::Arc::new(reader);
+    let head = filmcraft_media::reader::read_range(&*reader, 0, filmcraft_media::reader::HEAD_LEN).ok()?;
     let name = path.to_string_lossy();
     if crate::layered::sniff(&name, &head) || image::guess_format(&head).is_ok() {
         return None;
     }
     let name = name_of(path);
-    framesmith_codecs::reader_openers().into_iter().find_map(|open| open(&name, &head, &reader)).map(|r| r.map_err(Into::into))
+    filmcraft_codecs::reader_openers().into_iter().find_map(|open| open(&name, &head, &reader)).map(|r| r.map_err(Into::into))
 }
 
 #[cfg(not(any(unix, windows)))]

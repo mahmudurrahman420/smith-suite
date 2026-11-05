@@ -48,14 +48,14 @@ use std::collections::{BTreeMap, HashSet};
 use std::io::Write;
 use std::sync::Arc;
 
-use craft_pathsmith_format::{Contents, Head, Image, ReadError, Tail};
+use craft_vectorcraft_format::{Contents, Head, Image, ReadError, Tail};
 use serde::Serialize;
 use pathsmith_doc::{Document, ImageBlob};
 
 #[cfg(not(target_arch = "wasm32"))]
 pub use atomic::{sync_file, write_atomic, write_atomic_with, write_new_with};
-pub use craft_pathsmith_format::base64::{decode as base64_decode, encode as base64_encode};
-pub use craft_pathsmith_format::{
+pub use craft_vectorcraft_format::base64::{decode as base64_decode, encode as base64_encode};
+pub use craft_vectorcraft_format::{
     BLOB_MAGIC, COMPRESSED_SINCE, EXTENSION, ICC_MIME, INLINE_MAX, LEGACY_EXTENSION, MIN_VERSION, PREVIEW_MAX, VERSION, is_compressed, json_part,
     sniff,
 };
@@ -69,7 +69,7 @@ use stream::{Gz, Indent, KeyScan, Out};
 pub const MAX_JSON: u64 = if cfg!(target_arch = "wasm32") { 256 << 20 } else { 1 << 30 };
 /// Most bytes one entry of the data after the JSON (an image, a placed document, the PDF, a
 /// profile) may have in a compressed file.
-pub const MAX_BLOB: u64 = craft_pathsmith_format::MAX_ENTRY;
+pub const MAX_BLOB: u64 = craft_vectorcraft_format::MAX_ENTRY;
 /// Most bytes the entries after the JSON may have together in a compressed file: 1 GiB in the web
 /// build, whose 4 GiB address space also holds the JSON, the document and the app, so 4 GiB of
 /// entries failed to allocate rather than being refused.
@@ -108,11 +108,11 @@ pub enum FormatError {
     Encode(String),
 }
 
-impl From<craft_pathsmith_format::Error> for FormatError {
-    fn from(e: craft_pathsmith_format::Error) -> Self {
+impl From<craft_vectorcraft_format::Error> for FormatError {
+    fn from(e: craft_vectorcraft_format::Error) -> Self {
         match e {
-            craft_pathsmith_format::Error::Format(format) => FormatError::NotPathsmith(format!("format is `{format}`")),
-            craft_pathsmith_format::Error::TooNew(version) => FormatError::TooNew(version),
+            craft_vectorcraft_format::Error::Format(format) => FormatError::NotPathsmith(format!("format is `{format}`")),
+            craft_vectorcraft_format::Error::TooNew(version) => FormatError::TooNew(version),
             // The crate's other errors (`TooBig`: entries past the data after the JSON) keep their message.
             e => FormatError::NotPathsmith(e.to_string()),
         }
@@ -724,12 +724,12 @@ mod tests {
     /// An envelope error other than the format and version keeps the crate's message.
     #[test]
     fn envelope_errors_keep_their_message() {
-        let e = FormatError::from(craft_pathsmith_format::Error::TooBig);
+        let e = FormatError::from(craft_vectorcraft_format::Error::TooBig);
         assert!(matches!(e, FormatError::NotPathsmith(_)), "{e}");
-        assert!(e.to_string().contains(&craft_pathsmith_format::Error::TooBig.to_string()), "{e}");
-        let e = FormatError::from(craft_pathsmith_format::Error::Format("x".into()));
+        assert!(e.to_string().contains(&craft_vectorcraft_format::Error::TooBig.to_string()), "{e}");
+        let e = FormatError::from(craft_vectorcraft_format::Error::Format("x".into()));
         assert_eq!(e.to_string(), "not a Pathsmith file: format is `x`");
-        assert!(matches!(FormatError::from(craft_pathsmith_format::Error::TooNew(9)), FormatError::TooNew(9)));
+        assert!(matches!(FormatError::from(craft_vectorcraft_format::Error::TooNew(9)), FormatError::TooNew(9)));
     }
 
     /// `save_to` writes the file member by member and streams the document in. For every version
@@ -782,7 +782,7 @@ mod tests {
                 for pretty in [false, true] {
                     let o = SaveOptions { version, pretty, ..members.clone() };
                     let b = body(&d, &o).unwrap();
-                    let mut file = craft_pathsmith_format::File::new(Written(&b));
+                    let mut file = craft_vectorcraft_format::File::new(Written(&b));
                     file.format = if version < 3 { LEGACY_EXTENSION } else { EXTENSION }.into();
                     file.version = version;
                     file.generator = Some(format!("Pathsmith {}", env!("CARGO_PKG_VERSION")));

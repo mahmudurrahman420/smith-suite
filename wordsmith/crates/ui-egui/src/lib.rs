@@ -11,7 +11,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.wordsmith.png")),
     accent: Some([0x3f, 0x5f, 0xe0]),
-    ..craft_update::suite::WORDSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("wordsmith", "Wordsmith", "Word processing and documents", "mahmudurrahman420/smith-suite")
 };
 
 /// An English UI string in the current interface language ([`i18n::t`]).

@@ -12,4 +12,4 @@ workspace = true
 [dependencies]
 
 [dev-dependencies]
-framesmith-opus = { workspace = true }
+filmcraft-opus = { workspace = true }

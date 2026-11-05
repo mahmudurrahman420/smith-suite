@@ -6,9 +6,9 @@ use std::collections::HashMap;
 use motionsmith_keyframe::{Interp, Value};
 use motionsmith_project::{Comp, Footage, FootageKind, ItemId, ItemKind, Layer, LayerId, LayerSource, Project, Property};
 use motionsmith_time::{FrameRate, Tick};
-use framesmith_geom::Vec2;
-use framesmith_media::{AudioStreamInfo, Generator, MediaInfo, MediaKind, VideoStreamInfo};
-use framesmith_project as fp;
+use filmcraft_geom::Vec2;
+use filmcraft_media::{AudioStreamInfo, Generator, MediaInfo, MediaKind, VideoStreamInfo};
+use filmcraft_project as fp;
 use serde::{Deserialize, Serialize};
 
 use crate::{Error, Result, TimelineFormat, par_fraction, rate_out, tick_out};
@@ -250,8 +250,8 @@ pub fn export(project: &Project, comp: ItemId, opts: &ExportOptions, prerendered
         stack: vec![],
     };
     let seq = ex.sequence(comp).ok_or(Error::NoComp(comp.0))?;
-    let fc_opts = framesmith_interchange::ExportOptions { relative_to: opts.relative_to.clone(), name: Some(name), ..Default::default() };
-    let (bytes, report) = framesmith_interchange::export(&ex.fp, seq, opts.format.fc(), &fc_opts)?;
+    let fc_opts = filmcraft_interchange::ExportOptions { relative_to: opts.relative_to.clone(), name: Some(name), ..Default::default() };
+    let (bytes, report) = filmcraft_interchange::export(&ex.fp, seq, opts.format.fc(), &fc_opts)?;
     for e in report.entries {
         let m = if e.count > 1 { format!("{} (×{})", e.message, e.count) } else { e.message };
         ex.warn(m);
@@ -426,7 +426,7 @@ impl Exporter<'_> {
                     Some(r) => {
                         let item = self.prerendered_item(&format!("{} (pre-rendered)", l.name), &r);
                         self.track_item(item, &l.name, fp::TrackKind::Video, &tm, rate).map(|mut ti| {
-                            ti.source_in = framesmith_time::Tick::ZERO;
+                            ti.source_in = filmcraft_time::Tick::ZERO;
                             ti.speed = 1.0;
                             ti.reverse = false;
                             self.out.prerendered += 1;
@@ -529,7 +529,7 @@ impl Exporter<'_> {
     }
 
     fn track_item(&mut self, item: fp::ItemId, name: &str, kind: fp::TrackKind, tm: &Timing, rate: FrameRate) -> Option<fp::TrackItem> {
-        let range = framesmith_time::TimeRange::new(tick_out(tm.source_in), tick_out(Tick((tm.duration.0 as f64 * tm.speed).round() as i64)));
+        let range = filmcraft_time::TimeRange::new(tick_out(tm.source_in), tick_out(Tick((tm.duration.0 as f64 * tm.speed).round() as i64)));
         let mut ti = self.fp.make_track_item(item, kind, tick_out(tm.start), range, rate_out(rate))?;
         ti.name = name.to_string();
         ti.duration = tick_out(tm.duration);
@@ -651,7 +651,7 @@ fn set_effect(ti: &mut fp::TrackItem, e: fp::EffectInstance) {
 }
 
 /// A property → a Framesmith parameter (layer-time keys → clip-time keys).
-fn param_out(p: &Property, to_clip: &impl Fn(Tick) -> framesmith_time::Tick, conv: impl Fn(&Value) -> fp::ParamValue) -> fp::Param {
+fn param_out(p: &Property, to_clip: &impl Fn(Tick) -> filmcraft_time::Tick, conv: impl Fn(&Value) -> fp::ParamValue) -> fp::Param {
     let mut out = fp::Param::new(conv(&p.value));
     // XML timelines have no mute state: leave muted keys out, as the Lottie exporter does, so
     // the exported animation matches what the renderer shows (#1894).

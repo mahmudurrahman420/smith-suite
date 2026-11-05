@@ -3,7 +3,7 @@
 use std::io::Cursor;
 
 use motionsmith_project::FootageKind;
-use framesmith_isobmff::{Brand, Mp4Writer, SampleEntry, TimecodeConfig, TrackConfig, WriteSample, WriterOptions};
+use filmcraft_isobmff::{Brand, Mp4Writer, SampleEntry, TimecodeConfig, TrackConfig, WriteSample, WriterOptions};
 
 /// A two-frame 24 fps Motion JPEG MOV, with a timecode track from `start_frame` when given.
 fn mov(start_frame: Option<u32>) -> Vec<u8> {

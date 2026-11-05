@@ -6,8 +6,8 @@
 
 use std::io;
 
-use framesmith_aac::AudioSpecificConfig;
-use framesmith_media::ByteReader;
+use filmcraft_aac::AudioSpecificConfig;
+use filmcraft_media::ByteReader;
 
 /// How far into an MPEG TS / PS file the audio streams are looked for: the stream is indexed as
 /// far as this, not through the whole file.
@@ -34,15 +34,15 @@ pub(crate) fn config(header: Option<&[u8]>, file: Option<&dyn ByteReader>) -> Op
 /// are in its fragments, not the `moov`).
 fn mp4(header: &[u8], file: Option<&dyn ByteReader>) -> Option<Vec<u8>> {
     let mp4 = match file {
-        Some(f) => framesmith_isobmff::open(Head(f, f.len())),
-        None => framesmith_isobmff::open(header),
+        Some(f) => filmcraft_isobmff::open(Head(f, f.len())),
+        None => filmcraft_isobmff::open(header),
     };
     let mp4 = mp4.ok()?;
     let playable =
-        |t: &&framesmith_isobmff::Track| t.kind == framesmith_isobmff::TrackKind::Audio && !t.samples.is_empty() && !t.entries.is_empty() && t.timescale > 0;
+        |t: &&filmcraft_isobmff::Track| t.kind == filmcraft_isobmff::TrackKind::Audio && !t.samples.is_empty() && !t.entries.is_empty() && t.timescale > 0;
     let track = mp4.tracks.iter().find(playable)?;
     match &track.entries.first()?.codec {
-        framesmith_isobmff::CodecConfig::Aac(a) => Some(a.asc.clone()),
+        filmcraft_isobmff::CodecConfig::Aac(a) => Some(a.asc.clone()),
         _ => None,
     }
 }
@@ -50,9 +50,9 @@ fn mp4(header: &[u8], file: Option<&dyn ByteReader>) -> Option<Vec<u8>> {
 /// The track Framesmith's Matroska source plays: the first audio track with frames, found by
 /// indexing the clusters as that source does.
 fn matroska(file: &dyn ByteReader) -> Option<Vec<u8>> {
-    let mkv = framesmith_matroska::open(Head(file, file.len())).ok()?;
-    match &mkv.tracks.iter().find(|t| t.kind == framesmith_matroska::TrackKind::Audio && !t.samples.is_empty())?.codec {
-        framesmith_matroska::Codec::Aac { asc } => Some(asc.clone()),
+    let mkv = filmcraft_matroska::open(Head(file, file.len())).ok()?;
+    match &mkv.tracks.iter().find(|t| t.kind == filmcraft_matroska::TrackKind::Audio && !t.samples.is_empty())?.codec {
+        filmcraft_matroska::Codec::Aac { asc } => Some(asc.clone()),
         _ => None,
     }
 }
@@ -61,15 +61,15 @@ fn matroska(file: &dyn ByteReader) -> Option<Vec<u8>> {
 /// first unit it can read. Only AAC is asked about, so the streams before that one were refused
 /// whatever their codec, and an ADTS stream played has no configuration outside its frames.
 fn latm(file: &dyn ByteReader) -> Option<Vec<u8>> {
-    use framesmith_mpegts::Codec;
+    use filmcraft_mpegts::Codec;
     let head = Head(file, file.len().min(MPEG_HEAD));
-    let mpeg = framesmith_mpegts::open(&head).ok()?;
-    let audio = mpeg.streams.iter().enumerate().filter(|(_, s)| s.kind() == framesmith_mpegts::Kind::Audio && !s.units.is_empty());
-    let played = audio.take(framesmith_media::MAX_AUDIO_STREAMS).find_map(|(i, s)| {
+    let mpeg = filmcraft_mpegts::open(&head).ok()?;
+    let audio = mpeg.streams.iter().enumerate().filter(|(_, s)| s.kind() == filmcraft_mpegts::Kind::Audio && !s.units.is_empty());
+    let played = audio.take(filmcraft_media::MAX_AUDIO_STREAMS).find_map(|(i, s)| {
         let first = mpeg.read_unit(&head, i, 0).ok()?;
         match s.codec {
-            Codec::AacAdts => framesmith_mpegts::frame_info(&s.codec, &first).map(|_| None),
-            Codec::AacLatm => framesmith_codecs::audio::latm_config(&first).map(|c| Some(c.asc)),
+            Codec::AacAdts => filmcraft_mpegts::frame_info(&s.codec, &first).map(|_| None),
+            Codec::AacLatm => filmcraft_codecs::audio::latm_config(&first).map(|c| Some(c.asc)),
             _ => None,
         }
     });
@@ -88,7 +88,7 @@ impl Head<'_> {
     }
 }
 
-impl framesmith_isobmff::ByteSource for Head<'_> {
+impl filmcraft_isobmff::ByteSource for Head<'_> {
     fn len(&self) -> u64 {
         self.1
     }
@@ -97,7 +97,7 @@ impl framesmith_isobmff::ByteSource for Head<'_> {
     }
 }
 
-impl framesmith_matroska::ByteSource for Head<'_> {
+impl filmcraft_matroska::ByteSource for Head<'_> {
     fn len(&self) -> u64 {
         self.1
     }
@@ -106,7 +106,7 @@ impl framesmith_matroska::ByteSource for Head<'_> {
     }
 }
 
-impl framesmith_mpegts::ByteSource for Head<'_> {
+impl filmcraft_mpegts::ByteSource for Head<'_> {
     fn len(&self) -> u64 {
         self.1
     }

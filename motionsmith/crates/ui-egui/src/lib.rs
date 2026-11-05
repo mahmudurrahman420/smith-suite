@@ -15,7 +15,8 @@ pub(crate) mod a11y;
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.motionsmith.png")),
     accent: Some([0xe0, 0x36, 0x8f]),
-    ..craft_update::suite::MOTIONSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("motionsmith", "Motionsmith", "Motion graphics and visual effects", "mahmudurrahman420/smith-suite")
 };
 
 pub mod audio;

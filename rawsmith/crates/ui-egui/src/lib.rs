@@ -12,7 +12,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.rawsmith.png")),
     accent: Some([0xf2, 0xa5, 0x16]),
-    ..craft_update::suite::RAWSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("rawsmith", "Rawsmith", "Photo library and raw development", "mahmudurrahman420/smith-suite")
 };
 
 pub mod brush_live;

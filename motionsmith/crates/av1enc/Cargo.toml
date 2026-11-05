@@ -12,4 +12,4 @@ workspace = true
 [dependencies]
 
 [dev-dependencies]
-framesmith-av1 = { workspace = true }
+filmcraft-av1 = { workspace = true }

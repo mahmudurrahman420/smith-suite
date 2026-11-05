@@ -12,7 +12,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.cellsmith.png")),
     accent: Some([0x1f, 0x9d, 0x55]),
-    ..craft_update::suite::CELLSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("cellsmith", "Cellsmith", "Spreadsheets and data", "mahmudurrahman420/smith-suite")
 };
 
 pub mod backstage;

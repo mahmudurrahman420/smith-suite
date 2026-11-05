@@ -1467,7 +1467,7 @@ dependencies = [
 name = "motionsmith-av1enc"
 version = "0.21.0"
 dependencies = [
- "framesmith-av1",
+ "filmcraft-av1",
 ]
 
 [[package]]
@@ -1571,12 +1571,12 @@ dependencies = [
  "motionsmith-time",
  "motionsmith-vp9enc",
  "exr",
- "framesmith-aac",
- "framesmith-h264enc",
- "framesmith-isobmff",
- "framesmith-opus",
- "framesmith-prores",
- "framesmith-vp9",
+ "filmcraft-aac",
+ "filmcraft-h264enc",
+ "filmcraft-isobmff",
+ "filmcraft-opus",
+ "filmcraft-prores",
+ "filmcraft-vp9",
  "gif",
  "image",
  "log",
@@ -1637,7 +1637,7 @@ dependencies = [
 name = "motionsmith-hevcenc"
 version = "0.21.0"
 dependencies = [
- "framesmith-hevc",
+ "filmcraft-hevc",
 ]
 
 [[package]]
@@ -1673,12 +1673,12 @@ dependencies = [
  "motionsmith-keyframe",
  "motionsmith-project",
  "motionsmith-time",
- "framesmith-color",
- "framesmith-geom",
- "framesmith-interchange",
- "framesmith-media",
- "framesmith-project",
- "framesmith-time",
+ "filmcraft-color",
+ "filmcraft-geom",
+ "filmcraft-interchange",
+ "filmcraft-media",
+ "filmcraft-project",
+ "filmcraft-time",
  "serde",
  "serde_json",
  "thiserror 2.0.21",
@@ -1729,15 +1729,15 @@ dependencies = [
  "motionsmith-svg",
  "motionsmith-time",
  "exr",
- "framesmith-aac",
- "framesmith-codecs",
- "framesmith-color",
- "framesmith-frame",
- "framesmith-isobmff",
- "framesmith-matroska",
- "framesmith-media",
- "framesmith-mpegts",
- "framesmith-time",
+ "filmcraft-aac",
+ "filmcraft-codecs",
+ "filmcraft-color",
+ "filmcraft-frame",
+ "filmcraft-isobmff",
+ "filmcraft-matroska",
+ "filmcraft-media",
+ "filmcraft-mpegts",
+ "filmcraft-time",
  "gif",
  "image",
  "log",
@@ -1763,7 +1763,7 @@ dependencies = [
 name = "motionsmith-opusenc"
 version = "0.21.0"
 dependencies = [
- "framesmith-opus",
+ "filmcraft-opus",
 ]
 
 [[package]]
@@ -2406,86 +2406,86 @@ dependencies = [
 ]
 
 [[package]]
-name = "framesmith-aac"
+name = "filmcraft-aac"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-ac3"
+name = "filmcraft-ac3"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-apv"
+name = "filmcraft-apv"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-av1"
+name = "filmcraft-av1"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-avi"
+name = "filmcraft-avi"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-bitstream"
+name = "filmcraft-bitstream"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-cfb"
+name = "filmcraft-cfb"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-codecs"
+name = "filmcraft-codecs"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-aac",
- "framesmith-ac3",
- "framesmith-apv",
- "framesmith-av1",
- "framesmith-avi",
- "framesmith-bitstream",
- "framesmith-color",
- "framesmith-dnx",
- "framesmith-frame",
- "framesmith-h264",
- "framesmith-hevc",
- "framesmith-isobmff",
- "framesmith-matroska",
- "framesmith-media",
- "framesmith-mpa",
- "framesmith-mpeg2v",
- "framesmith-mpegts",
- "framesmith-mxf",
- "framesmith-ogg",
- "framesmith-opus",
- "framesmith-prores",
- "framesmith-time",
- "framesmith-vp8",
- "framesmith-vp9",
+ "filmcraft-aac",
+ "filmcraft-ac3",
+ "filmcraft-apv",
+ "filmcraft-av1",
+ "filmcraft-avi",
+ "filmcraft-bitstream",
+ "filmcraft-color",
+ "filmcraft-dnx",
+ "filmcraft-frame",
+ "filmcraft-h264",
+ "filmcraft-hevc",
+ "filmcraft-isobmff",
+ "filmcraft-matroska",
+ "filmcraft-media",
+ "filmcraft-mpa",
+ "filmcraft-mpeg2v",
+ "filmcraft-mpegts",
+ "filmcraft-mxf",
+ "filmcraft-ogg",
+ "filmcraft-opus",
+ "filmcraft-prores",
+ "filmcraft-time",
+ "filmcraft-vp8",
+ "filmcraft-vp9",
  "image",
  "log",
  "rayon",
@@ -2495,92 +2495,92 @@ dependencies = [
 ]
 
 [[package]]
-name = "framesmith-color"
+name = "filmcraft-color"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "serde",
 ]
 
 [[package]]
-name = "framesmith-dng"
+name = "filmcraft-dng"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-dnx"
+name = "filmcraft-dnx"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-frame"
+name = "filmcraft-frame"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-color",
- "framesmith-time",
+ "filmcraft-color",
+ "filmcraft-time",
  "rayon",
  "serde",
 ]
 
 [[package]]
-name = "framesmith-geom"
+name = "filmcraft-geom"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "serde",
 ]
 
 [[package]]
-name = "framesmith-h264"
+name = "filmcraft-h264"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-h264enc"
+name = "filmcraft-h264enc"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-hevc"
+name = "filmcraft-hevc"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-interchange"
+name = "filmcraft-interchange"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-cfb",
- "framesmith-color",
- "framesmith-geom",
- "framesmith-media",
- "framesmith-project",
- "framesmith-time",
+ "filmcraft-cfb",
+ "filmcraft-color",
+ "filmcraft-geom",
+ "filmcraft-media",
+ "filmcraft-project",
+ "filmcraft-time",
  "roxmltree",
  "serde",
  "serde_json",
@@ -2588,28 +2588,28 @@ dependencies = [
 ]
 
 [[package]]
-name = "framesmith-isobmff"
+name = "filmcraft-isobmff"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-matroska"
+name = "filmcraft-matroska"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-media"
+name = "filmcraft-media"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-color",
- "framesmith-dng",
- "framesmith-frame",
- "framesmith-time",
+ "filmcraft-color",
+ "filmcraft-dng",
+ "filmcraft-frame",
+ "filmcraft-time",
  "image",
  "rayon",
  "serde",
@@ -2617,92 +2617,92 @@ dependencies = [
 ]
 
 [[package]]
-name = "framesmith-mpa"
+name = "filmcraft-mpa"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-mpeg2v"
+name = "filmcraft-mpeg2v"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-mpegts"
+name = "filmcraft-mpegts"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-mxf"
+name = "filmcraft-mxf"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-ogg"
+name = "filmcraft-ogg"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-opus"
+name = "filmcraft-opus"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 
 [[package]]
-name = "framesmith-project"
+name = "filmcraft-project"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-color",
- "framesmith-geom",
- "framesmith-media",
- "framesmith-time",
+ "filmcraft-color",
+ "filmcraft-geom",
+ "filmcraft-media",
+ "filmcraft-time",
  "serde",
  "serde_json",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-prores"
+name = "filmcraft-prores"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-time"
+name = "filmcraft-time"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "serde",
 ]
 
 [[package]]
-name = "framesmith-vp8"
+name = "filmcraft-vp8"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
  "thiserror 2.0.21",
 ]
 
 [[package]]
-name = "framesmith-vp9"
+name = "filmcraft-vp9"
 version = "0.8.0"
-source = "git+https://github.com/mahmudurrahman420/framesmith?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
+source = "git+https://github.com/storytold/filmcraft?rev=09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5#09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5"
 dependencies = [
- "framesmith-bitstream",
+ "filmcraft-bitstream",
  "rayon",
  "thiserror 2.0.21",
 ]

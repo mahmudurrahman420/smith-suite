@@ -9,8 +9,8 @@
 use motionsmith_project::{AlphaMode, Footage};
 use motionsmith_raster::{Image, Px};
 use motionsmith_render::FloatCurve;
-use framesmith_color::{Matrix, Range};
-use framesmith_frame::{Chroma, PixelData, VideoFrame};
+use filmcraft_color::{Matrix, Range};
+use filmcraft_frame::{Chroma, PixelData, VideoFrame};
 use rayon::prelude::*;
 
 /// How to turn a (colour, alpha) sample into a premultiplied pixel.
@@ -446,23 +446,23 @@ mod tests {
     use super::*;
     use std::sync::Arc;
 
-    fn yuv_frame(y: u8, u: u8, v: u8, color: framesmith_color::ColorInfo) -> VideoFrame {
+    fn yuv_frame(y: u8, u: u8, v: u8, color: filmcraft_color::ColorInfo) -> VideoFrame {
         VideoFrame {
             width: 4,
             height: 2,
             data: PixelData::Yuv8 { planes: [Arc::new(vec![y; 8]), Arc::new(vec![u; 2]), Arc::new(vec![v; 2])], chroma: Chroma::C420, alpha: None },
             color,
             par: (1, 1),
-            pts: framesmith_time::Tick::ZERO,
+            pts: filmcraft_time::Tick::ZERO,
         }
     }
 
     #[test]
     fn limited_range_grey_and_white() {
         let op = AlphaOp::new(AlphaMode::Straight, [0.0; 3]);
-        let img = frame_to_image(&yuv_frame(235, 128, 128, framesmith_color::ColorInfo::REC709), op);
+        let img = frame_to_image(&yuv_frame(235, 128, 128, filmcraft_color::ColorInfo::REC709), op);
         assert!(img.data.iter().all(|p| (p[0] - 1.0).abs() < 1e-5 && (p[1] - 1.0).abs() < 1e-5 && p[3] == 1.0));
-        let img = frame_to_image(&yuv_frame(126, 128, 128, framesmith_color::ColorInfo::REC709), op);
+        let img = frame_to_image(&yuv_frame(126, 128, 128, filmcraft_color::ColorInfo::REC709), op);
         assert!((img.data[0][0] - 110.0 / 219.0).abs() < 1e-5);
     }
 
@@ -479,9 +479,9 @@ mod tests {
                 chroma: Chroma::C420,
                 alpha: None,
             },
-            color: framesmith_color::ColorInfo::REC709,
+            color: filmcraft_color::ColorInfo::REC709,
             par: (1, 1),
-            pts: framesmith_time::Tick::ZERO,
+            pts: filmcraft_time::Tick::ZERO,
         }
     }
 
@@ -499,7 +499,7 @@ mod tests {
         // More than half the size, odd sizes, other chroma layouts: convert the full frame.
         assert!(frame_to_image_scaled(&f, 49, 32).is_none());
         assert!(frame_to_image_scaled(&smooth_420(95, 64), 40, 30).is_none());
-        assert!(frame_to_image_scaled(&yuv_frame(100, 128, 128, framesmith_color::ColorInfo::REC709), 2, 1).is_some());
+        assert!(frame_to_image_scaled(&yuv_frame(100, 128, 128, filmcraft_color::ColorInfo::REC709), 2, 1).is_some());
         let mut f444 = smooth_420(96, 64);
         if let PixelData::Yuv8 { chroma, .. } = &mut f444.data {
             *chroma = Chroma::C444;
@@ -511,7 +511,7 @@ mod tests {
     fn bt709_red() {
         // 8-bit limited BT.709 red: Y 63, Cb 102, Cr 240
         let op = AlphaOp::new(AlphaMode::Straight, [0.0; 3]);
-        let p = frame_to_image(&yuv_frame(63, 102, 240, framesmith_color::ColorInfo::REC709), op).data[0];
+        let p = frame_to_image(&yuv_frame(63, 102, 240, filmcraft_color::ColorInfo::REC709), op).data[0];
         assert!(p[0] > 0.98 && p[1] < 0.02 && p[2] < 0.02, "{p:?}");
     }
 
@@ -549,9 +549,9 @@ mod tests {
                 chroma: Chroma::C420,
                 alpha: None,
             },
-            color: framesmith_color::ColorInfo::REC709,
+            color: filmcraft_color::ColorInfo::REC709,
             par: (1, 1),
-            pts: framesmith_time::Tick::ZERO,
+            pts: filmcraft_time::Tick::ZERO,
         };
         let op = AlphaOp::new(AlphaMode::Straight, [0.0; 3]);
         for _ in 0..3 {

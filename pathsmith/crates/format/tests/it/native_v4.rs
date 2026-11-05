@@ -111,8 +111,8 @@ fn repeated_members_open_only_when_skipped() {
     let document = serde_json::from_str::<Value>(&text).unwrap()["document"].to_string();
     let with = |members: &str| text.replacen('{', &format!("{{{members},"), 1);
     let contents_reads = |s: &str| {
-        let contents = craft_pathsmith_format::Contents::<serde::de::IgnoredAny>::read(s.as_bytes()).is_ok();
-        assert_eq!(craft_pathsmith_format::File::<serde::de::IgnoredAny>::read(s.as_bytes()).is_ok(), contents, "{s}");
+        let contents = craft_vectorcraft_format::Contents::<serde::de::IgnoredAny>::read(s.as_bytes()).is_ok();
+        assert_eq!(craft_vectorcraft_format::File::<serde::de::IgnoredAny>::read(s.as_bytes()).is_ok(), contents, "{s}");
         contents
     };
     let skipped = with(r#""preview":5,"preview":{"mime":"image/png","data":"AA=="},"generator":[],"generator":"x","pdf":{},"pdf":null"#);
@@ -154,7 +154,7 @@ fn a_file_read_back_saves_to_the_same_bytes() {
                 let first = save_with(&d, &o).unwrap();
                 if !compress {
                     let json = pathsmith_format::json_part(&first);
-                    let env = craft_pathsmith_format::File::<serde::de::IgnoredAny>::read(json).unwrap();
+                    let env = craft_vectorcraft_format::File::<serde::de::IgnoredAny>::read(json).unwrap();
                     assert_eq!((env.version, env.images.len(), env.profiles.len()), (version, 2, 2));
                     assert!(env.preview.is_some() && env.pdf.is_some());
                 }

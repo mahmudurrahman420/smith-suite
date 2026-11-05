@@ -1083,7 +1083,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "craft-pathsmith-format"
+name = "craft-vectorcraft-format"
 version = "0.1.0"
 source = "git+https://github.com/storytold/craft-libs?rev=9be9a63782298ab59cd9b7a42ee9cba4f42a5ccb#9be9a63782298ab59cd9b7a42ee9cba4f42a5ccb"
 dependencies = [
@@ -6295,7 +6295,7 @@ dependencies = [
 name = "pathsmith-format"
 version = "0.21.0"
 dependencies = [
- "craft-pathsmith-format",
+ "craft-vectorcraft-format",
  "flate2",
  "proptest",
  "rustix 1.1.6",

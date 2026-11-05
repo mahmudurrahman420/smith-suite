@@ -14,10 +14,10 @@ motionsmith-time = { workspace = true }
 motionsmith-project = { workspace = true }
 motionsmith-raster = { workspace = true }
 motionsmith-render = { workspace = true }
-framesmith-h264enc = { workspace = true }
-framesmith-prores = { workspace = true }
-framesmith-aac = { workspace = true }
-framesmith-isobmff = { workspace = true }
+filmcraft-h264enc = { workspace = true }
+filmcraft-prores = { workspace = true }
+filmcraft-aac = { workspace = true }
+filmcraft-isobmff = { workspace = true }
 motionsmith-opusenc = { workspace = true }
 motionsmith-vp9enc = { workspace = true }
 motionsmith-hevcenc = { workspace = true }
@@ -34,6 +34,6 @@ log = { workspace = true }
 motionsmith-media = { workspace = true }
 motionsmith-effects = { workspace = true }
 motionsmith-color = { workspace = true }
-framesmith-opus = { workspace = true }
-framesmith-vp9 = { workspace = true }
+filmcraft-opus = { workspace = true }
+filmcraft-vp9 = { workspace = true }
 motionsmith-keyframe = { workspace = true }

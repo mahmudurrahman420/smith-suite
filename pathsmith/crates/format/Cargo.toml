@@ -10,7 +10,7 @@ workspace = true
 
 [dependencies]
 pathsmith-doc = { workspace = true }
-craft-pathsmith-format = { workspace = true }
+craft-vectorcraft-format = { workspace = true }
 serde ={ workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }

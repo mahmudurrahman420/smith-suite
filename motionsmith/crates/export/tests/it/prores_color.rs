@@ -12,7 +12,7 @@ use motionsmith_media::MediaPool;
 use motionsmith_project::{ColorSpace, Comp, ItemKind, LayerSource, Project, Solid, build};
 use motionsmith_render::{FootageSource, NoFootage};
 use motionsmith_time::{FrameRate, Tick};
-use framesmith_isobmff::{ColorInfo, TrackKind};
+use filmcraft_isobmff::{ColorInfo, TrackKind};
 
 struct Row {
     name: &'static str,
@@ -114,7 +114,7 @@ fn prores_colr_describes_the_frames() {
         render(row, &path);
 
         let bytes = std::fs::read(&path).expect("read movie");
-        let mov = framesmith_isobmff::open(bytes.as_slice()).expect("demux");
+        let mov = filmcraft_isobmff::open(bytes.as_slice()).expect("demux");
         let track = mov.tracks.iter().find(|t| t.kind == TrackKind::Video).expect("video track");
         let [primaries, transfer, matrix] = row.codes;
         let colr = track.entries[0].video.as_ref().and_then(|v| v.color.clone());

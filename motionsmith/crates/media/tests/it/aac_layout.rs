@@ -11,7 +11,7 @@ use std::sync::Arc;
 
 use motionsmith_media::{MediaPool, probe, probe_bytes};
 use motionsmith_time::Tick;
-use framesmith_aac::{AudioSpecificConfig, Encoder, EncoderConfig, ProgramConfig};
+use filmcraft_aac::{AudioSpecificConfig, Encoder, EncoderConfig, ProgramConfig};
 
 const RATE: u32 = 48_000;
 /// Tone frequencies by channel; an LFE gets [`LFE_TONE`], which its element can carry.
@@ -115,7 +115,7 @@ fn mp4(asc: Vec<u8>, channels: u32, units: &[Vec<u8>]) -> Vec<u8> {
 /// As [`mp4`], after an audio track with the configuration and channel count `empty` and no
 /// samples, if any.
 fn mp4_after(empty: Option<(Vec<u8>, u32)>, asc: Vec<u8>, channels: u32, units: &[Vec<u8>]) -> Vec<u8> {
-    use framesmith_isobmff::{Brand, Mp4Writer, SampleEntry, TrackConfig, WriteSample, WriterOptions};
+    use filmcraft_isobmff::{Brand, Mp4Writer, SampleEntry, TrackConfig, WriteSample, WriterOptions};
     let mut w = Mp4Writer::new(Cursor::new(Vec::new()), WriterOptions::new(Brand::Mp4)).expect("writer");
     if let Some((asc, channels)) = empty {
         w.add_track(TrackConfig::new(SampleEntry::aac(asc, channels, RATE), RATE)).expect("empty track");
@@ -134,7 +134,7 @@ fn mkv(asc: Vec<u8>, channels: u32, units: &[Vec<u8>]) -> Vec<u8> {
 /// As [`mkv`], after an audio track with the configuration and channel count `empty` and no
 /// frames, if any.
 fn mkv_after(empty: Option<(Vec<u8>, u32)>, asc: Vec<u8>, channels: u32, units: &[Vec<u8>]) -> Vec<u8> {
-    use framesmith_matroska::{MkvWriter, MuxOptions, TrackKind, TrackSpec};
+    use filmcraft_matroska::{MkvWriter, MuxOptions, TrackKind, TrackSpec};
     let track = |asc: Vec<u8>, channels: u32| {
         let mut t = TrackSpec::new(TrackKind::Audio, "A_AAC");
         t.codec_private = asc;
@@ -200,7 +200,7 @@ fn lfe_is_coded(case: &Case, bytes: Vec<u8>) {
     if !case.content.contains(&Lfe) {
         return;
     }
-    let src = framesmith_codecs::open_bytes("lfe.mp4", bytes.into()).expect("open");
+    let src = filmcraft_codecs::open_bytes("lfe.mp4", bytes.into()).expect("open");
     let buf = src.audio(24_000, RATE as usize, RATE).expect("decode");
     let best = buf.channels.iter().map(|ch| amp(&ch.iter().flat_map(|&v| [v, v]).collect::<Vec<_>>(), 0, LFE_TONE)).fold(0.0, f64::max);
     assert!(best > 0.8 * f64::from(AMP), "{}: the LFE tone is coded ({best:.4})", case.name);

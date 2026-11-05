@@ -15,7 +15,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.pixelsmith.png")),
     accent: Some([0x2f, 0x7b, 0xf5]),
-    ..craft_update::suite::PIXELSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("pixelsmith", "Pixelsmith", "Image editing", "mahmudurrahman420/smith-suite")
 };
 
 /// Translate a string literal into the current UI language: `tl!("Image Size…")`.

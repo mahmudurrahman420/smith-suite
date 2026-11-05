@@ -48,9 +48,9 @@ pub enum MediaError {
 
 pub type Result<T> = std::result::Result<T, MediaError>;
 
-impl From<framesmith_media::MediaError> for MediaError {
-    fn from(e: framesmith_media::MediaError) -> Self {
-        use framesmith_media::MediaError as F;
+impl From<filmcraft_media::MediaError> for MediaError {
+    fn from(e: filmcraft_media::MediaError) -> Self {
+        use filmcraft_media::MediaError as F;
         match e {
             F::Unsupported(s) => MediaError::Unsupported(s),
             F::Io(s) | F::Offline(s) => MediaError::Io(s),
@@ -64,7 +64,7 @@ impl From<framesmith_media::MediaError> for MediaError {
 pub const STILL_EXTENSIONS: &[&str] =
     &["png", "jpg", "jpeg", "gif", "webp", "tif", "tiff", "bmp", "exr", "tga", "hdr", "psd", "psb", "svg", "pdf", "ai", "eps"];
 /// File extensions recognised as audio-only files.
-pub const AUDIO_EXTENSIONS: &[&str] = framesmith_media::AUDIO_EXTENSIONS;
+pub const AUDIO_EXTENSIONS: &[&str] = filmcraft_media::AUDIO_EXTENSIONS;
 pub use motionsmith_project::VIDEO_EXTENSIONS;
 
 /// File extensions recognised as 3D models (Advanced 3D model layers).
@@ -113,7 +113,7 @@ pub(crate) fn still_format(path: &str, bytes: &[u8]) -> Option<image::ImageForma
     }
 }
 
-pub(crate) fn rate_from_fc(r: framesmith_time::FrameRate) -> motionsmith_time::FrameRate {
+pub(crate) fn rate_from_fc(r: filmcraft_time::FrameRate) -> motionsmith_time::FrameRate {
     if r.num > 0 && r.den > 0 { motionsmith_time::FrameRate::new(r.num, r.den) } else { motionsmith_time::FrameRate::FPS_30 }
 }
 

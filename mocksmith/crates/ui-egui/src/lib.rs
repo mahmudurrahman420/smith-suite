@@ -11,7 +11,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.mocksmith.png")),
     accent: Some([0x02, 0xda, 0x96]),
-    ..craft_update::suite::MOCKSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("mocksmith", "Mocksmith", "Interface design and prototyping", "mahmudurrahman420/smith-suite")
 };
 
 pub mod a11y;

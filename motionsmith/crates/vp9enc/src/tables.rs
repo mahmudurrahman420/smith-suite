@@ -1,5 +1,5 @@
 //! Tables from the VP9 Bitstream & Decoding Process Specification v0.6 (section 10), as
-//! transcribed in Framesmith's first-party decoder `framesmith-vp9` (MIT OR Apache-2.0, the same
+//! transcribed in Framesmith's first-party decoder `filmcraft-vp9` (MIT OR Apache-2.0, the same
 //! licence as this crate).
 
 pub const DC_QLOOKUP: [i32; 256] = [

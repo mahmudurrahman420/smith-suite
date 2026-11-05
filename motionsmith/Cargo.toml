@@ -83,29 +83,29 @@ tempfile = "3.27"
 
 # media codecs + containers: Framesmith's pure-Rust crates, pinned to a revision (plan/adr/0001).
 # Only `crates/media`, `crates/export` and `crates/interchange` may depend on these.
-framesmith-codecs = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-media = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-frame = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-color = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-time = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-codecs = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-media = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-frame = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-color = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-time = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 # encoders + muxer (crates/export)
-framesmith-h264enc = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-prores = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-aac = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-isobmff = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-h264enc = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-prores = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-aac = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-isobmff = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 # container headers read for AAC channel layouts (crates/media)
-framesmith-matroska = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-mpegts = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-matroska = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-mpegts = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 # decoder used as the round-trip oracle of motionsmith-opusenc (crates/export dev-dependency)
-framesmith-opus = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-vp9 = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-opus = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-vp9 = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 # decoders used as the round-trip oracles of motionsmith-hevcenc / motionsmith-av1enc (dev-dependencies only)
-framesmith-hevc = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-av1 = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-hevc = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-av1 = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 # timeline interchange (EDL, FCP7 XML, FCPXML, OTIO) for Premiere Pro interop (crates/interchange only)
-framesmith-interchange = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-project = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
-framesmith-geom = { git = "https://github.com/mahmudurrahman420/framesmith", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-interchange = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-project = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
+filmcraft-geom = { git = "https://github.com/storytold/filmcraft", rev = "09aaf9bf15d510eda1c413c0ccabb1d7e08b41c5" }
 
 # gpu (the same wgpu eframe / egui-wgpu use)
 wgpu = { version = "30.0.1", features = ["fragile-send-sync-non-atomic-wasm"] }
@@ -129,18 +129,18 @@ cpal = "0.16"
 sys-locale = "0.3"
 
 # Local co-development against a Framesmith checkout next to this repo: uncomment.
-# [patch."https://github.com/mahmudurrahman420/framesmith"]
-# framesmith-codecs = { path = "../framesmith/crates/codecs" }
-# framesmith-media = { path = "../framesmith/crates/media" }
-# framesmith-frame = { path = "../framesmith/crates/frame" }
-# framesmith-color = { path = "../framesmith/crates/color" }
-# framesmith-time = { path = "../framesmith/crates/time" }
-# framesmith-h264enc = { path = "../framesmith/crates/h264enc" }
-# framesmith-prores = { path = "../framesmith/crates/prores" }
-# framesmith-aac = { path = "../framesmith/crates/aac" }
-# framesmith-isobmff = { path = "../framesmith/crates/isobmff" }
-# framesmith-matroska = { path = "../framesmith/crates/matroska" }
-# framesmith-mpegts = { path = "../framesmith/crates/mpegts" }
+# [patch."https://github.com/storytold/filmcraft"]
+# filmcraft-codecs = { path = "../framesmith/crates/codecs" }
+# filmcraft-media = { path = "../framesmith/crates/media" }
+# filmcraft-frame = { path = "../framesmith/crates/frame" }
+# filmcraft-color = { path = "../framesmith/crates/color" }
+# filmcraft-time = { path = "../framesmith/crates/time" }
+# filmcraft-h264enc = { path = "../framesmith/crates/h264enc" }
+# filmcraft-prores = { path = "../framesmith/crates/prores" }
+# filmcraft-aac = { path = "../framesmith/crates/aac" }
+# filmcraft-isobmff = { path = "../framesmith/crates/isobmff" }
+# filmcraft-matroska = { path = "../framesmith/crates/matroska" }
+# filmcraft-mpegts = { path = "../framesmith/crates/mpegts" }
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
@@ -208,31 +208,31 @@ opt-level = 3
 opt-level = 3
 
 # Framesmith codec hot loops (same settings as Framesmith's own workspace).
-[profile.dev.package.framesmith-h264]
+[profile.dev.package.filmcraft-h264]
 opt-level = 3
 
-[profile.dev.package.framesmith-h264enc]
+[profile.dev.package.filmcraft-h264enc]
 opt-level = 3
 
-[profile.dev.package.framesmith-hevc]
+[profile.dev.package.filmcraft-hevc]
 opt-level = 3
 
-[profile.dev.package.framesmith-vp9]
+[profile.dev.package.filmcraft-vp9]
 opt-level = 3
 
-[profile.dev.package.framesmith-prores]
+[profile.dev.package.filmcraft-prores]
 opt-level = 3
 
-[profile.dev.package.framesmith-dnx]
+[profile.dev.package.filmcraft-dnx]
 opt-level = 3
 
-[profile.dev.package.framesmith-av1]
+[profile.dev.package.filmcraft-av1]
 opt-level = 3
 
-[profile.dev.package.framesmith-aac]
+[profile.dev.package.filmcraft-aac]
 opt-level = 3
 
-[profile.dev.package.framesmith-opus]
+[profile.dev.package.filmcraft-opus]
 opt-level = 3
 
 [profile.release]

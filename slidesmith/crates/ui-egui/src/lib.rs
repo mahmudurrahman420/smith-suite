@@ -12,7 +12,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.slidesmith.png")),
     accent: Some([0xf0, 0x7a, 0x1e]),
-    ..craft_update::suite::SLIDESMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("slidesmith", "Slidesmith", "Presentations and slide decks", "mahmudurrahman420/smith-suite")
 };
 
 pub mod backstage;

@@ -19,7 +19,7 @@
 use std::f32::consts::FRAC_1_SQRT_2;
 use std::sync::Arc;
 
-use framesmith_aac::{AudioSpecificConfig, ProgramConfig};
+use filmcraft_aac::{AudioSpecificConfig, ProgramConfig};
 
 /// A source channel's contribution to the left and right outputs, before normalisation.
 pub type Pair = [f32; 2];

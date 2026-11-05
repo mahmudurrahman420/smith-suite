@@ -20,15 +20,15 @@ motionsmith-psd = { workspace = true }
 motionsmith-svg = { workspace = true }
 motionsmith-pdf = { workspace = true }
 motionsmith-model = { workspace = true }
-framesmith-codecs = { workspace = true }
-framesmith-media = { workspace = true }
-framesmith-aac = { workspace = true }
-framesmith-isobmff = { workspace = true }
-framesmith-matroska = { workspace = true }
-framesmith-mpegts = { workspace = true }
-framesmith-frame = { workspace = true }
-framesmith-color = { workspace = true }
-framesmith-time = { workspace = true }
+filmcraft-codecs = { workspace = true }
+filmcraft-media = { workspace = true }
+filmcraft-aac = { workspace = true }
+filmcraft-isobmff = { workspace = true }
+filmcraft-matroska = { workspace = true }
+filmcraft-mpegts = { workspace = true }
+filmcraft-frame = { workspace = true }
+filmcraft-color = { workspace = true }
+filmcraft-time = { workspace = true }
 exr = { workspace = true }
 gif = { workspace = true }
 image = { workspace = true, features = ["gif", "webp", "tiff", "bmp", "exr", "tga", "hdr"] }

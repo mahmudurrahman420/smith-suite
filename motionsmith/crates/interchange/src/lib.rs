@@ -8,7 +8,7 @@
 //! - **CMX 3600 EDL** (`.edl`);
 //! - **AAF** (`.aaf`) and **OMF** (`.omf`) (embedded audio is not extracted).
 //!
-//! Parsing and writing is Framesmith's `framesmith-interchange` (our first-party sibling project);
+//! Parsing and writing is Framesmith's `filmcraft-interchange` (our first-party sibling project);
 //! this crate maps its timeline model to compositions and back:
 //!
 //! - [`import`]: sequences → compositions (size, rate, duration, pixel aspect, start timecode,
@@ -39,13 +39,13 @@ mod tests;
 pub use export::{ExportOptions, ExportOutput, PrecompMode, PrerenderMode, Prerendered, export, plan_prerender, prerender_reason};
 pub use import::{ImportOptions, ImportResult, import};
 
-pub use framesmith_geom as fc_geom;
+pub use filmcraft_geom as fc_geom;
 /// Framesmith's interchange crate (format readers/writers) and timeline model, re-exported so
 /// tests and tools can build documents in code.
-pub use framesmith_interchange as fc;
-pub use framesmith_media as fc_media;
-pub use framesmith_project as fc_project;
-pub use framesmith_time as fc_time;
+pub use filmcraft_interchange as fc;
+pub use filmcraft_media as fc_media;
+pub use filmcraft_project as fc_project;
+pub use filmcraft_time as fc_time;
 
 use serde::{Deserialize, Serialize};
 
@@ -118,34 +118,34 @@ impl TimelineFormat {
         if ext.contains('/') || ext.contains('\\') {
             return None;
         }
-        framesmith_interchange::Format::from_extension(ext).map(TimelineFormat::from_fc)
+        filmcraft_interchange::Format::from_extension(ext).map(TimelineFormat::from_fc)
     }
 
     /// Sniff a document (bytes first, the extension as a hint for ambiguous `.xml`).
     pub fn detect(bytes: &[u8], path: Option<&str>) -> Option<TimelineFormat> {
         let ext = path.and_then(|p| p.rsplit_once('.')).map(|(_, e)| e);
-        framesmith_interchange::detect(bytes, ext).map(TimelineFormat::from_fc)
+        filmcraft_interchange::detect(bytes, ext).map(TimelineFormat::from_fc)
     }
 
-    pub(crate) fn fc(self) -> framesmith_interchange::Format {
+    pub(crate) fn fc(self) -> filmcraft_interchange::Format {
         match self {
-            TimelineFormat::Fcp7Xml => framesmith_interchange::Format::Fcp7Xml,
-            TimelineFormat::Fcpxml => framesmith_interchange::Format::Fcpxml,
-            TimelineFormat::Otio => framesmith_interchange::Format::Otio,
-            TimelineFormat::Edl => framesmith_interchange::Format::Edl,
-            TimelineFormat::Aaf => framesmith_interchange::Format::Aaf,
-            TimelineFormat::Omf => framesmith_interchange::Format::Omf,
+            TimelineFormat::Fcp7Xml => filmcraft_interchange::Format::Fcp7Xml,
+            TimelineFormat::Fcpxml => filmcraft_interchange::Format::Fcpxml,
+            TimelineFormat::Otio => filmcraft_interchange::Format::Otio,
+            TimelineFormat::Edl => filmcraft_interchange::Format::Edl,
+            TimelineFormat::Aaf => filmcraft_interchange::Format::Aaf,
+            TimelineFormat::Omf => filmcraft_interchange::Format::Omf,
         }
     }
 
-    pub(crate) fn from_fc(f: framesmith_interchange::Format) -> TimelineFormat {
+    pub(crate) fn from_fc(f: filmcraft_interchange::Format) -> TimelineFormat {
         match f {
-            framesmith_interchange::Format::Fcp7Xml => TimelineFormat::Fcp7Xml,
-            framesmith_interchange::Format::Fcpxml => TimelineFormat::Fcpxml,
-            framesmith_interchange::Format::Otio => TimelineFormat::Otio,
-            framesmith_interchange::Format::Edl => TimelineFormat::Edl,
-            framesmith_interchange::Format::Aaf => TimelineFormat::Aaf,
-            framesmith_interchange::Format::Omf => TimelineFormat::Omf,
+            filmcraft_interchange::Format::Fcp7Xml => TimelineFormat::Fcp7Xml,
+            filmcraft_interchange::Format::Fcpxml => TimelineFormat::Fcpxml,
+            filmcraft_interchange::Format::Otio => TimelineFormat::Otio,
+            filmcraft_interchange::Format::Edl => TimelineFormat::Edl,
+            filmcraft_interchange::Format::Aaf => TimelineFormat::Aaf,
+            filmcraft_interchange::Format::Omf => TimelineFormat::Omf,
         }
     }
 }
@@ -153,7 +153,7 @@ impl TimelineFormat {
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error("{0}")]
-    Interchange(#[from] framesmith_interchange::Error),
+    Interchange(#[from] filmcraft_interchange::Error),
     #[error("not a timeline document (expected Final Cut Pro XML, FCPXML, OpenTimelineIO or EDL)")]
     UnknownFormat,
     #[error("no composition {0}")]
@@ -168,23 +168,23 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 // ---------------------------------------------------------------- shared conversions
 
-pub(crate) fn rate_in(r: framesmith_time::FrameRate) -> motionsmith_time::FrameRate {
+pub(crate) fn rate_in(r: filmcraft_time::FrameRate) -> motionsmith_time::FrameRate {
     if r.num <= 0 || r.den <= 0 { motionsmith_time::FrameRate::new(30, 1) } else { motionsmith_time::FrameRate::new(r.num, r.den) }
 }
 
-pub(crate) fn rate_out(r: motionsmith_time::FrameRate) -> framesmith_time::FrameRate {
-    framesmith_time::FrameRate { num: r.num, den: r.den }
+pub(crate) fn rate_out(r: motionsmith_time::FrameRate) -> filmcraft_time::FrameRate {
+    filmcraft_time::FrameRate { num: r.num, den: r.den }
 }
 
 // Both projects count time in the same ticks (254 016 000 000 per second).
-const _: () = assert!(framesmith_time::TICKS_PER_SECOND == motionsmith_time::TICKS_PER_SECOND);
+const _: () = assert!(filmcraft_time::TICKS_PER_SECOND == motionsmith_time::TICKS_PER_SECOND);
 
-pub(crate) fn tick_in(t: framesmith_time::Tick) -> motionsmith_time::Tick {
+pub(crate) fn tick_in(t: filmcraft_time::Tick) -> motionsmith_time::Tick {
     motionsmith_time::Tick(t.0)
 }
 
-pub(crate) fn tick_out(t: motionsmith_time::Tick) -> framesmith_time::Tick {
-    framesmith_time::Tick(t.0)
+pub(crate) fn tick_out(t: motionsmith_time::Tick) -> filmcraft_time::Tick {
+    filmcraft_time::Tick(t.0)
 }
 
 /// A pixel aspect ratio as a small fraction (1.0 → 1:1, 0.9 → 9:10, 1.2121 → 40:33…).

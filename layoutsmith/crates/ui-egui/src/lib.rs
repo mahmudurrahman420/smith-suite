@@ -12,7 +12,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/io.github.mahmudurrahman420.layoutsmith.png")),
     accent: Some([0x7b, 0xb5, 0x1c]),
-    ..craft_update::suite::LAYOUTSMITH
+    developer: "Smith Suite",
+    ..craft_update::app::App::new("layoutsmith", "Layoutsmith", "Page layout and publishing", "mahmudurrahman420/smith-suite")
 };
 
 pub mod about;
