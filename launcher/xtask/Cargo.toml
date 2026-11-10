@@ -1,0 +1,19 @@
+[package]
+name = "xtask"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Build catalog.json from GitHub Releases"
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+chrono = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+smithcc-catalog = { path = "../crates/catalog" }

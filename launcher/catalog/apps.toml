@@ -1,0 +1,131 @@
+# Static facts about the 16 Smith Suite apps. The catalog workflow turns the latest
+# GitHub Release for each id into catalog.json. Icon paths are relative to the
+# suite repository root.
+
+[[app]]
+id = "pixelsmith"
+name = "Pixelsmith"
+tagline = "Image editing: layers, masks, type, PSD files"
+icon = "pixelsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.pixelsmith.png"
+color = "#31A8FF"
+monogram = "Ps"
+
+[[app]]
+id = "pathsmith"
+name = "Pathsmith"
+tagline = "Vector illustration"
+icon = "pathsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.pathsmith.png"
+color = "#FF7A1A"
+monogram = "Pt"
+
+[[app]]
+id = "rawsmith"
+name = "Rawsmith"
+tagline = "Photo library and raw development"
+icon = "rawsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.rawsmith.png"
+color = "#8E6CFF"
+monogram = "Rw"
+
+[[app]]
+id = "pagesmith"
+name = "Pagesmith"
+tagline = "Reading, organizing and protecting PDFs"
+icon = "pagesmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.pagesmith.png"
+color = "#FF4D4D"
+monogram = "Pg"
+
+[[app]]
+id = "motionsmith"
+name = "Motionsmith"
+tagline = "Motion graphics and visual effects"
+icon = "motionsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.motionsmith.png"
+color = "#9B8CFF"
+monogram = "Mt"
+
+[[app]]
+id = "layoutsmith"
+name = "Layoutsmith"
+tagline = "Page layout and publishing"
+icon = "layoutsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.layoutsmith.png"
+color = "#FF4F8B"
+monogram = "Ly"
+
+[[app]]
+id = "mocksmith"
+name = "Mocksmith"
+tagline = "Interface design and prototyping"
+icon = "mocksmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.mocksmith.png"
+color = "#C77DFF"
+monogram = "Mk"
+
+[[app]]
+id = "wordsmith"
+name = "Wordsmith"
+tagline = "Word processing and documents"
+icon = "wordsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.wordsmith.png"
+color = "#4C8DFF"
+monogram = "Wd"
+
+[[app]]
+id = "soundsmith"
+name = "Soundsmith"
+tagline = "Audio recording and editing"
+icon = "soundsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.soundsmith.png"
+color = "#1EC8A5"
+monogram = "Sd"
+
+[[app]]
+id = "slidesmith"
+name = "Slidesmith"
+tagline = "Presentations and slide decks"
+icon = "slidesmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.slidesmith.png"
+color = "#FF6A3D"
+monogram = "Ss"
+
+[[app]]
+id = "cadsmith"
+name = "CADsmith"
+tagline = "Computer-aided design"
+icon = "cadsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.cadsmith.png"
+color = "#F0A202"
+monogram = "Cd"
+
+[[app]]
+id = "cellsmith"
+name = "Cellsmith"
+tagline = "Spreadsheets and data"
+icon = "cellsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.cellsmith.png"
+color = "#3DDC84"
+monogram = "Cl"
+
+[[app]]
+id = "texsmith"
+name = "Texsmith"
+tagline = "3D texture painting"
+icon = "texsmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.texsmith.png"
+color = "#7C6BFF"
+monogram = "Tx"
+
+[[app]]
+id = "anysmith"
+name = "Anysmith"
+tagline = "See how any software works, then build your own"
+icon = "anysmith/assets/app-icon/hicolor/256x256/apps/io.github.mahmudurrahman420.anysmith.png"
+color = "#5B8CFF"
+monogram = "An"
+
+[[app]]
+id = "solidsmith"
+name = "Solidsmith"
+tagline = "Parametric 3D CAD"
+icon = "solidsmith/assets/branding/logo/solidsmith-mark-512.png"
+color = "#E8B84A"
+monogram = "3D"
+
+[[app]]
+id = "framesmith"
+name = "Frame Smith"
+tagline = "Video editing: timeline, colour, effects and export"
+icon = "framesmith/android/framesmith-icon-512.png"
+color = "#F07820"
+monogram = "Fr"

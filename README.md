@@ -22,14 +22,18 @@ Cargo workspace, docs and licence notices.
 | [Texsmith](texsmith/) | 3D texture painting |
 | [Anysmith](anysmith/) | See how any software works, then build your own |
 | [Solidsmith](solidsmith/) | Parametric 3D CAD |
-
-Video editing lives in its own repository, [Framesmith](https://github.com/mahmudurrahman420/framesmith).
+| [Frame Smith](framesmith/) | Video editing: timeline, colour, effects and export |
 
 ## Download for Windows
 
-Open **Actions → Build Windows app → Run workflow**, choose an app (or `all`), and download the `.exe`
-from the finished run's **Artifacts**. Builds are unsigned, so Windows may show "Windows protected your
-PC": click **More info → Run anyway**.
+The supported way to install the suite is [Smith Creative Cloud](launcher/), one launcher that signs
+you in and installs or updates any of the apps. See [launcher/RELEASING.md](launcher/RELEASING.md)
+for how a tag becomes an update.
+
+You can still build a single app by hand: open **Actions → Build Windows app → Run workflow**, choose
+an app (or `all`, which also builds the launcher), and download the `.exe` from the finished run's
+**Artifacts**. Builds are unsigned, so Windows may show "Windows protected your PC": click
+**More info → Run anyway**.
 
 ## Build from source
 

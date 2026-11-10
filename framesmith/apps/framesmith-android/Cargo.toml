@@ -1,0 +1,46 @@
+[package]
+name = "framesmith-android"
+description = "Framesmith for Android phones and tablets: the FilmCraft engine with a touch layout"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+# libframesmith.so, loaded by android.app.NativeActivity (android/app/src/main/AndroidManifest.xml)
+name = "framesmith"
+crate-type = ["cdylib", "rlib"]
+
+# The workspace lints, except `unsafe_code`: the JNI calls into the Android framework
+# (src/android/jni.rs) need `unsafe`, which only that module may use, with a `// SAFETY:` comment on
+# every block, as crates/platform does for the desktop's OS media APIs.
+[lints.rust]
+unsafe_code = "deny"
+
+[lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+undocumented_unsafe_blocks = "deny"
+
+[dependencies]
+filmcraft-engine = { workspace = true }
+filmcraft-export = { workspace = true }
+filmcraft-project = { workspace = true }
+filmcraft-render = { workspace = true }
+filmcraft-time = { workspace = true }
+filmcraft-gpu = { workspace = true }
+filmcraft-ui-egui = { workspace = true }
+egui = { workspace = true }
+log = { workspace = true }
+serde_json = { workspace = true }
+
+[target.'cfg(target_os = "android")'.dependencies]
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "android-native-activity"] }
+# AndroidApp (the NativeActivity glue) through the winit eframe runs on.
+winit = { version = "0.30", default-features = false, features = ["android-native-activity", "rwh_06"] }
+cpal = "0.16"
+# Vulkan on most phones, OpenGL ES where there is no usable Vulkan driver.
+wgpu = { version = "30", default-features = false, features = ["wgsl", "vulkan", "gles"] }
+jni = "0.21"
+android_logger = "0.15"

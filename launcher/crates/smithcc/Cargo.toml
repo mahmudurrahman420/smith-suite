@@ -1,0 +1,42 @@
+[package]
+name = "smithcc"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Smith Creative Cloud, the Windows launcher for the Smith Suite"
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "SmithCreativeCloud"
+path = "src/main.rs"
+
+[lib]
+name = "smithcc"
+path = "src/lib.rs"
+
+[dependencies]
+chrono = { workspace = true }
+clap = { version = "4", features = ["derive", "env"] }
+dirs = "6"
+eframe = { version = "0.37", default-features = false, features = ["default_fonts", "glow", "persistence", "wayland", "x11"] }
+open = "5"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+semver = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+smithcc-catalog = { path = "../catalog" }
+thiserror = { workspace = true }
+tiny_http = "0.12"
+uuid = { version = "1", features = ["v4"] }
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[target.'cfg(windows)'.dependencies]
+keyring = { version = "3", default-features = false, features = ["windows-native"] }
+
+[dev-dependencies]
+tempfile = "3"
