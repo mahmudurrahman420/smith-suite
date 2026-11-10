@@ -1,0 +1,13 @@
+Smith Creative Cloud
+Copyright (c) 2026 Shohan (mahmudurrahman420).
+
+Licensed under the MIT License or the Apache License, Version 2.0, at your option
+(LICENSE-MIT, LICENSE-APACHE).
+
+This launcher is original work for Smith Suite. It is not a fork of Adobe Creative
+Cloud and is not affiliated with Adobe Inc. "Creative Cloud" is used here only as
+a familiar description of a suite launcher.
+
+Third-party crates (egui, eframe, reqwest, zip, and the rest of the Cargo graph)
+are fetched by Cargo at build time and stay under their own licenses. No
+third-party source is vendored in this folder.

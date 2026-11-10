@@ -1,6 +1,7 @@
 name: Build Windows app
 
-# Run from the Actions tab: pick an app (or "all") and download the .exe from the run's artifacts.
+# Manual runs upload artifacts. A tag <app>-vX.Y.Z or launcher-vX.Y.Z also publishes
+# the Windows asset on that GitHub Release. Catalog generation is a separate workflow.
 on:
   workflow_dispatch:
     inputs:
@@ -11,6 +12,7 @@ on:
         type: choice
         options:
           - all
+          - launcher
           - anysmith
           - cadsmith
           - cellsmith
@@ -26,24 +28,68 @@ on:
           - soundsmith
           - texsmith
           - wordsmith
+  push:
+    tags:
+      - "*-v*"
+
+permissions:
+  contents: write
 
 jobs:
   pick:
     runs-on: ubuntu-latest
     outputs:
       apps: ${{ steps.list.outputs.apps }}
+      launcher: ${{ steps.list.outputs.launcher }}
+      publish: ${{ steps.list.outputs.publish }}
+      version: ${{ steps.list.outputs.version }}
+      tag: ${{ steps.list.outputs.tag }}
     steps:
       - id: list
         shell: bash
         run: |
-          if [ "${{ inputs.app }}" = "all" ]; then
-            echo 'apps=["anysmith","cadsmith","cellsmith","layoutsmith","mocksmith","motionsmith","pagesmith","pathsmith","pixelsmith","rawsmith","slidesmith","solidsmith","soundsmith","texsmith","wordsmith"]' >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          APPS='["anysmith","cadsmith","cellsmith","layoutsmith","mocksmith","motionsmith","pagesmith","pathsmith","pixelsmith","rawsmith","slidesmith","solidsmith","soundsmith","texsmith","wordsmith"]'
+          LAUNCHER=false
+          PUBLISH=false
+          VERSION=""
+          TAG=""
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG="${GITHUB_REF_NAME}"
+            if [[ "$TAG" =~ ^(launcher|anysmith|cadsmith|cellsmith|layoutsmith|mocksmith|motionsmith|pagesmith|pathsmith|pixelsmith|rawsmith|slidesmith|solidsmith|soundsmith|texsmith|wordsmith)-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+              NAME="${BASH_REMATCH[1]}"
+              VERSION="${BASH_REMATCH[2]}"
+              PUBLISH=true
+              if [[ "$NAME" == "launcher" ]]; then
+                echo 'apps=[]' >> "$GITHUB_OUTPUT"
+                LAUNCHER=true
+              else
+                echo "apps=[\"${NAME}\"]" >> "$GITHUB_OUTPUT"
+              fi
+            else
+              echo "Tag ${TAG} is not an app or launcher release; nothing to build."
+              echo 'apps=[]' >> "$GITHUB_OUTPUT"
+            fi
           else
-            echo "apps=[\"${{ inputs.app }}\"]" >> "$GITHUB_OUTPUT"
+            CHOICE="${{ inputs.app }}"
+            if [[ "$CHOICE" == "all" ]]; then
+              echo "apps=${APPS}" >> "$GITHUB_OUTPUT"
+              LAUNCHER=true
+            elif [[ "$CHOICE" == "launcher" ]]; then
+              echo 'apps=[]' >> "$GITHUB_OUTPUT"
+              LAUNCHER=true
+            else
+              echo "apps=[\"${CHOICE}\"]" >> "$GITHUB_OUTPUT"
+            fi
           fi
+          echo "launcher=${LAUNCHER}" >> "$GITHUB_OUTPUT"
+          echo "publish=${PUBLISH}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
 
   build:
     needs: pick
+    if: needs.pick.outputs.apps != '[]'
     runs-on: windows-latest
     strategy:
       fail-fast: false
@@ -68,7 +114,96 @@ jobs:
           key: ${{ matrix.app }}-win-${{ hashFiles(format('{0}/Cargo.lock', matrix.app)) }}
       - name: Build
         run: cargo build --release --locked -p ${{ matrix.app }}
+      - name: Package portable zip
+        if: needs.pick.outputs.publish == 'true'
+        shell: pwsh
+        run: |
+          $app = "${{ matrix.app }}"
+          $ver = "${{ needs.pick.outputs.version }}"
+          New-Item -ItemType Directory -Force -Path pkg | Out-Null
+          Copy-Item "target/release/$app.exe" "pkg/$app.exe"
+          tar -a -cf "$app-$ver-win-x64.zip" -C pkg "$app.exe"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.app }}-windows
           path: ${{ matrix.app }}/target/release/${{ matrix.app }}.exe
+      - name: Publish release asset
+        if: needs.pick.outputs.publish == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${{ needs.pick.outputs.tag }}"
+          VER="${{ needs.pick.outputs.version }}"
+          APP="${{ matrix.app }}"
+          EXE="target/release/${APP}.exe"
+          ZIP="${APP}-${VER}-win-x64.zip"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$EXE" "$ZIP" --clobber
+          else
+            gh release create "$TAG" --title "$TAG" --notes "Windows build of ${TAG}." "$EXE" "$ZIP"
+          fi
+
+  launcher:
+    needs: pick
+    if: needs.pick.outputs.launcher == 'true'
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: launcher
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: launcher
+      - name: Install Rust
+        shell: bash
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+          rustup target add x86_64-pc-windows-msvc
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            launcher/target
+          key: launcher-win-${{ hashFiles('launcher/Cargo.lock') }}
+      - name: Build
+        run: cargo build --release --locked --target x86_64-pc-windows-msvc -p smithcc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmithCreativeCloud-windows
+          path: launcher/target/x86_64-pc-windows-msvc/release/SmithCreativeCloud.exe
+      - name: Installer
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          choco install nsis -y --no-progress
+          $exe = (Resolve-Path "target\x86_64-pc-windows-msvc\release\SmithCreativeCloud.exe").Path
+          $out = Join-Path (Get-Location) "SmithCreativeCloud-Setup.exe"
+          makensis "/DSOURCE=$exe" "/DOUTFILE=$out" "packaging\windows\installer.nsi"
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: SmithCreativeCloud-setup
+          path: launcher/SmithCreativeCloud-Setup.exe
+          if-no-files-found: ignore
+      - name: Publish launcher release
+        if: needs.pick.outputs.publish == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${{ needs.pick.outputs.tag }}"
+          EXE="target/x86_64-pc-windows-msvc/release/SmithCreativeCloud.exe"
+          FILES=("$EXE")
+          if [[ -f SmithCreativeCloud-Setup.exe ]]; then
+            FILES+=("SmithCreativeCloud-Setup.exe")
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "${FILES[@]}" --clobber
+          else
+            gh release create "$TAG" --title "$TAG" --notes "Smith Creative Cloud ${TAG}." "${FILES[@]}"
+          fi

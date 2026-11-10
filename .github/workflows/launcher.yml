@@ -1,0 +1,60 @@
+name: Launcher CI
+
+on:
+  pull_request:
+    paths:
+      - "launcher/**"
+      - ".github/workflows/launcher.yml"
+      - ".github/workflows/build-windows.yml"
+      - ".github/workflows/catalog.yml"
+  push:
+    branches: [main]
+    paths:
+      - "launcher/**"
+      - ".github/workflows/launcher.yml"
+      - ".github/workflows/build-windows.yml"
+      - ".github/workflows/catalog.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        run: rustup toolchain install stable --profile minimal && rustup default stable
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            launcher/target
+          key: launcher-linux-${{ hashFiles('launcher/Cargo.lock') }}
+      - name: Test
+        run: cargo test --locked --manifest-path launcher/Cargo.toml --workspace --lib
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: launcher
+      - name: Install Rust
+        shell: bash
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+          rustup target add x86_64-pc-windows-msvc
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            launcher/target
+          key: launcher-win-ci-${{ hashFiles('launcher/Cargo.lock') }}
+      - name: Build x86_64-pc-windows-msvc
+        run: cargo build --release --locked --target x86_64-pc-windows-msvc --manifest-path launcher/Cargo.toml -p smithcc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmithCreativeCloud-windows
+          path: launcher/target/x86_64-pc-windows-msvc/release/SmithCreativeCloud.exe
