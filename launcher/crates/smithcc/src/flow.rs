@@ -41,7 +41,7 @@ fn mock_sign_in_catalog_install_and_token_rotation() {
     assert_eq!(me.email, "ada@gmail.com");
 
     let catalog = client.catalog().unwrap();
-    assert_eq!(catalog.apps.len(), 15);
+    assert_eq!(catalog.apps.len(), 16);
     let app = &catalog.apps[0];
     assert_eq!(app.id, "pixelsmith");
     let pkg = dir.path().join("pixelsmith.zip");

@@ -6,8 +6,8 @@ mod assemble;
 
 pub use assemble::{AssembleError, ReleaseAsset, ReleaseRecord, assemble, releases_from_github_json};
 
-/// The fifteen suite apps, in the order the launcher shows them.
-pub const APP_IDS: [&str; 15] = [
+/// The suite apps, in the order the launcher shows them.
+pub const APP_IDS: [&str; 16] = [
     "pixelsmith",
     "pathsmith",
     "rawsmith",
@@ -23,6 +23,7 @@ pub const APP_IDS: [&str; 15] = [
     "texsmith",
     "anysmith",
     "solidsmith",
+    "framesmith",
 ];
 
 pub const LAUNCHER_ID: &str = "launcher";
@@ -154,9 +155,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn meta_lists_the_fifteen_apps() {
+    fn meta_lists_the_suite_apps() {
         let apps = app_meta().expect("apps.toml");
-        assert_eq!(apps.len(), 15);
+        assert_eq!(apps.len(), 16);
         let mut grams = std::collections::BTreeSet::new();
         for app in &apps {
             assert!(grams.insert(app.monogram.clone()), "duplicate monogram {}", app.monogram);

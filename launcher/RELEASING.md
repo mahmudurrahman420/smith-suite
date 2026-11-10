@@ -8,7 +8,8 @@ release. The backend serves that file from `GET /catalog`.
 
 | Tag | What CI builds | Asset the catalog prefers |
 |---|---|---|
-| `pixelsmith-v1.2.0` (any of the 15 app ids) | that app | `<app>-<version>-win-x64.zip` containing `<app>.exe`, else a `.exe` |
+| `pixelsmith-v1.2.0` (any of the 16 app ids) | that app | `<app>-<version>-win-x64.zip` containing `<app>.exe`, else a `.exe` |
+| `framesmith-v0.10.0` | Frame Smith. The crate is `filmcraft` and the built file is `filmcraft.exe`; CI renames it to `framesmith.exe` | `framesmith-<version>-win-x64.zip` containing `framesmith.exe` |
 | `launcher-v1.0.1` | `SmithCreativeCloud.exe` and, when NSIS is available, `SmithCreativeCloud-Setup.exe` | the file named exactly `SmithCreativeCloud.exe` |
 | `catalog` | nothing; this tag is the rolling catalog | `catalog.json` |
 
@@ -28,6 +29,35 @@ to the GitHub Release for that tag. When that workflow finishes, `Catalog` rebui
 and uploads it to the `catalog` release with `--clobber`.
 
 A release published from the GitHub UI, with the asset already attached, also triggers `Catalog`.
+
+## Cut a Frame Smith release
+
+Frame Smith is the video editor in `framesmith/`. Its desktop binary crate is `filmcraft`
+(`apps/filmcraft`), which produces `filmcraft.exe`. The catalog id is `framesmith` and the
+published asset is named Frame Smith.
+
+```sh
+git tag framesmith-v0.10.0
+git push origin framesmith-v0.10.0
+```
+
+`Build Windows app` matches `framesmith-vX.Y.Z` and, on `windows-latest`, runs:
+
+```sh
+export CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS="-C target-feature=+crt-static"
+export FILMCRAFT_REQUIRE_WINRES=1
+cargo build --release --locked -p filmcraft --target x86_64-pc-windows-msvc
+```
+
+Rust stable 1.95 or later (edition 2024) and the MSVC Build Tools plus the Windows SDK (`rc.exe`,
+for `assets/app-icon/filmcraft.ico`) are already on `windows-latest`. CI copies `filmcraft.exe` to
+`framesmith.exe` and uploads that file plus `framesmith-<version>-win-x64.zip` with
+`framesmith.exe` at the root of the archive. The catalog default entry is `framesmith.exe`, so the
+launcher opens it the same way as the other apps.
+
+The same tag also builds the Android APK (`Android APK` workflow) and attaches
+`Framesmith-<version>.apk` to that release. Signing uses the `FRAMESMITH_KEYSTORE_*` secrets when
+they are set; otherwise the APK is signed with a debug key.
 
 ## Cut a launcher release
 

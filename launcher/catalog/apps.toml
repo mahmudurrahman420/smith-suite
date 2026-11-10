@@ -1,4 +1,4 @@
-# Static facts about the 15 Smith Suite apps. The catalog workflow turns the latest
+# Static facts about the 16 Smith Suite apps. The catalog workflow turns the latest
 # GitHub Release for each id into catalog.json. Icon paths are relative to the
 # suite repository root.
 
@@ -121,3 +121,11 @@ tagline = "Parametric 3D CAD"
 icon = "solidsmith/assets/branding/logo/solidsmith-mark-512.png"
 color = "#E8B84A"
 monogram = "3D"
+
+[[app]]
+id = "framesmith"
+name = "Frame Smith"
+tagline = "Video editing: timeline, colour, effects and export"
+icon = "framesmith/android/framesmith-icon-512.png"
+color = "#F07820"
+monogram = "Fr"

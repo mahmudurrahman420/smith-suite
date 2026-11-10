@@ -1,7 +1,7 @@
 # Smith Creative Cloud
 
 The Windows launcher for the Smith Suite. People download this one program from slmptech.com, sign in
-with Google, and install or update any of the 15 apps. It is original Smith Suite software and is not
+with Google, and install or update any of the 16 apps. It is original Smith Suite software and is not
 affiliated with Adobe.
 
 ## Run it
@@ -40,7 +40,7 @@ token before it uses the access token, and never sends a refresh token again aft
 refresh call. A connect failure (the server never saw the request) is the only case that keeps the
 old token.
 
-The window lists all 15 apps. Install checks sha256, then unpacks a zip or copies a single exe into
+The window lists all 16 apps. Install checks sha256, then unpacks a zip or copies a single exe into
 the app folder and adds a Start Menu shortcut. Update and uninstall are the same folder. Catalog
 checks run at startup and every 6 hours. A 503 `catalog_unavailable` shows "catalog not available
 yet" and retries. Update badges and a Windows balloon say when an installed app or the launcher
@@ -66,7 +66,7 @@ catalog 503, heartbeat, install events, device mismatch, refresh, and logout.
 crates/catalog/     catalog.json types and the GitHub Release assembler
 crates/smithcc/     the launcher (library + SmithCreativeCloud binary)
 xtask/              cargo run -p xtask -- catalog
-catalog/apps.toml   names, taglines, and icon paths for the 15 apps
+catalog/apps.toml   names, taglines, and icon paths for the 16 apps
 packaging/windows/  per-user NSIS installer
 ```
 

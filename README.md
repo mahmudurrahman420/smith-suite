@@ -22,8 +22,7 @@ Cargo workspace, docs and licence notices.
 | [Texsmith](texsmith/) | 3D texture painting |
 | [Anysmith](anysmith/) | See how any software works, then build your own |
 | [Solidsmith](solidsmith/) | Parametric 3D CAD |
-
-Video editing lives in its own repository, [Framesmith](https://github.com/mahmudurrahman420/framesmith).
+| [Frame Smith](framesmith/) | Video editing: timeline, colour, effects and export |
 
 ## Download for Windows
 

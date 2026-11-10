@@ -2,6 +2,7 @@ name: Build Windows app
 
 # Manual runs upload artifacts. A tag <app>-vX.Y.Z or launcher-vX.Y.Z also publishes
 # the Windows asset on that GitHub Release. Catalog generation is a separate workflow.
+# Pull requests that touch Frame Smith build that app only, so the desktop target stays green.
 on:
   workflow_dispatch:
     inputs:
@@ -16,6 +17,7 @@ on:
           - anysmith
           - cadsmith
           - cellsmith
+          - framesmith
           - layoutsmith
           - mocksmith
           - motionsmith
@@ -31,6 +33,10 @@ on:
   push:
     tags:
       - "*-v*"
+  pull_request:
+    paths:
+      - "framesmith/**"
+      - ".github/workflows/build-windows.yml"
 
 permissions:
   contents: write
@@ -49,14 +55,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          APPS='["anysmith","cadsmith","cellsmith","layoutsmith","mocksmith","motionsmith","pagesmith","pathsmith","pixelsmith","rawsmith","slidesmith","solidsmith","soundsmith","texsmith","wordsmith"]'
+          APPS='["anysmith","cadsmith","cellsmith","framesmith","layoutsmith","mocksmith","motionsmith","pagesmith","pathsmith","pixelsmith","rawsmith","slidesmith","solidsmith","soundsmith","texsmith","wordsmith"]'
           LAUNCHER=false
           PUBLISH=false
           VERSION=""
           TAG=""
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            echo 'apps=["framesmith"]' >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             TAG="${GITHUB_REF_NAME}"
-            if [[ "$TAG" =~ ^(launcher|anysmith|cadsmith|cellsmith|layoutsmith|mocksmith|motionsmith|pagesmith|pathsmith|pixelsmith|rawsmith|slidesmith|solidsmith|soundsmith|texsmith|wordsmith)-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+            if [[ "$TAG" =~ ^(launcher|anysmith|cadsmith|cellsmith|framesmith|layoutsmith|mocksmith|motionsmith|pagesmith|pathsmith|pixelsmith|rawsmith|slidesmith|solidsmith|soundsmith|texsmith|wordsmith)-v([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
               NAME="${BASH_REMATCH[1]}"
               VERSION="${BASH_REMATCH[2]}"
               PUBLISH=true
@@ -104,7 +112,30 @@ jobs:
           sparse-checkout: ${{ matrix.app }}
       - name: Install Rust
         shell: bash
-        run: rustup toolchain install stable --profile minimal && rustup default stable
+        run: |
+          set -euo pipefail
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+          rustc --version
+          if [[ "${{ matrix.app }}" == "framesmith" ]]; then
+            rustup target add x86_64-pc-windows-msvc
+          fi
+      - name: Windows resource compiler
+        if: matrix.app == 'framesmith'
+        shell: pwsh
+        run: |
+          $rc = Get-Command rc.exe -ErrorAction SilentlyContinue
+          if ($rc) {
+            Write-Output "rc.exe: $($rc.Source)"
+          } else {
+            $found = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Recurse -Filter rc.exe -ErrorAction SilentlyContinue |
+              Where-Object { $_.FullName -match '\\x64\\rc\.exe$' } |
+              Sort-Object FullName -Descending |
+              Select-Object -First 1
+            if (-not $found) { throw "rc.exe not found. Frame Smith needs the Windows SDK to embed assets/app-icon/filmcraft.ico." }
+            Add-Content -Path $env:GITHUB_PATH -Value $found.DirectoryName
+            Write-Output "Added $($found.DirectoryName) to PATH"
+          }
       - uses: actions/cache@v4
         with:
           path: |
@@ -113,7 +144,28 @@ jobs:
             ${{ matrix.app }}/target
           key: ${{ matrix.app }}-win-${{ hashFiles(format('{0}/Cargo.lock', matrix.app)) }}
       - name: Build
-        run: cargo build --release --locked -p ${{ matrix.app }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ matrix.app }}" == "framesmith" ]]; then
+            # Static CRT, scoped to the MSVC target. The package name is filmcraft;
+            # the suite publishes that binary as framesmith.exe.
+            export CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS="-C target-feature=+crt-static"
+            export FILMCRAFT_REQUIRE_WINRES=1
+            cargo build --release --locked -p filmcraft --target x86_64-pc-windows-msvc
+          else
+            cargo build --release --locked -p "${{ matrix.app }}"
+          fi
+      - name: Stage executable
+        shell: pwsh
+        run: |
+          $app = "${{ matrix.app }}"
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          if ($app -eq "framesmith") {
+            Copy-Item "target\x86_64-pc-windows-msvc\release\filmcraft.exe" "dist\framesmith.exe"
+          } else {
+            Copy-Item "target\release\$app.exe" "dist\$app.exe"
+          }
       - name: Package portable zip
         if: needs.pick.outputs.publish == 'true'
         shell: pwsh
@@ -121,12 +173,12 @@ jobs:
           $app = "${{ matrix.app }}"
           $ver = "${{ needs.pick.outputs.version }}"
           New-Item -ItemType Directory -Force -Path pkg | Out-Null
-          Copy-Item "target/release/$app.exe" "pkg/$app.exe"
+          Copy-Item "dist\$app.exe" "pkg\$app.exe"
           tar -a -cf "$app-$ver-win-x64.zip" -C pkg "$app.exe"
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.app }}-windows
-          path: ${{ matrix.app }}/target/release/${{ matrix.app }}.exe
+          path: ${{ matrix.app }}/dist/${{ matrix.app }}.exe
       - name: Publish release asset
         if: needs.pick.outputs.publish == 'true'
         shell: bash
@@ -137,7 +189,7 @@ jobs:
           TAG="${{ needs.pick.outputs.tag }}"
           VER="${{ needs.pick.outputs.version }}"
           APP="${{ matrix.app }}"
-          EXE="target/release/${APP}.exe"
+          EXE="dist/${APP}.exe"
           ZIP="${APP}-${VER}-win-x64.zip"
           if gh release view "$TAG" >/dev/null 2>&1; then
             gh release upload "$TAG" "$EXE" "$ZIP" --clobber

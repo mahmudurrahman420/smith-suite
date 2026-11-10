@@ -262,7 +262,7 @@ mod tests {
     #[test]
     fn missing_catalog_lists_every_app_without_install() {
         let model = Model::new(Environment::Prod, InstallDb::default(), Notified::default());
-        assert_eq!(model.cards().len(), 15);
+        assert_eq!(model.cards().len(), 16);
         assert!(model.cards().iter().all(|c| c.primary == Primary::None));
     }
 
