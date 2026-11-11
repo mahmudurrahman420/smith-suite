@@ -3587,7 +3587,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "chrono",
  "craft-update",
@@ -3614,7 +3614,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-catalog"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "chrono",
  "crc32fast",
@@ -3635,7 +3635,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-cli"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "dhat",
  "rawsmith-codecs",
@@ -3652,7 +3652,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-codecs"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "avif-serialize",
  "bytemuck",
@@ -3683,7 +3683,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-color"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-geom",
  "proptest",
@@ -3692,7 +3692,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-denoise"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "faer-core",
  "rawsmith-denoise-core",
@@ -3709,7 +3709,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-denoise-core"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "dhat",
  "rawsmith-raster",
@@ -3725,7 +3725,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-develop"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-color",
  "rawsmith-geom",
@@ -3737,7 +3737,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-engine"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "ab_glyph",
  "chrono",
@@ -3783,7 +3783,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-faces"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-testkit",
  "matrixmultiply",
@@ -3798,7 +3798,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-fetch"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "log",
  "rustls",
@@ -3809,14 +3809,14 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-film"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "libm",
 ]
 
 [[package]]
 name = "rawsmith-geocode"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "miniz_oxide 0.9.1",
  "serde",
@@ -3824,7 +3824,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-geom"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "proptest",
  "serde",
@@ -3832,7 +3832,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-gpu"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "bytemuck",
  "rawsmith-color",
@@ -3852,7 +3852,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-heif"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "heic-rs",
  "rayon",
@@ -3860,14 +3860,14 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-inpaint"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rayon",
 ]
 
 [[package]]
 name = "rawsmith-lensdb"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-develop",
  "rawsmith-geom",
@@ -3876,7 +3876,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-mcp"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-codecs",
  "rawsmith-engine",
@@ -3887,7 +3887,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-merge"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-codecs",
  "rawsmith-color",
@@ -3903,7 +3903,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-meta"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "chrono",
  "rawsmith-geom",
@@ -3917,7 +3917,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-pipeline"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "dhat",
  "image",
@@ -3936,7 +3936,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-preview"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "jpeg-encoder",
  "rawsmith-raster",
@@ -3948,7 +3948,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-raster"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "libc",
  "rawsmith-color",
@@ -3960,7 +3960,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-raw"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "chrono",
  "craft-crw",
@@ -3986,7 +3986,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-scenes"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "image",
  "rawsmith-color",
@@ -3997,7 +3997,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-segment"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "candle-core",
  "candle-nn",
@@ -4011,7 +4011,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-slideshow"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "rawsmith-raster",
  "serde",
@@ -4020,15 +4020,15 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-sysmem"
-version = "0.18.0"
+version = "0.18.1"
 
 [[package]]
 name = "rawsmith-testkit"
-version = "0.18.0"
+version = "0.18.1"
 
 [[package]]
 name = "rawsmith-tiff"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "proptest",
  "serde",
@@ -4037,7 +4037,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-ui-egui"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "craft-ui",
  "craft-update",
@@ -4070,7 +4070,7 @@ dependencies = [
 
 [[package]]
 name = "rawsmith-web"
-version = "0.18.0"
+version = "0.18.1"
 dependencies = [
  "crc32fast",
  "eframe",

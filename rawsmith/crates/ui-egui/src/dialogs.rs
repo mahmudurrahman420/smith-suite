@@ -1905,7 +1905,6 @@ fn about_body(app: &mut RawsmithApp, ui: &mut egui::Ui, t: &Tokens, dlg: &mut Di
             ui.add_space(6.0);
             for (label, url) in [
                 ("Rawsmith website", crate::links::APP_PAGE),
-                ("Source code on GitHub", crate::links::GITHUB),
                 ("Smith Suite — more creative apps", crate::links::WEBSITE),
             ] {
                 let r = ui.link(crate::i18n::tr(label)).on_hover_text(url);

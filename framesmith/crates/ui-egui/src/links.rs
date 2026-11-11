@@ -11,8 +11,9 @@ pub const UPSTREAM: &str = "https://github.com/storytold/filmcraft";
 /// The licences Framesmith inherits from FilmCraft.
 pub const LICENSES: &str = "https://github.com/storytold/filmcraft/blob/main/LICENSE-MIT";
 
-/// (command id, label, url) for every link, in menu order.
-pub const ALL: [(&str, &str, &str); 1] = [("help.upstream", "Built on FilmCraft (GitHub)", UPSTREAM)];
+/// Community and project links shown in the UI. The FilmCraft credit stays as text; there is no
+/// GitHub button.
+pub const ALL: [(&str, &str, &str); 0] = [];
 
 /// A link the web browser couldn't open (`ui.failedLink`): the address and the reason.
 #[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize)]
@@ -115,7 +116,7 @@ mod tests {
     #[test]
     fn links_are_https_help_commands() {
         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
-        assert_eq!(url_for("help.upstream"), Some(UPSTREAM));
+        assert_eq!(url_for("help.upstream"), None);
         assert_eq!(url_for("help.nope"), None);
     }
 

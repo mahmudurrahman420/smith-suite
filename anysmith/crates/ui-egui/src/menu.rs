@@ -10,9 +10,6 @@ use muda::accelerator::{Accelerator, Code, Modifiers};
 use muda::{AboutMetadata, CheckMenuItem, Menu, MenuEvent, MenuId, MenuItem, PredefinedMenuItem, Submenu};
 use std::sync::mpsc::{Receiver, channel};
 
-const REPO: &str = env!("CARGO_PKG_REPOSITORY");
-const NEW_ISSUE: &str = concat!(env!("CARGO_PKG_REPOSITORY"), "/issues/new/choose");
-
 #[derive(Debug, Clone, Copy)]
 enum Action {
     App(AppCommand),
@@ -21,7 +18,6 @@ enum Action {
     Mode(Mode),
     Deep(bool),
     Quit,
-    Url(&'static str),
 }
 
 /// A menu entry with a translated label, retitled when the language changes.
@@ -85,8 +81,6 @@ impl MenuBar {
         let export = item("Export a report (Markdown)", None, Action::App(AppCommand::ExportReport));
         let palette = item("Command palette", cmd(Code::KeyK), Action::Palette);
         let theme = item("Switch light / dark theme", None, Action::App(AppCommand::ToggleTheme));
-        let website = item("Anysmith on GitHub", None, Action::Url(REPO));
-        let report = item("Report a problem…", None, Action::Url(NEW_ISSUE));
         let mut check = |label: &'static str, action: Action| {
             let i = CheckMenuItem::new(tr(label), true, false, None);
             actions.push((i.id().clone(), action));
@@ -108,7 +102,6 @@ impl MenuBar {
         let file = sub("File");
         let view = sub("View");
         let window = sub("Window");
-        let help = sub("Help");
         // The system's own items, named in the app's language rather than the system's.
         let mut system = |make: fn(Option<&str>) -> PredefinedMenuItem, label: &'static str| {
             let i = make(Some(&tr(label)));
@@ -134,15 +127,13 @@ impl MenuBar {
             .and_then(|()| file.append_items(&[&new_project, &open_file, &open_folder, &sep(), &export, &sep(), &close_window]))
             .and_then(|()| view.append_items(&[&palette, &sep(), &simple, &advanced, &sep(), &clean, &deep, &sep(), &theme, &sep(), &fullscreen]))
             .and_then(|()| window.append_items(&[&minimise, &zoom, &sep(), &to_front]))
-            .and_then(|()| help.append_items(&[&website, &report]))
-            .and_then(|()| menu.append_items(&[&app_menu, &file, &view, &window, &help]));
+            .and_then(|()| menu.append_items(&[&app_menu, &file, &view, &window]));
         if let Err(e) = built {
             log::warn!("the menu bar couldn't be built: {e}");
             return None;
         }
         menu.init_for_nsapp();
         window.set_as_windows_menu_for_nsapp();
-        help.set_as_help_menu_for_nsapp();
 
         // Picks arrive between frames: pass them on and wake the UI to act on them.
         let (tx, picked) = channel();
@@ -188,7 +179,6 @@ pub fn update(app: &mut CraftApp, ctx: &egui::Context) {
     for action in picked {
         match action {
             Action::Quit => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
-            Action::Url(url) => ctx.open_url(egui::OpenUrl::new_tab(url)),
             _ if !ready => {}
             Action::App(c) => palette::run_app_command(app, c),
             Action::NewProject => app.state.screen = Screen::Home,
@@ -199,13 +189,3 @@ pub fn update(app: &mut CraftApp, ctx: &egui::Context) {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    /// An empty repository field made Help open a local folder instead of the web page.
-    #[test]
-    fn help_links_are_web_pages() {
-        for url in [super::REPO, super::NEW_ISSUE] {
-            assert!(url.starts_with("https://github.com/"), "{url}");
-        }
-    }
-}

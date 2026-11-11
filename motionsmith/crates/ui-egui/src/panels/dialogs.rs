@@ -406,11 +406,10 @@ fn about_main(app: &mut MotionsmithApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
     ui.add_space(12.0);
     ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Smith Suite family of creative apps."));
     ui.add_space(14.0);
-    let links: [(Icon, &str, &str, &'static str); 4] = [
+    let links: [(Icon, &str, &str, &'static str); 3] = [
         (Icon::Chat, "Join the Smith Suite community", motionsmith_engine::links::DISCORD, "help.discord"),
         (Icon::Globe, "Smith Suite website", motionsmith_engine::links::WEBSITE, "help.website"),
         (Icon::Sparkle, "Motionsmith home page", motionsmith_engine::links::APP_PAGE, "help.appPage"),
-        (Icon::Code, "Source code on GitHub", motionsmith_engine::links::GITHUB, "help.github"),
     ];
     for (icon, label, url, c) in links {
         let (r, resp) = ui.allocate_exact_size(vec2(ui.available_width(), 30.0), Sense::click());

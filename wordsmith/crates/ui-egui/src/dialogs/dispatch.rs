@@ -1158,9 +1158,8 @@ fn about_dialog(ui: &mut Ui, d: &mut Dialog) -> bool {
             ui.label(crate::i18n::fmt(tl!("Version {version} ({build})"), &[("version", env!("CARGO_PKG_VERSION")), ("build", build)]));
             ui.label(tl!("A free, open-source word processor written from scratch in Rust.\nPart of the Crafting Apps from the Smith Suite team."));
             ui.add_space(6.0);
-            ui.hyperlink_to(tl!("https://github.com/mahmudurrahman420/wordsmith"), "https://github.com/mahmudurrahman420/wordsmith");
-            ui.hyperlink_to(tl!("Join us on Discord: https://github.com/mahmudurrahman420/wordsmith/discussions"), "https://github.com/mahmudurrahman420/wordsmith/discussions");
-            ui.hyperlink_to(tl!("Source code: github.com/mahmudurrahman420/wordsmith"), "https://github.com/mahmudurrahman420/wordsmith");
+            ui.hyperlink_to(tl!("Wordsmith web page"), "https://github.com/mahmudurrahman420/wordsmith");
+            ui.hyperlink_to(tl!("Join us on Discord"), "https://github.com/mahmudurrahman420/wordsmith/discussions");
             ui.add_space(6.0);
             ui.label(egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 Shohan (mahmudurrahman420) and the Wordsmith contributors.")).small().weak());
         }

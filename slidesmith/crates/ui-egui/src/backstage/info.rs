@@ -223,7 +223,7 @@ pub(super) fn about(app: &mut SlideApp, ui: &mut Ui) {
                 let _ = app.run("app.about", json!({}));
             }
             ui.hyperlink_to("Join our community on Discord", slidesmith_engine::links::DISCORD);
-            ui.hyperlink_to("Source on GitHub", slidesmith_engine::links::GITHUB);
+            ui.hyperlink_to("Slidesmith web page", slidesmith_engine::links::APP_PAGE);
         });
         ui.add_space(40.0);
         ui.vertical(|ui| {

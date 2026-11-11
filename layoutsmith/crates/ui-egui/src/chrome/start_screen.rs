@@ -249,7 +249,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
                 ));
                 ui.add_space(4.0);
                 ui.horizontal(|ui| {
-                    for (text, id) in [("Layoutsmith page", "help.appPage"), ("GitHub", "help.github"), ("github.com/mahmudurrahman420", "help.website")] {
+                    for (text, id) in [("Layoutsmith page", "help.appPage"), ("Smith Suite website", "help.website")] {
                         let url = layoutsmith_engine::links::get(&id[5..]).unwrap_or_default();
                         let l = ui
                             .add(egui::Label::new(egui::RichText::new(text).size(12.0).color(t.accent).underline()).sense(Sense::click()))

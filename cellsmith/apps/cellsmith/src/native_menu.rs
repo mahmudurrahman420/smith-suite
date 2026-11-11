@@ -184,7 +184,7 @@ fn tree() -> Vec<(&'static str, Vec<Entry>)> {
                 ("Check for Updates…", "app.checkForUpdates", None),
                 ("Agent Control (MCP)…", "dialog:agents", None),
                 ("Contributors…", "dialog:about:Contributors", None),
-                ("Cellsmith on github.com/mahmudurrahman420", "url:https://github.com/mahmudurrahman420/cellsmith", None),
+                ("Cellsmith web page", "url:https://github.com/mahmudurrahman420/cellsmith", None),
                 ("Join the Smith Suite community…", "url:https://github.com/mahmudurrahman420/cellsmith/discussions", None),
             ],
         ),

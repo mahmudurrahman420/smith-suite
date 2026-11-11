@@ -19,7 +19,6 @@ pub const LINKS: &[(&str, &str, &str)] = &[
     ("app.help", "Rawsmith Help", HELP),
     ("app.discord", "Join the Smith Suite community…", DISCORD),
     ("app.website", "Rawsmith Website", APP_PAGE),
-    ("app.github", "Rawsmith on GitHub", GITHUB),
     ("app.smithsuite", "Smith Suite Website", WEBSITE),
     ("app.feedback", "Send Feedback…", FEEDBACK),
 ];

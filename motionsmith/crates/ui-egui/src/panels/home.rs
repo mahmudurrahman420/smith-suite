@@ -286,9 +286,8 @@ fn rail_ui(app: &mut MotionsmithApp, ui: &mut egui::Ui, p: &egui::Painter, rail:
     // Community links at the foot (below the pages when the window is short).
     let links = [
         (Icon::Chat, "Join the Smith Suite community", "help.discord"),
-        (Icon::Globe, "github.com/mahmudurrahman420", "help.website"),
+        (Icon::Globe, "Smith Suite website", "help.website"),
         (Icon::Globe, "Motionsmith home page", "help.appPage"),
-        (Icon::Code, "Motionsmith on GitHub", "help.github"),
     ];
     let sib = motionsmith_engine::links::SIBLINGS;
     let sib_rows = sib.len().div_ceil(2) as f32;
@@ -595,7 +594,7 @@ mod tests {
             "home.app.newComp",
             "home.file.openDemoProject",
             "home.help.discord",
-            "home.help.github",
+            "home.help.appPage",
             "home.recent.0",
             "home.filter",
             "home.file.import",

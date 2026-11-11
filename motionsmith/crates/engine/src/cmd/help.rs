@@ -35,7 +35,6 @@ pub fn specs() -> Vec<CommandSpec> {
         cmd!("help.discord", "Join the Smith Suite community...", ["Help"], None, "{}", always, |s, _| open(s, links::DISCORD.into())),
         cmd!("help.website", "Smith Suite Website", ["Help"], None, "{}", always, |s, _| open(s, links::WEBSITE.into())),
         cmd!("help.appPage", "Motionsmith Home Page", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
-        cmd!("help.github", "Motionsmith on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
         cmd!("help.onlineTutorials", "Online Tutorials...", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
         cmd!("help.inAppTutorials", "In-App Tutorials...", ["Help"], None, "{} → the Home screen's Learn tab", always, |s, p| super::frontend(
             s,

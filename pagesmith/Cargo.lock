@@ -4208,7 +4208,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "chrono",
  "craft-update",
@@ -4232,7 +4232,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-a11y"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-content",
  "pagesmith-cos",
@@ -4244,7 +4244,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-annot"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "hayro-syntax",
  "pagesmith-cos",
@@ -4255,7 +4255,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-audit"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-content",
  "pagesmith-cos",
@@ -4266,7 +4266,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-automation"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "base64 0.23.1",
  "flate2",
@@ -4290,7 +4290,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-cli"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "base64 0.23.1",
  "pagesmith-audit",
@@ -4308,11 +4308,11 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-compare"
-version = "0.18.1"
+version = "0.18.2"
 
 [[package]]
 name = "pagesmith-content"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "hayro-syntax",
  "pagesmith-cos",
@@ -4320,7 +4320,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-cos"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "chrono",
  "hayro-syntax",
@@ -4335,7 +4335,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-create"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "encoding_rs",
  "hayro-ccitt",
@@ -4354,7 +4354,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-crypt"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "aes",
  "md-5",
@@ -4366,7 +4366,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-edit"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "hayro-syntax",
  "kurbo 0.13.1",
@@ -4384,7 +4384,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-engine"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "chrono",
  "craft-docpath",
@@ -4428,14 +4428,14 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-export"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "flate2",
 ]
 
 [[package]]
 name = "pagesmith-filters"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "fax",
  "flate2",
@@ -4448,7 +4448,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-fonts"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "harfrust",
  "pagesmith-cos",
@@ -4458,7 +4458,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-forms"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "hayro-syntax",
  "pagesmith-content",
@@ -4471,11 +4471,11 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-geom"
-version = "0.18.1"
+version = "0.18.2"
 
 [[package]]
 name = "pagesmith-js"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "boa_engine",
  "chrono",
@@ -4483,7 +4483,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-measure"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-annot",
  "pagesmith-content",
@@ -4496,14 +4496,14 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-model"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-cos",
 ]
 
 [[package]]
 name = "pagesmith-ocr"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "ocrs",
  "pagesmith-fonts",
@@ -4514,7 +4514,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-optimize"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "image",
  "pagesmith-annot",
@@ -4530,11 +4530,11 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-oracle"
-version = "0.18.1"
+version = "0.18.2"
 
 [[package]]
 name = "pagesmith-organize"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "hayro-syntax",
  "pagesmith-content",
@@ -4545,7 +4545,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-platform"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "async-channel",
  "futures-lite",
@@ -4555,7 +4555,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-prc"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "flate2",
  "proptest",
@@ -4564,7 +4564,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-prc-render"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "flate2",
  "pagesmith-prc",
@@ -4573,7 +4573,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-preflight"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "flate2",
  "pagesmith-content",
@@ -4584,7 +4584,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-print"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "craft-print",
  "pagesmith-content",
@@ -4596,7 +4596,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-redact"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-annot",
  "pagesmith-content",
@@ -4613,7 +4613,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-render"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "bytemuck",
  "flate2",
@@ -4632,7 +4632,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-sign"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "aes",
  "aws-lc-rs",
@@ -4668,11 +4668,11 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-testkit"
-version = "0.18.1"
+version = "0.18.2"
 
 [[package]]
 name = "pagesmith-ui-egui"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "arboard",
  "base64 0.23.1",
@@ -4727,7 +4727,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-web"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "eframe",
  "egui",
@@ -4739,7 +4739,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-xfa"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "base64 0.23.1",
  "image",
@@ -4753,7 +4753,7 @@ dependencies = [
 
 [[package]]
 name = "pagesmith-xfdf"
-version = "0.18.1"
+version = "0.18.2"
 dependencies = [
  "pagesmith-annot",
  "pagesmith-cos",

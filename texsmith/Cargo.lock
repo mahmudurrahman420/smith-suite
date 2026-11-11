@@ -3812,7 +3812,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "eframe",
  "egui",
@@ -3831,7 +3831,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-automation"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "base64 0.22.1",
  "cap-std",
@@ -3852,7 +3852,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-bake"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "bytemuck",
  "rayon",
@@ -3864,7 +3864,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-cli"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "image",
  "serde_json",
@@ -3876,7 +3876,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-compose"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "half",
  "rayon",
@@ -3887,7 +3887,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-core"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "serde",
  "serde_json",
@@ -3896,7 +3896,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-engine"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "epaint_default_fonts",
  "image",
@@ -3916,7 +3916,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-formats"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "base64 0.22.1",
  "exr",
@@ -3940,7 +3940,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-geom"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "glam 0.30.10",
  "mikktspace",
@@ -3951,7 +3951,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-paint"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "epaint_default_fonts",
  "harfrust",
@@ -3966,7 +3966,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-render"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "bytemuck",
  "half",
@@ -3985,11 +3985,11 @@ dependencies = [
 
 [[package]]
 name = "texsmith-texel"
-version = "0.3.1"
+version = "0.3.2"
 
 [[package]]
 name = "texsmith-ui-egui"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "base64 0.22.1",
  "craft-ui",
@@ -4018,7 +4018,7 @@ dependencies = [
 
 [[package]]
 name = "texsmith-web"
-version = "0.3.1"
+version = "0.3.2"
 dependencies = [
  "eframe",
  "js-sys",

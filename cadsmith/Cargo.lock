@@ -614,7 +614,7 @@ checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
 
 [[package]]
 name = "cadsmith"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-engine",
  "cadsmith-io",
@@ -644,7 +644,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-cli"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-engine",
  "cadsmith-io",
@@ -660,14 +660,14 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-color"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "cadsmith-constraints"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-doc",
  "cadsmith-geom",
@@ -677,7 +677,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-doc"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-color",
  "cadsmith-geom",
@@ -688,7 +688,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-dwg"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "acadrust",
  "log",
@@ -696,7 +696,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-dxf"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "encoding_rs",
  "log",
@@ -705,7 +705,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-engine"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-color",
  "cadsmith-constraints",
@@ -726,7 +726,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-fonts"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-geom",
  "encoding_rs",
@@ -738,14 +738,14 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-geom"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "cadsmith-io"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "acadrust",
  "cadsmith-color",
@@ -767,7 +767,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-mcp"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-engine",
  "cadsmith-io",
@@ -780,7 +780,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-render"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-color",
  "cadsmith-doc",
@@ -794,7 +794,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-ui-egui"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-color",
  "cadsmith-doc",
@@ -821,7 +821,7 @@ dependencies = [
 
 [[package]]
 name = "cadsmith-web"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "cadsmith-engine",
  "cadsmith-fonts",

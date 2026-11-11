@@ -485,9 +485,7 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
             links::open(app, ui.ctx(), url);
         }
     };
-    link(ui, "upstream", Icon::Code, tl!("Built on FilmCraft (GitHub)"), links::UPSTREAM, true);
-    ui.add_space(4.0);
-    link(ui, "licenses", Icon::Globe, tl!("Licences"), links::LICENSES, false);
+    link(ui, "licenses", Icon::Globe, tl!("Licences"), links::LICENSES, true);
     ui.add_space(10.0);
     ui.label(egui::RichText::new(tl!("MIT OR Apache-2.0. Fonts: Inter, Noto Serif and JetBrains Mono (SIL OFL 1.1).")).small().color(t.text_dim));
 }

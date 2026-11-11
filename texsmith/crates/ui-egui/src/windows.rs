@@ -657,7 +657,7 @@ fn about(app: &mut TexsmithApp, ctx: &egui::Context) {
             ui.label(tr("Free and open source (MIT OR Apache-2.0), written in Rust."));
             ui.add_space(6.0);
             ui.hyperlink_to(tr("Join the Smith Suite community on Discord"), "https://github.com/mahmudurrahman420/texsmith/discussions");
-            ui.hyperlink_to("https://github.com/mahmudurrahman420/texsmith", "https://github.com/mahmudurrahman420/texsmith");
+            ui.hyperlink_to(tr("Texsmith web page"), "https://github.com/mahmudurrahman420/texsmith");
             ui.add_space(6.0);
             ui.label(RichText::new(tr("Made by the Smith Suite team and community.")).color(tk.text_dim));
         });

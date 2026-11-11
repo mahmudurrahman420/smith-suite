@@ -640,7 +640,6 @@ pub const MENUS: &[(&str, &[&str])] = &[
             "ui:help.discord",
             "-",
             "ui:help.appPage",
-            "ui:help.github",
             "ui:help.issues",
             "ui:help.website",
             "-",

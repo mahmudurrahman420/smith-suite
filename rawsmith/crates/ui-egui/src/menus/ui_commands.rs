@@ -269,7 +269,6 @@ pub const UI_COMMANDS: &[UiCommand] = &[
     ("app.discord", "Join the Smith Suite community…", None, "Help"),
     ("app.feedback", "Send Feedback…", None, "Help"),
     ("app.website", "Rawsmith Website", None, "Help"),
-    ("app.github", "Rawsmith on GitHub", None, "Help"),
     ("app.smithsuite", "Smith Suite Website", None, "Help"),
     ("app.shortcuts", "Keyboard Shortcuts", Some("Cmd+/"), "Help"),
     ("app.setShortcut", "Set Keyboard Shortcut", None, ""),

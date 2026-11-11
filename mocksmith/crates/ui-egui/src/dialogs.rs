@@ -155,7 +155,7 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
         "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the Smith Suite Crafting Apps.",
     ));
     ui.add_space(8.0);
-    ui.hyperlink_to("https://github.com/mahmudurrahman420/mocksmith", "https://github.com/mahmudurrahman420/mocksmith");
+    ui.hyperlink_to(tr("Mocksmith web page"), "https://github.com/mahmudurrahman420/mocksmith");
     ui.hyperlink_to(tr("Join us on Discord"), "https://github.com/mahmudurrahman420/mocksmith/discussions");
     ui.add_space(8.0);
     ui.label(

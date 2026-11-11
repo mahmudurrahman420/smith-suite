@@ -494,7 +494,7 @@ fn help_links_emit_urls() {
     let r = s.execute("help.discord", json!({})).unwrap();
     assert_eq!(r["url"], "https://github.com/mahmudurrahman420/motionsmith/discussions");
     assert!(s.drain_events().iter().any(|e| matches!(e, crate::Event::OpenUrl(u) if u.contains("discord"))));
-    assert_eq!(s.execute("help.github", json!({})).unwrap()["url"], "https://github.com/mahmudurrahman420/motionsmith");
+    assert_eq!(s.execute("help.appPage", json!({})).unwrap()["url"], "https://github.com/mahmudurrahman420/motionsmith");
 }
 
 /// Every Help ▸ documentation page opens a file that is in the repository (#2696: Expression Reference opened a 404).

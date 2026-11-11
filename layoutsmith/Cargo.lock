@@ -1306,7 +1306,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "arboard",
  "craft-update",
@@ -1331,7 +1331,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-cli"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-color",
  "layoutsmith-compose",
@@ -1348,7 +1348,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-color"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "craft-cms",
  "kurbo",
@@ -1360,7 +1360,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-compose"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-color",
  "layoutsmith-doc",
@@ -1380,7 +1380,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-doc"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "chrono",
  "layoutsmith-color",
@@ -1393,7 +1393,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-engine"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "caseless",
  "craft-atomic",
@@ -1433,7 +1433,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-epub"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "chrono",
  "layoutsmith-color",
@@ -1443,7 +1443,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-fonts"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "core-text",
  "harfrust 0.13.3",
@@ -1456,7 +1456,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-format"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-doc",
  "layoutsmith-images",
@@ -1468,7 +1468,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-geom"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "flo_curves",
  "kurbo",
@@ -1481,7 +1481,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-idml"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-color",
  "layoutsmith-compose",
@@ -1496,7 +1496,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-images"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "craft-cms",
  "layoutsmith-color",
@@ -1514,7 +1514,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-mcp"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-engine",
  "layoutsmith-geom",
@@ -1527,7 +1527,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-pdf"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "chrono",
  "craft-cms",
@@ -1553,7 +1553,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-pptx"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "chrono",
  "layoutsmith-color",
@@ -1571,7 +1571,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-render"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "craft-pdf",
  "layoutsmith-color",
@@ -1590,7 +1590,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-textimport"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-doc",
  "quick-xml 0.41.0",
@@ -1599,7 +1599,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-tools"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-color",
  "layoutsmith-compose",
@@ -1611,7 +1611,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-ui-egui"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "craft-dialogs",
  "craft-keymap",
@@ -1645,7 +1645,7 @@ dependencies = [
 
 [[package]]
 name = "layoutsmith-web"
-version = "0.17.0"
+version = "0.17.1"
 dependencies = [
  "layoutsmith-engine",
  "layoutsmith-format",
