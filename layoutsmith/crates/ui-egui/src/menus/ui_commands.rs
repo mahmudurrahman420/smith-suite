@@ -386,7 +386,6 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
     ("window.taskBarReset", "Reset Bar Position", None, "{} — the Contextual Task Bar follows the selection again, under it"),
     ("help.discord", "Join the Smith Suite community…", None, "{} — opens https://github.com/mahmudurrahman420/layoutsmith/discussions in the browser"),
     ("help.appPage", "Layoutsmith Website…", None, "{} — opens https://github.com/mahmudurrahman420/layoutsmith"),
-    ("help.github", "Layoutsmith on GitHub…", None, "{} — opens https://github.com/mahmudurrahman420/layoutsmith"),
     ("help.issues", "Report an Issue…", None, "{} — opens the GitHub issue tracker"),
     ("help.website", "Smith Suite Website…", None, "{} — opens https://github.com/mahmudurrahman420/"),
     ("help.app", "Smith Suite App Page…", None, "{app} — opens https://github.com/mahmudurrahman420/apps/{app} (e.g. pixelsmith)"),

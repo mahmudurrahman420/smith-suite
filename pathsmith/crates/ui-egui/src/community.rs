@@ -43,7 +43,7 @@ pub fn discord_button(app: &mut PathsmithApp, ui: &mut Ui, large: bool) -> egui:
         icons::paint(ui, "message-circle", ir, DISCORD);
         ui.painter().galley(egui::pos2(ir.right() + h * 0.2, at.y), galley, if resp.hovered() { t.text_strong } else { t.text });
     }
-    let resp = resp.on_hover_text(tl!("Join the Smith Suite community on Discord (https://github.com/mahmudurrahman420/pathsmith/discussions)"));
+    let resp = resp.on_hover_text(tl!("Join the Smith Suite community on Discord"));
     if resp.clicked() {
         app.open_link("help.discord");
     }
@@ -69,8 +69,7 @@ pub fn links(app: &mut PathsmithApp, ui: &mut Ui) {
     let l = app.session.execute("help.links", &serde_json::json!({})).unwrap_or_default();
     let s = |k: &str| l[k].as_str().unwrap_or("").to_string();
     link(app, ui, "globe", tl!("Smith Suite website"), "help.website", &s("website"));
-    link(app, ui, "external-link", tl!("Pathsmith on github.com/mahmudurrahman420"), "help.appPage", &s("appPage"));
-    link(app, ui, "git-branch", tl!("Source code on GitHub"), "help.github", &s("github"));
+    link(app, ui, "external-link", tl!("Pathsmith web page"), "help.appPage", &s("appPage"));
 }
 
 #[cfg(test)]
@@ -84,7 +83,7 @@ mod tests {
         let o = opened.clone();
         let services = crate::Services { open_url: Some(Box::new(move |u: &str| o.lock().unwrap().push(u.to_string()))), ..Default::default() };
         let mut app = PathsmithApp::new(pathsmith_engine::Session::new(), services);
-        for id in ["help.discord", "help.website", "help.appPage", "help.github"] {
+        for id in ["help.discord", "help.website", "help.appPage"] {
             crate::menus::invoke(&mut app, id, serde_json::json!({}));
         }
         assert_eq!(
@@ -93,13 +92,12 @@ mod tests {
                 "https://github.com/mahmudurrahman420/pathsmith/discussions",
                 "https://github.com/mahmudurrahman420/",
                 "https://github.com/mahmudurrahman420/pathsmith",
-                "https://github.com/mahmudurrahman420/pathsmith"
             ]
         );
         // The control channel / MCP path returns the URL without opening a browser.
         let v = app.run("help.discord", serde_json::json!({})).unwrap();
         assert_eq!(v["url"], "https://github.com/mahmudurrahman420/pathsmith/discussions");
-        assert_eq!(opened.lock().unwrap().len(), 4);
+        assert_eq!(opened.lock().unwrap().len(), 3);
         let ctx = egui::Context::default();
         theme::install_fonts(&ctx);
         let mut out = ctx.run_ui(egui::RawInput::default(), |ui| links(&mut app, ui));

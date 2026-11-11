@@ -2002,7 +2002,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "arboard",
  "chrono",
@@ -2029,7 +2029,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-calc"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-core",
  "cellsmith-formula",
@@ -2041,7 +2041,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-chart"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-calc",
  "cellsmith-core",
@@ -2052,7 +2052,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-cli"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-engine",
  "cellsmith-mcp",
@@ -2064,7 +2064,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-core"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "chrono",
  "js-sys",
@@ -2075,7 +2075,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-engine"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-calc",
  "cellsmith-chart",
@@ -2098,7 +2098,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-formula"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-core",
  "serde",
@@ -2107,7 +2107,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-functions"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-core",
  "regex",
@@ -2115,7 +2115,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-math"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "ratex-font",
  "ratex-layout",
@@ -2125,7 +2125,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-mcp"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-engine",
  "log",
@@ -2134,7 +2134,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-model"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-core",
  "cellsmith-formula",
@@ -2147,18 +2147,18 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-numfmt"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "cellsmith-core",
 ]
 
 [[package]]
 name = "cellsmith-pdf"
-version = "0.16.0"
+version = "0.16.1"
 
 [[package]]
 name = "cellsmith-ui-egui"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "craft-ui",
  "craft-update",
@@ -2184,7 +2184,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-web"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "eframe",
  "egui",
@@ -2201,7 +2201,7 @@ dependencies = [
 
 [[package]]
 name = "cellsmith-xlsx"
-version = "0.16.0"
+version = "0.16.1"
 dependencies = [
  "aes",
  "cellsmith-core",

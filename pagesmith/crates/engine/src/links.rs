@@ -26,7 +26,6 @@ pub struct Link {
 pub const LINKS: &[Link] = &[
     Link { command: "help.discord", label: "Join the Smith Suite community", url: DISCORD, icon: "messages-square" },
     Link { command: "help.app_page", label: "Pagesmith web page", url: APP_PAGE, icon: "globe" },
-    Link { command: "help.github", label: "Pagesmith on GitHub", url: GITHUB, icon: "code-xml" },
     Link { command: "help.website", label: "Smith Suite website", url: WEBSITE, icon: "external-link" },
 ];
 

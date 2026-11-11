@@ -26,7 +26,7 @@ pub(super) fn about(app: &mut SoundApp, ctx: &egui::Context) {
                 ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
                 ui.label("An open-source digital audio workstation from the Smith Suite team.");
                 ui.label("Dual-licensed MIT OR Apache-2.0. Made with Rust and egui.");
-                ui.hyperlink_to("https://github.com/mahmudurrahman420/soundsmith", "https://github.com/mahmudurrahman420/soundsmith");
+                ui.hyperlink_to("Soundsmith web page", "https://github.com/mahmudurrahman420/soundsmith");
                 ui.hyperlink_to("Join us on Discord", "https://github.com/mahmudurrahman420/soundsmith/discussions");
             }
         }

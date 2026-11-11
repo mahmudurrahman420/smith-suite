@@ -137,7 +137,6 @@ pub const UI_COMMANDS: &[UiCommand] = &[
     uic!("mode.import", "Import", [], None),
     uic!("mode.edit", "Edit", [], None),
     uic!("mode.export", "Export", ["File", "Export"], Some("Cmd+M")),
-    uic!("help.upstream", "Built on FilmCraft (GitHub)", ["Help"], None),
     uic!("help.revealLogFiles", "Reveal Log Files…", ["Help"], None),
     uic!("help.systemCompatibilityReport", "System Compatibility Report…", ["Help"], None),
     uic!("app.about", "About Framesmith", ["Help"], None),

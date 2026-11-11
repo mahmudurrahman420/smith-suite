@@ -91,7 +91,6 @@ pub const CATALOG: &[Item] = &[
     it("Viewport", "Enable quick mask", "viewport.quickMask", Some("Y")),
     it("Viewport", "Edit quick mask", "viewport.quickMask.edit", Some("U")),
     it("Viewport", "Invert quick mask", "viewport.quickMask.invert", Some("Ctrl+Shift+I")),
-    it("Help", "Documentation...", "ui.help.docs", None),
     it("Help", "Shortcuts list...", "ui.help.shortcuts", None),
     it("Help", "Join the community (Discord)...", "ui.help.discord", None),
     it("Help", "Smith Suite website...", "ui.help.website", None),
@@ -165,7 +164,6 @@ pub fn invoke(app: &mut TexsmithApp, ctx: &egui::Context, id: &str) {
         "ui.about" => app.ui.windows.about = true,
         "ui.help.discord" => ctx.open_url(egui::OpenUrl::new_tab("https://github.com/mahmudurrahman420/texsmith/discussions")),
         "ui.help.website" => ctx.open_url(egui::OpenUrl::new_tab("https://github.com/mahmudurrahman420/texsmith")),
-        "ui.help.docs" => ctx.open_url(egui::OpenUrl::new_tab("https://github.com/mahmudurrahman420/texsmith#readme")),
         "ui.help.bug" => ctx.open_url(egui::OpenUrl::new_tab("https://github.com/storytold/texturecraft/issues")),
         _ => {
             if crate::windows::file_action(app, ctx, id) {

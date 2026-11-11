@@ -188,7 +188,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
             ui.add_space(4.0);
             ui.label(crate::rtl::widget(
                 ui,
-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "https://github.com/mahmudurrahman420/layoutsmith/discussions — help, feedback and show-and-tell"))
+                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Help, feedback and show-and-tell"))
                     .size(11.0)
                     .color(t.text_dim),
             ));
@@ -198,7 +198,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
                 let w = 330.0;
                 ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
                 for (text, key) in
-                    [("Layoutsmith page", "appPage"), ("GitHub", "github"), ("github.com/mahmudurrahman420", "website"), ("Report an issue", "issues")]
+                    [("Layoutsmith page", "appPage"), ("Smith Suite website", "website"), ("Report an issue", "issues")]
                 {
                     if link(ui, crate::i18n::tr(&app.ui.language, text), links::get(key).unwrap_or_default(), t.accent) {
                         open = Some(key);

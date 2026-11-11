@@ -135,28 +135,7 @@ fn render_start_rail(app: &mut PixelsmithApp, ui: &mut egui::Ui, rail_w: f32) {
 
     ui.add_space(4.0);
 
-    // 4. "Learn" Nav Item
-    let (learn_rect, learn_resp) = ui.allocate_exact_size(egui::vec2(rail_w, 32.0), Sense::click());
-    let learn_resp = learn_resp.on_hover_cursor(egui::CursorIcon::PointingHand);
-    learn_resp.widget_info(|| egui::WidgetInfo::labeled(egui::Role::Button, true, tl!("Learn")));
-    if learn_resp.hovered() {
-        ui.painter().rect_filled(learn_rect, 4.0, t.hover);
-    }
-    let learn_color = if learn_resp.hovered() { t.text } else { t.text_dim };
-    let sparkle_box = Rect::from_center_size(egui::pos2(learn_rect.left() + 20.0, learn_rect.center().y), egui::vec2(16.0, 16.0));
-    crate::icons::paint(ui, sparkle_box, "sparkles", 16.0, learn_color);
-    ui.painter().text(
-        egui::pos2(learn_rect.left() + 34.0, learn_rect.center().y),
-        egui::Align2::LEFT_CENTER,
-        tl!("Learn"),
-        crate::theme::semibold(13.5),
-        learn_color,
-    );
-    if learn_resp.clicked() {
-        crate::links::open(app, ui.ctx(), crate::links::TUTORIALS);
-    }
-
-    // 5. Bottom pinned community links
+    // Bottom pinned community links
     let bottom_h = 100.0;
     let avail_h = ui.available_height();
     let spacer = (avail_h - bottom_h - 20.0).max(24.0);
@@ -169,7 +148,6 @@ fn render_start_rail(app: &mut PixelsmithApp, ui: &mut egui::Ui, rail_w: f32) {
 
     render_rail_link(app, ui, rail_w, tl!("Website"), "link", crate::links::APP_PAGE);
     render_rail_link(app, ui, rail_w, tl!("Discord"), "message-square", crate::links::DISCORD);
-    render_rail_link(app, ui, rail_w, tl!("GitHub"), "link-2", crate::links::GITHUB);
 }
 
 fn render_rail_link(app: &mut PixelsmithApp, ui: &mut egui::Ui, rail_w: f32, label: &str, icon_name: &str, url: &str) {

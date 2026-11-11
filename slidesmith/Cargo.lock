@@ -1008,7 +1008,7 @@ checksum = "0c87e182de0887fd5361989c677c4e8f5000cd9491d6d563161a8f3a5519fc7f"
 
 [[package]]
 name = "slidesmith"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "arboard",
  "chrono",
@@ -1030,7 +1030,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-anim"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-geom",
  "slidesmith-model",
@@ -1039,7 +1039,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-av1"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-bitstream",
  "rayon",
@@ -1048,14 +1048,14 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-bitstream"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "craft-media",
 ]
 
 [[package]]
 name = "slidesmith-cli"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-engine",
  "slidesmith-mcp",
@@ -1065,14 +1065,14 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-color"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "slidesmith-engine"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "chrono",
  "slidesmith-anim",
@@ -1098,7 +1098,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-fonts"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "epaint_default_fonts",
  "harfrust 0.13.3",
@@ -1110,7 +1110,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-format"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-model",
  "serde",
@@ -1121,7 +1121,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-geom"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "kurbo",
  "serde",
@@ -1129,7 +1129,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-h264"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-bitstream",
  "rayon",
@@ -1138,7 +1138,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-hevc"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-bitstream",
  "rayon",
@@ -1147,21 +1147,21 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-isobmff"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "craft-media",
 ]
 
 [[package]]
 name = "slidesmith-matroska"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "craft-media",
 ]
 
 [[package]]
 name = "slidesmith-mcp"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-engine",
  "slidesmith-render",
@@ -1171,7 +1171,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-media"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-av1",
  "slidesmith-h264",
@@ -1189,7 +1189,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-metafile"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "image",
  "kurbo",
@@ -1198,7 +1198,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-model"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-color",
  "slidesmith-geom",
@@ -1210,15 +1210,15 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-ogg"
-version = "0.15.0"
+version = "0.15.1"
 
 [[package]]
 name = "slidesmith-opus"
-version = "0.15.0"
+version = "0.15.1"
 
 [[package]]
 name = "slidesmith-pdf"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "craft-pdf",
  "slidesmith-fonts",
@@ -1236,7 +1236,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-pptx"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-color",
  "slidesmith-engine",
@@ -1252,7 +1252,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-render"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-anim",
  "slidesmith-color",
@@ -1271,7 +1271,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-text"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "chrono",
  "slidesmith-color",
@@ -1285,7 +1285,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-ui-egui"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "craft-ui",
  "craft-update",
@@ -1311,7 +1311,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-vp9"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-bitstream",
  "rayon",
@@ -1320,7 +1320,7 @@ dependencies = [
 
 [[package]]
 name = "slidesmith-web"
-version = "0.15.0"
+version = "0.15.1"
 dependencies = [
  "slidesmith-engine",
  "slidesmith-ui-egui",

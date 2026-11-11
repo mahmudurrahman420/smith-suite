@@ -696,8 +696,7 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
             vec![
                 c("Join Our Discord", "help.discord"),
                 c("Smith Suite Website", "help.website"),
-                c("Pathsmith on github.com/mahmudurrahman420", "help.appPage"),
-                c("Pathsmith on GitHub", "help.github"),
+                c("Pathsmith web page", "help.appPage"),
                 Sep,
                 c("Search Commands…", "help.commandPalette"),
                 todos("Pathsmith Help…", "F1"),

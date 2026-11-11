@@ -401,7 +401,6 @@ pub const COMMANDS: &[CommandSpec] = &[
     c("help.shortcuts", "Keyboard shortcuts", HELP, None, Nothing, "circle-help"),
     c("help.discord", "Join the Smith Suite community", HELP, None, Nothing, "messages-square"),
     c("help.app_page", "Pagesmith web page", HELP, None, Nothing, "globe"),
-    c("help.github", "Pagesmith on GitHub", HELP, None, Nothing, "code-xml"),
     c("help.website", "Smith Suite website", HELP, None, Nothing, "external-link"),
     c("help.check_updates", "Check for updates…", HELP, None, Nothing, "cloud"),
     c("help.about", "About Pagesmith", HELP, None, Nothing, "info"),

@@ -776,7 +776,8 @@ fn about_has_product_links_and_credits_without_account_controls() {
     h.run_steps(3);
     assert_eq!(page(&h), Some(Page::About));
     assert!(h.query_by_label("User Information").is_none());
-    assert!(h.query_by_label("Source on GitHub").is_some());
+    assert!(h.query_by_label("Source on GitHub").is_none());
+    assert!(h.query_by_label("Slidesmith web page").is_some());
     assert!(h.query_by_label("Join our community on Discord").is_some());
     assert!(h.query_all_by_label("Appearance").next().is_some());
     click_on_page(&h, "Credits");

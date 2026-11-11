@@ -1482,7 +1482,7 @@ fn ui_commands_12(app: &mut RawsmithApp, ctx: &egui::Context, id: &str, p: &Valu
         "app.showInFinder" => show_in_finder(app),
         "app.showInFolders" => show_in_folders(app, p.get("id").and_then(Value::as_u64).map(rawsmith_catalog::PhotoId)),
         "app.openLogFolder" => open_log_folder(app),
-        "app.discord" | "app.website" | "app.github" | "app.smithsuite" | "app.help" | "app.feedback" => {
+        "app.discord" | "app.website" | "app.smithsuite" | "app.help" | "app.feedback" => {
             let url = crate::links::url_of(id).unwrap_or(crate::links::WEBSITE);
             crate::links::open(app, url)
         }

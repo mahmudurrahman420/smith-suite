@@ -312,8 +312,7 @@ fn community_buttons(app: &mut MotionsmithApp, ui: &mut egui::Ui, p: &egui::Pain
         let _ = app.session.execute("help.discord", json!({}));
     }
     rx = discord.min.x - 6.0;
-    for (id, icon, tip, cmd) in
-        [("hdr-github", Icon::Code, "Motionsmith on GitHub", "help.github"), ("hdr-web", Icon::Globe, "Motionsmith on github.com/mahmudurrahman420", "help.appPage")]
+    for (id, icon, tip, cmd) in [("hdr-web", Icon::Globe, "Motionsmith web page", "help.appPage")]
     {
         let r = Rect::from_min_max(pos2(rx - 26.0, cy - 13.0), pos2(rx, cy + 13.0));
         if widgets::icon_button(ui, r, icon, false, &t, egui::Id::unique(id)).on_hover_text(tip).clicked() {

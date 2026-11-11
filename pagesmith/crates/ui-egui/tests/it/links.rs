@@ -31,7 +31,6 @@ fn home_screen_links() {
     for (label, url) in [
         ("Join our Discord", links::DISCORD),
         ("Pagesmith web page", "https://github.com/mahmudurrahman420/pagesmith"),
-        ("Pagesmith on GitHub", "https://github.com/mahmudurrahman420/pagesmith"),
         ("Smith Suite website", "https://github.com/mahmudurrahman420/"),
     ] {
         let mut h = harness(|_| {});

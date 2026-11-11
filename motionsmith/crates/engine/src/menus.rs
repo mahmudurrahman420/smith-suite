@@ -1296,7 +1296,6 @@ Help
   ---
   Smith Suite Website | help.website
   Motionsmith Home Page | help.appPage
-  Motionsmith on GitHub | help.github
   Open Demo Project | file.openDemoProject
   [!mac] ---
   [!mac] About Motionsmith... | app.about

@@ -1412,7 +1412,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "cpal",
  "craft-update",
@@ -1438,7 +1438,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-aep"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-color",
  "motionsmith-effects",
@@ -1452,7 +1452,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-automation"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-engine",
  "motionsmith-host",
@@ -1465,14 +1465,14 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-av1enc"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "filmcraft-av1",
 ]
 
 [[package]]
 name = "motionsmith-cli"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "cpu-time",
  "motionsmith-automation",
@@ -1491,7 +1491,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-color"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "proptest",
  "serde",
@@ -1499,7 +1499,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-effects"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "chrono",
  "motionsmith-color",
@@ -1517,7 +1517,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-engine"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "chrono",
  "craft-docpath",
@@ -1556,7 +1556,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-export"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-av1enc",
  "motionsmith-color",
@@ -1587,7 +1587,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-expr"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "boa_engine",
  "motionsmith-color",
@@ -1604,7 +1604,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-geom"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "proptest",
  "serde",
@@ -1612,7 +1612,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-gpu"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "bytemuck",
  "motionsmith-color",
@@ -1635,14 +1635,14 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-hevcenc"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "filmcraft-hevc",
 ]
 
 [[package]]
 name = "motionsmith-host"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-engine",
  "motionsmith-export",
@@ -1667,7 +1667,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-interchange"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-color",
  "motionsmith-keyframe",
@@ -1686,7 +1686,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-keyframe"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-color",
  "motionsmith-geom",
@@ -1698,7 +1698,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-lottie"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "craft-docpath",
  "motionsmith-color",
@@ -1716,7 +1716,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-media"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "craft-docpath",
  "motionsmith-color",
@@ -1748,7 +1748,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-model"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-geom",
  "image",
@@ -1761,14 +1761,14 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-opusenc"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "filmcraft-opus",
 ]
 
 [[package]]
 name = "motionsmith-path"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-geom",
  "motionsmith-keyframe",
@@ -1780,7 +1780,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-pdf"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "craft-pdf",
  "motionsmith-raster",
@@ -1796,7 +1796,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-plugin"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-effects",
  "motionsmith-keyframe",
@@ -1808,7 +1808,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-project"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "craft-ecproj-format",
  "motionsmith-color",
@@ -1822,14 +1822,14 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-psd"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "miniz_oxide 0.9.1",
 ]
 
 [[package]]
 name = "motionsmith-raster"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-color",
  "motionsmith-geom",
@@ -1838,7 +1838,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-render"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-color",
  "motionsmith-effects",
@@ -1860,7 +1860,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-sam2"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "bytemuck",
  "candle-core",
@@ -1875,7 +1875,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-script"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "boa_engine",
  "motionsmith-engine",
@@ -1893,7 +1893,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-segment"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "miniz_oxide 0.9.1",
  "ndarray",
@@ -1902,7 +1902,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-svg"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-geom",
  "motionsmith-path",
@@ -1914,7 +1914,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-text"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-keyframe",
  "harfrust",
@@ -1926,7 +1926,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-time"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "proptest",
  "serde",
@@ -1934,7 +1934,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-track"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-raster",
  "motionsmith-segment",
@@ -1946,7 +1946,7 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-ui-egui"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "chrono",
  "craft-quit",
@@ -1983,11 +1983,11 @@ dependencies = [
 
 [[package]]
 name = "motionsmith-vp9enc"
-version = "0.21.0"
+version = "0.21.1"
 
 [[package]]
 name = "motionsmith-web"
-version = "0.21.0"
+version = "0.21.1"
 dependencies = [
  "motionsmith-engine",
  "motionsmith-export",

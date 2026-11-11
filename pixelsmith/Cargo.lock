@@ -5102,7 +5102,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "arboard",
  "async-io",
@@ -5157,7 +5157,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-affinity"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "crc32fast",
  "flate2",
@@ -5167,7 +5167,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-algo"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "criterion",
  "pixelsmith-color",
@@ -5182,7 +5182,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-automation"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "base64 0.23.1",
  "cap-std",
@@ -5213,7 +5213,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-cli"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "clap",
  "clap_complete",
@@ -5234,7 +5234,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-cms"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "moxcms",
  "rayon",
@@ -5242,7 +5242,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-codecs"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "craft-jpeg",
  "exr",
@@ -5266,7 +5266,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-color"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-cms",
  "serde",
@@ -5274,7 +5274,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-compose"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "criterion",
  "pixelsmith-cms",
@@ -5290,7 +5290,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-doc"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-color",
  "pixelsmith-geom",
@@ -5301,7 +5301,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-engine"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "base64 0.22.1",
  "blake3",
@@ -5343,7 +5343,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-format"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "blake3",
  "craft-pcraft-format",
@@ -5367,14 +5367,14 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-geom"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "serde",
 ]
 
 [[package]]
 name = "pixelsmith-gpu"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "bytemuck",
  "half",
@@ -5395,14 +5395,14 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-heif"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "heic-rs",
 ]
 
 [[package]]
 name = "pixelsmith-io"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "blake3",
  "craft-docpath",
@@ -5440,18 +5440,18 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-ipp"
-version = "0.20.1"
+version = "0.20.2"
 
 [[package]]
 name = "pixelsmith-ops"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-doc",
 ]
 
 [[package]]
 name = "pixelsmith-paint"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-cms",
  "pixelsmith-color",
@@ -5465,7 +5465,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-plugins"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-color",
  "pixelsmith-geom",
@@ -5481,7 +5481,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-psd"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "encoding_rs",
  "flate2",
@@ -5493,7 +5493,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-raster"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "crc32fast",
  "lz4_flex",
@@ -5508,7 +5508,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-raw"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "flate2",
  "image",
@@ -5523,7 +5523,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-tablet"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "block2 0.6.2",
  "objc2 0.6.5",
@@ -5535,7 +5535,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-testkit"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "memory-stats",
  "serde_json",
@@ -5543,7 +5543,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-text"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "flate2",
  "parley",
@@ -5558,7 +5558,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-ui-egui"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "base64 0.23.1",
  "craft-print",
@@ -5603,7 +5603,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-vector"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "pixelsmith-color",
  "pixelsmith-doc",
@@ -5614,7 +5614,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-web"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "eframe",
  "egui",
@@ -5636,7 +5636,7 @@ dependencies = [
 
 [[package]]
 name = "pixelsmith-web-boot"
-version = "0.20.1"
+version = "0.20.2"
 dependencies = [
  "flate2",
  "js-sys",

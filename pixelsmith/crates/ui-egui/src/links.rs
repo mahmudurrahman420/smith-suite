@@ -15,7 +15,7 @@ pub const ISSUES: &str = "https://github.com/storytold/photocraft/issues";
 
 /// Help-menu link commands: (id, url). Labels live in `menus::UI_COMMANDS`.
 pub const COMMANDS: &[(&str, &str)] =
-    &[("help.discord", DISCORD), ("help.website", APP_PAGE), ("help.smithsuiteWebsite", SMITHSUITE_WEBSITE), ("help.github", GITHUB), ("help.reportIssue", ISSUES)];
+    &[("help.discord", DISCORD), ("help.website", APP_PAGE), ("help.smithsuiteWebsite", SMITHSUITE_WEBSITE), ("help.reportIssue", ISSUES)];
 
 pub fn url_for(id: &str) -> Option<&'static str> {
     COMMANDS.iter().find(|c| c.0 == id).map(|c| c.1)
@@ -46,7 +46,7 @@ pub fn discord_button(app: &mut PixelsmithApp, ui: &mut egui::Ui, min_width: f32
 /// platform browser service) rather than `ui.hyperlink_to`, which uses the unreliable `ctx.open_url`.
 pub fn link_row(app: &mut PixelsmithApp, ui: &mut egui::Ui) {
     let t = crate::theme::Tokens::get(ui.ctx());
-    let links = [(tl!("Pixelsmith website"), APP_PAGE), (tl!("GitHub"), GITHUB), (tl!("Smith Suite"), SMITHSUITE_WEBSITE)];
+    let links = [(tl!("Pixelsmith website"), APP_PAGE), (tl!("Smith Suite"), SMITHSUITE_WEBSITE)];
     let font = egui::FontId::proportional(12.5);
     let sep = "  ·  ";
     let width: f32 = links.iter().map(|(l, _)| ui.painter().layout_no_wrap((*l).into(), font.clone(), t.text).size().x).sum::<f32>()
@@ -109,7 +109,6 @@ mod tests {
                 "help.discord",
                 "help.website",
                 "help.smithsuiteWebsite",
-                "help.github",
                 "help.reportIssue",
                 "help.checkForUpdates",
                 "---",
@@ -129,7 +128,6 @@ mod tests {
         for (id, url) in [
             ("help.discord", "https://github.com/mahmudurrahman420/pixelsmith/discussions"),
             ("help.website", "https://github.com/mahmudurrahman420/pixelsmith"),
-            ("help.github", "https://github.com/mahmudurrahman420/pixelsmith"),
         ] {
             let r = crate::menus::invoke(&mut app, &ctx, id, serde_json::json!({})).unwrap();
             assert_eq!(r["url"], url);
